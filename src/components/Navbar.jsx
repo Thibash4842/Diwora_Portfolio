@@ -1,4 +1,5 @@
     import { useState, useEffect } from 'react';
+    import logo from '../assets/logo.png';
 
     const Navbar = () => {
         const [isScrolled, setIsScrolled] = useState(false);
@@ -53,12 +54,8 @@
                         <div className="flex items-center justify-between h-20">
                             {/* Logo */}
                             <div className="flex-shrink-0">
-                                <a
-                                    href="#"
-                                    className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity duration-300"
-                                    aria-label="Diwora"
-                                >
-                                    Diwora
+                                <a href="#" aria-label="Diwora">
+                                    <img src={logo} alt="Diwora" className="h-8 md:h-10 w-auto object-contain" />
                                 </a>
                             </div>
 
@@ -82,7 +79,7 @@
                             {/* CTA Button */}
                             <div className="hidden md:flex items-center gap-4">
                                 <button
-                                    className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/50 active:scale-95"
+                                    className="px-6 py-2.5 bg-gradient-to-r from-red-500 to-black text-white font-semibold rounded-lg hover:from-black hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-red-500/50 active:scale-95"
                                     aria-label="Get Started"
                                 >
                                     Contact Us

@@ -92,9 +92,9 @@ const ScrollStack = () => {
             scrub: true,
           },
           scale: 0.85,
-          opacity: 0.3,
           ease: "none"
         });
+
       });
 
     }, containerRef);
@@ -106,14 +106,14 @@ const ScrollStack = () => {
     <section ref={containerRef} className="w-full bg-white pt-10 md:pt-16 pb-10 md:pb-16 relative">
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-16 text-center md:text-left z-10 relative">
         <h2 className="text-5xl font-bold text-black mb-4">What We Do</h2>
-        <p className="text-xl text-gray-600">Selected projects and case studies</p>
+        <p className="text-md text-gray-600">Selected projects and case studies</p>
       </div>
 
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col gap-[10vh] md:gap-[20vh] relative">
+      <div className="w-full flex flex-col gap-[10vh] md:gap-[20vh] relative">
         {cardsData.map((card, index) => {
           const isDark = index % 2 !== 0;
           return (
-              <div
+            <div
               key={card.id}
               ref={(el) => (cardsRef.current[index] = el)}
               className={`
@@ -126,25 +126,25 @@ const ScrollStack = () => {
               data-theme={isDark ? 'dark' : 'light'}
             >
               {/* Top Section */}
-              <div className="flex justify-between items-start w-full px-6 md:px-12 gap-2 md:gap-4 relative">
-                <h3 className={`text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter w-full sm:w-[75%] md:w-2/3 leading-[1.1] md:leading-none z-10 ${isDark ? 'text-white' : 'text-black'}`}>
+              <div className="flex justify-between items-start w-full px-6 md:px-12 lg:px-20 gap-2 md:gap-4 relative">
+                <h3 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter w-full sm:w-[75%] md:w-2/3 leading-[1.1] md:leading-none z-10 ${isDark ? 'text-white' : 'text-black'}`}>
                   {card.title}
                 </h3>
-                <span className={`absolute right-6 md:right-12 top-0 md:relative md:right-auto md:top-auto text-6xl sm:text-7xl md:text-[8rem] lg:text-[12rem] font-bold leading-none mt-0 md:-mt-8 lg:-mt-12 opacity-40 md:opacity-100 pointer-events-none z-0 ${isDark ? 'text-zinc-700 md:text-zinc-800' : 'text-gray-200 md:text-gray-100'}`}>
+                <span className={`absolute right-6 md:right-12 top-0 md:relative md:right-auto md:top-auto text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-bold leading-none mt-0 md:-mt-8 lg:-mt-12 opacity-40 md:opacity-100 pointer-events-none z-0 ${isDark ? 'text-zinc-700 md:text-zinc-800' : 'text-gray-200 md:text-gray-100'}`}>
                   {card.number}
                 </span>
               </div>
-              
+
               {/* Divider */}
               <div className={`w-full h-[1px] my-8 md:my-12 ${isDark ? 'bg-zinc-800' : 'bg-black'}`}></div>
-              
+
               {/* Bottom Section */}
-              <div className="flex flex-col lg:flex-row gap-8 px-8 md:px-12 items-start justify-between w-full">
+              <div className="flex flex-col lg:flex-row gap-8 px-8 md:px-12 lg:px-20 items-start justify-between w-full">
                 {/* Approach label */}
                 <div className="w-full lg:w-1/5">
                   <span className={`text-lg md:text-xl font-medium ${isDark ? 'text-white' : 'text-black'}`}>{card.label}</span>
                 </div>
-                
+
                 {/* Description text */}
                 <div className={`w-full lg:w-2/5 flex flex-col gap-6 text-sm md:text-base font-medium leading-relaxed pr-0 md:pr-8 ${isDark ? 'text-gray-300' : 'text-black'}`}>
                   <div className="flex flex-col gap-4">
@@ -154,11 +154,11 @@ const ScrollStack = () => {
                     Discuss Project
                   </button>
                 </div>
-                
+
                 {/* Right Image */}
                 <div className="w-full lg:w-2/5 h-64 md:h-[400px]">
-                  <img 
-                    src={card.image} 
+                  <img
+                    src={card.image}
                     alt={card.title}
                     className="w-full h-full object-cover"
                   />

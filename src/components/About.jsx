@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import aboutImg from '../assets/about/About-us.png';
 
 const CountUp = ({ end, duration = 2000 }) => {
     const [count, setCount] = useState(0);
@@ -12,13 +13,13 @@ const CountUp = ({ end, duration = 2000 }) => {
                     const step = (timestamp) => {
                         if (!startTime) startTime = timestamp;
                         const progress = timestamp - startTime;
-                        
+
                         // Ease out cubic: 1 - Math.pow(1 - t, 3)
                         let t = Math.min(progress / duration, 1);
                         let easeOutProgress = 1 - Math.pow(1 - t, 3);
-                        
+
                         setCount(Math.floor(easeOutProgress * end));
-                        
+
                         if (progress < duration) {
                             window.requestAnimationFrame(step);
                         } else {
@@ -44,101 +45,124 @@ const CountUp = ({ end, duration = 2000 }) => {
 
 const About = () => {
     return (
-        <section id="about" className="w-full bg-white pt-20 md:pt-32 pb-10 md:pb-16">
+        <section id="about" className="w-full bg-white dark:bg-[#16171d] pt-20 md:pt-22 pb-10 md:pb-16 border-t border-neutral-100/60 dark:border-neutral-800/40">
             <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
-                    {/* Left Section */}
-                    <div className="lg:col-span-2 flex flex-col gap-8">
-                        <h2 className="text-5xl font-bold text-black tracking-wide">
-                            About Diwora
-                        </h2>
-                        <div className=" flex flex-col gap-8 bg-gray-100 p-6 rounded-lg">
+                <div className="grid grid-cols-1 lg:grid-cols-10 gap-12 lg:gap-16 items-start">
 
-                            {/* Profile Image */}
-                            <div className="relative w-full aspect-square bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
-                                <img
-                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop"
-                                    alt="Profile"
-                                    className="w-full h-full object-cover"
-                                />
+                    {/* Left Column - About Label and Vision Card */}
+                    <div className="lg:col-span-3 flex flex-col gap-4 w-full lg:sticky lg:top-20">
+
+                        <span className="text-2xl font-medium text-black dark:text-white tracking-wide">
+                            About Diwora
+                        </span>
+
+                        {/* Vision Card */}
+                        <div className="flex flex-col bg-[#f8f9fa] dark:bg-[#1f2028]/80 p-4 rounded-2xl border border-neutral-100 dark:border-neutral-800/40">
+
+                            {/* Inner White Box containing Profile Image */}
+                            <div className="bg-white dark:bg-[#16171d] p-5 rounded-2xl border border-neutral-100/80 dark:border-neutral-800/60 shadow-[0_4px_25px_rgba(0,0,0,0.01)] dark:shadow-[0_4px_25px_rgba(0,0,0,0.15)] mb-6">
+                                <div className="relative w-full aspect-square bg-[#f8f9fa] dark:bg-[#1f2028] rounded-xl overflow-hidden flex items-center justify-center">
+                                    <img
+                                        src={aboutImg}
+                                        alt="Profile Graphic"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
                             </div>
 
-                            {/* Vision */}
-                            <div className="flex flex-col gap-4">
-                                <h3 className="text-2xl font-bold text-black">Our Vision</h3>
-                                <p className="text-lg text-gray-600 leading-relaxed">
+                            {/* Vision Info */}
+                            <div className="flex flex-col mb-6">
+                                <h3 className="text-xl font-bold text-black dark:text-white mb-2">Our Vision</h3>
+                                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
                                     To shape how brands exist visually in a world full of noise.
                                 </p>
                             </div>
 
                             {/* About Us Button */}
-                            <button className="px-6 py-3 bg-black text-white font-semibold rounded-full hover:bg-black/80 transition-all duration-300 w-fit">
+                            <button className="px-6 py-2.5 bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-black dark:hover:bg-neutral-100 font-semibold rounded-lg text-sm transition-colors w-fit shadow-sm">
                                 About Us
                             </button>
                         </div>
                     </div>
 
-                    {/* Right Section */}
-                    <div className="lg:col-span-3 flex flex-col gap-8">
-                        {/* Main Heading */}
-                        <h2 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-black leading-tight">
+                    {/* Right Column - Headings, Stats, and Studio Photo */}
+                    <div className="lg:col-span-7 flex flex-col gap-10 w-full">
+
+                        {/* Main Large Heading */}
+                        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-black dark:text-white leading-[1.2] tracking-tight">
                             We approach every project with clarity combining creative thinking and strategy to build work that truly matters.
                         </h2>
 
-                        {/* Reviews Section */}
-                        <div className="flex items-center gap-4 py-6">
-                            <div className="flex -space-x-3">
-                                {[
-                                    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
-                                    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
-                                    'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop',
-                                    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop'
-                                ].map((img, i) => (
-                                    <img
-                                        key={i}
-                                        src={img}
-                                        alt={`Reviewer ${i + 1}`}
-                                        className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                                    />
-                                ))}
+                        {/* Two-Column Details Sub-Layout */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
+
+                            {/* Column 1: Reviews and Purpose Statement */}
+                            <div className="flex flex-col gap-6">
+                                {/* Avatars and Reviews */}
+                                <div className="flex items-center gap-3">
+                                    <div className="flex -space-x-3">
+                                        {[
+                                            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face&q=80',
+                                            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&q=80',
+                                            'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face&q=80',
+                                            'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face&q=80'
+                                        ].map((img, i) => (
+                                            <img
+                                                key={i}
+                                                src={img}
+                                                alt={`Reviewer ${i + 1}`}
+                                                className="w-10 h-10 rounded-full border-2 border-white dark:border-[#16171d] object-cover"
+                                            />
+                                        ))}
+                                    </div>
+                                    <span className="text-[15px] font-semibold text-black dark:text-white">k+ Reviews</span>
+                                </div>
+
+                                {/* Purpose Statement */}
+                                <p className="text-sm text-neutral-800 dark:text-neutral-300 font-normal leading-relaxed max-w-sm">
+                                    At Diwora, creativity is always guided by purpose. Every idea is shaped with intention built to communicate clearly and connect with the right audience.
+                                </p>
                             </div>
-                            <span className="text-lg font-semibold text-black">100k+ Reviews</span>
+
+                            {/* Column 2: Scope of Work and Counter Stats */}
+                            <div className="flex flex-col gap-6">
+                                {/* Scope of Work */}
+                                <p className="text-[14px] md:text-[15px] text-neutral-500 dark:text-neutral-400 font-normal leading-relaxed max-w-sm">
+                                    From photography and video to motion and campaigns, we create visual content that doesn't just look good it drives growth and keeps brands relevant
+                                </p>
+
+                                {/* Counter Stats */}
+                                <div className="flex items-center gap-6 mt-2">
+                                    <div>
+                                        <p className="text-xl md:text-2xl font-bold text-black dark:text-white">
+                                            <CountUp end={50} />+
+                                        </p>
+                                        <p className="text-xs text-neutral-500 mt-1 font-medium">Projects Completed</p>
+                                    </div>
+
+                                    {/* Vertical Divider */}
+                                    <div className="w-px h-8 bg-neutral-300 dark:bg-neutral-700"></div>
+
+                                    <div>
+                                        <p className="text-xl md:text-2xl font-bold text-black dark:text-white">
+                                            <CountUp end={25} />+
+                                        </p>
+                                        <p className="text-xs text-neutral-500 mt-1 font-medium">Happy Clients</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
-                        {/* Detailed Description */}
-                        <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-black pl-6">
-                            At Diwora, creativity is always guided by purpose. Every idea is shaped with intention built to communicate clearly and connect with the right audience.
-                        </p>
-
-                        {/* Description */}
-                        <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-                            From photography and video to motion and campaigns, we create visual content that doesn't just look good it drives growth and keeps brands relevant
-                        </p>
-
-                        {/* Stats */}
-                        <div className="flex items-center justify-start gap-12 pt-8">
-                            <div className="flex items-center gap-8">
-                                <div>
-                                    <p className="text-3xl font-bold text-black"><CountUp end={50} />+</p>
-                                    <p className="text-base text-gray-600 mt-1">Projects Completed</p>
-                                </div>
-                                <div className="w-px h-16 bg-gray-300"></div>
-                                <div>
-                                    <p className="text-3xl font-bold text-black"><CountUp end={25} />+</p>
-                                    <p className="text-base text-gray-600 mt-1">Happy Clients</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Image */}
-                        <div className="w-full h-64 sm:h-72 lg:h-80 bg-gray-800 rounded-lg overflow-hidden mt-8">
+                        {/* Large Studio Photo */}
+                        <div className="w-full h-64 sm:h-80 lg:h-[450px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-neutral-100 dark:border-neutral-800/40 mt-4">
                             <img
-                                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop"
-                                alt="Team workspace"
+                                src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200&h=800&fit=crop"
+                                alt="Photography Studio Workspace"
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

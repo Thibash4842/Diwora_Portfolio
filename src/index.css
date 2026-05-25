@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +7,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -19,9 +21,9 @@ html {
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --sans: "Inter", sans-serif;
+  --heading: "Inter", sans-serif;
+  --mono: "Inter", sans-serif;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -56,4 +58,39 @@ html {
   #social .button-icon {
     filter: invert(1) brightness(2);
   }
+}
+
+/* Swiper Custom Pagination Styles */
+.swiper-custom-pagination {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.swiper-custom-pagination .swiper-pagination-bullet {
+  background: var(--border) !important;
+  opacity: 0.6 !important;
+  width: 8px !important;
+  height: 8px !important;
+  margin: 0 !important;
+  border-radius: 9999px !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.swiper-custom-pagination .swiper-pagination-bullet:hover {
+  opacity: 1 !important;
+}
+
+.swiper-custom-pagination .swiper-pagination-bullet-active {
+  background: var(--text-h) !important;
+  opacity: 1 !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+/* Smooth Linear Marquee Transition for Swiper */
+.testimonial-slider-container .swiper-wrapper {
+  transition-timing-function: linear !important;
 }

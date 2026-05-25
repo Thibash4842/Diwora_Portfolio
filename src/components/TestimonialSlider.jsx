@@ -1,176 +1,168 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, FreeMode, Mousewheel } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+import 'swiper/css/free-mode';
 
 const testimonials = [
   {
     id: 1,
-    name: "John Beckham",
-    text: "The opportunity to get the latest thoughts from some of the industry's best.",
-    highlight: "thoughts",
-    image: "https://randomuser.me/api/portraits/men/32.jpg"
+    name: "Sarah Johnson",
+    role: "Product Designer",
+    rating: 5,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face&q=80"
   },
   {
     id: 2,
-    name: "Salome Mikautadze",
-    text: "Wardrobe has something for everyone and it is nice to have the option of visiting a store or shopping online.",
-    highlight: "everyone",
-    image: "https://randomuser.me/api/portraits/women/44.jpg"
+    name: "David Lee",
+    role: "Frontend Developer",
+    rating: 5,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&q=80"
   },
   {
     id: 3,
-    name: "Hennah",
-    text: "The staff are always on hand to help and offer advice, unlike other stores where you can't find someone to save yourself.",
-    highlight: "advice",
-    image: "https://randomuser.me/api/portraits/women/68.jpg"
+    name: "Emma Wilson",
+    role: "CEO",
+    rating: 5,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&q=80"
   },
   {
     id: 4,
-    name: "Roshan",
-    text: "The Decor Summit is great for discussing ideas and hopefully turning them into action.",
-    highlight: "action",
-    image: "https://randomuser.me/api/portraits/men/46.jpg"
+    name: "Michael Brown",
+    role: "UI/UX Designer",
+    rating: 5,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face&q=80"
+  },
+  {
+    id: 5,
+    name: "Sophia Taylor",
+    role: "Founder",
+    rating: 5,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face&q=80"
   }
 ];
 
-const TestimonialSlider = () => {
-  const [activeIndex, setActiveIndex] = useState(1);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const getCardStyle = (index) => {
-    const diff = (index - activeIndex + testimonials.length) % testimonials.length;
-    
-    // Center card
-    if (diff === 0) {
-      return {
-        transform: 'translateX(0) scale(1)',
-        zIndex: 20,
-        opacity: 1,
-      };
-    }
-    // Right card
-    if (diff === 1) {
-      return {
-        transform: 'translateX(65%) scale(0.9)',
-        zIndex: 10,
-        opacity: 1,
-      };
-    }
-    // Left card
-    if (diff === testimonials.length - 1) {
-      return {
-        transform: 'translateX(-65%) scale(0.9)',
-        zIndex: 10,
-        opacity: 1,
-      };
-    }
-    // Hidden cards
-    return {
-      transform: 'translateX(0) scale(0.8)',
-      zIndex: 0,
-      opacity: 0,
-      pointerEvents: 'none'
-    };
-  };
-
+const StarRating = ({ rating }) => {
   return (
-    <section data-theme="dark" className="relative w-full bg-[#13151a] py-20 overflow-hidden font-sans">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col items-center">
-        
-        {/* Header */}
-        <div className="text-center mb-16 z-30">
-          <span className="bg-[#5a67d8] text-white text-[10px] font-bold tracking-[0.2em] px-3 py-1 uppercase">
-            What it's like working with us
-          </span>
-          <h2 className="text-4xl font-serif text-white mt-6 font-bold tracking-wide">
-            #How clients describe the work and the process.
-          </h2>
-        </div>
+    <div className="flex gap-[3px] mb-4 text-[#ffb800]">
+      {[...Array(rating)].map((_, i) => (
+        <svg
+          key={i}
+          className="w-5 h-5 fill-current"
+          viewBox="0 0 24 24"
+        >
+          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+        </svg>
+      ))}
+    </div>
+  );
+};
 
-        {/* Slider Container */}
-        <div className="relative w-full max-w-4xl h-[400px] flex justify-center items-center">
-          
-          {/* Decorative Elements */}
-          <div className="absolute top-[-10%] left-[10%] w-32 h-32 rounded-full border-[30px] border-[#5a67d8] z-0 opacity-90"></div>
-          <div className="absolute bottom-[-10%] right-[10%] w-40 h-40 rounded-full border-[40px] border-[#ff8a65] z-0 opacity-90"></div>
+const TestimonialSlider = () => {
+  return (
+    <section className="relative w-full bg-white dark:bg-[#16171d] py-24 overflow-hidden font-sans border-t border-gray-100/60 dark:border-neutral-800/40">
 
-          {/* Large Number Background */}
-          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[12rem] font-serif font-black text-white z-30  opacity-50 leading-none">
-            {String(activeIndex + 1).padStart(2, '0')}
+      {/* Edge Gradient vignettes with subtle backdrop blur to fade-out overflowing cards on screen borders */}
+      <div className="absolute left-0 top-0 bottom-0 w-8 md:w-20 lg:w-32 bg-gradient-to-r from-white via-white/80 to-transparent dark:from-[#16171d] dark:via-[#16171d]/80 pointer-events-none z-10 backdrop-blur-[1px]"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-8 md:w-20 lg:w-32 bg-gradient-to-l from-white via-white/80 to-transparent dark:from-[#16171d] dark:via-[#16171d]/80 pointer-events-none z-10 backdrop-blur-[1px]"></div>
+
+      {/* Header Container */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-10 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-5xl lg:text-[46px] font-semibold tracking-tight text-black dark:text-white leading-[1.15]">
+              What it’s like working with us
+            </h2>
           </div>
+          <div className="md:max-w-xs text-left md:text-right">
+            <p className="text-[15px] text-neutral-800 dark:text-neutral-400 font-normal leading-relaxed">
+              How clients describe the work and the process.
+            </p>
+          </div>
+        </div>
+      </div>
 
-          {/* Cards */}
-          {testimonials.map((testimonial, index) => {
-            const isCenter = index === activeIndex;
-            
-            return (
-              <div
-                key={testimonial.id}
-                className={`absolute w-full max-w-md transition-all duration-700 ease-in-out p-8 shadow-2xl
-                  ${isCenter ? 'bg-[#7ecdbb] text-[#13151a]' : 'bg-white text-gray-700'}
-                `}
-                style={getCardStyle(index)}
-              >
-                {/* Quote Icon */}
-                <div className={`absolute top-6 right-8 text-6xl font-serif leading-none opacity-40
-                  ${isCenter ? 'text-white' : 'text-gray-300'}
-                `}>
-                  “
-                </div>
+      {/* Swiper Slider Outer Container (Keeps bounds for alignment, but overflow is visible) */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+        <div className="relative w-full pb-12 testimonial-slider-container">
+          <Swiper
+            modules={[Autoplay, Pagination, FreeMode, Mousewheel]}
+            loop={true}
+            freeMode={{
+              enabled: true,
+              momentum: false,
+            }}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            speed={6000}
+            grabCursor={true}
+            slidesPerView={1}
+            spaceBetween={24}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 28,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 32,
+              },
+            }}
+            pagination={{
+              clickable: true,
+              el: '.swiper-custom-pagination',
+            }}
+            className="!overflow-visible"
+          >
+            {testimonials.map((testimonial) => (
+              <SwiperSlide key={testimonial.id} className="h-auto py-4">
+                <div className="h-full flex flex-col justify-between bg-white dark:bg-[#1f2028] border border-[#f1f1f4] dark:border-[#2e303a]/60 rounded-2xl p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.015)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.15)] transition-all duration-300 ease-out hover:scale-[1.015] hover:shadow-[0_15px_40px_rgba(0,0,0,0.035)] dark:hover:shadow-[0_15px_40px_rgba(0,0,0,0.25)]">
+                  <div>
+                    {/* Star Rating */}
+                    <StarRating rating={testimonial.rating} />
 
-                {/* Avatar */}
-                <div className="mb-6">
-                  <div className="w-16 h-16 overflow-hidden shadow-md">
-                    <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
+                    {/* Testimonial Text */}
+                    <p className="text-neutral-700 dark:text-neutral-300 text-[15px] md:text-[16px] font-normal leading-relaxed mb-10">
+                      {testimonial.text}
+                    </p>
+                  </div>
+
+                  {/* Profile info */}
+                  <div className="flex items-center gap-4 mt-auto">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover border border-neutral-100 dark:border-neutral-800"
+                    />
+                    <div>
+                      <h4 className="text-base font-semibold text-black dark:text-white leading-tight">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-sm text-neutral-400 dark:text-neutral-500 font-medium mt-0.5">
+                        {testimonial.role}
+                      </p>
+                    </div>
                   </div>
                 </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-                {/* Text */}
-                <p className="text-lg font-medium leading-relaxed mb-8 pr-4">
-                  {testimonial.text.split(new RegExp(`(${testimonial.highlight})`, 'gi')).map((part, i) => 
-                    part.toLowerCase() === testimonial.highlight.toLowerCase() ? (
-                      <span key={i} className={`${isCenter ? 'bg-white px-1' : 'font-bold'}`}>
-                        {part}
-                      </span>
-                    ) : (
-                      part
-                    )
-                  )}
-                </p>
-
-                {/* Author Info */}
-                <div className="flex items-center mt-auto">
-                  <div className={`w-8 h-[2px] mr-4 ${isCenter ? 'bg-[#13151a]' : 'bg-gray-300'}`}></div>
-                  <h4 className="font-serif font-bold text-lg">
-                    {testimonial.name}
-                  </h4>
-                </div>
-              </div>
-            );
-          })}
+          {/* Custom Pagination Dots */}
+          <div className="swiper-custom-pagination flex justify-center gap-2 mt-12"></div>
         </div>
-
-        {/* Dot Navigation */}
-        <div className="flex gap-3 mt-12 z-30">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`transition-all duration-300 border border-gray-500
-                ${activeIndex === index 
-                  ? 'w-3 h-3 bg-white rotate-45' 
-                  : 'w-3 h-3 bg-transparent hover:bg-gray-500'
-                }
-              `}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-
       </div>
     </section>
   );

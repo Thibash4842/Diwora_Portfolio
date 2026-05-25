@@ -1,15 +1,20 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import partner1 from "../assets/partners/partner01.png";
+import partner2 from "../assets/partners/partner02.png";
+import partner3 from "../assets/partners/partner03.png";
+import partner4 from "../assets/partners/partner04.png";
+import partner5 from "../assets/partners/partner05.png";
 
 const LogoMarquee = () => {
   const marqueeRef = useRef(null);
 
   const logos = [
-    "https://via.placeholder.com/200x100?text=Brand1",
-    "https://via.placeholder.com/200x100?text=Brand2",
-    "https://via.placeholder.com/200x100?text=Brand3",
-    "https://via.placeholder.com/200x100?text=Brand4",
-    "https://via.placeholder.com/200x100?text=Brand5",
+    partner1,
+    partner2,
+    partner3,
+    partner4,
+    partner5,
   ];
 
   // duplicate for seamless loop
@@ -19,7 +24,7 @@ const LogoMarquee = () => {
     const ctx = gsap.context(() => {
       gsap.to(".marquee-track", {
         xPercent: -50,
-        ease: "none",
+        ease: "linear",
         duration: 20, // lower = faster
         repeat: -1,
       });
@@ -30,18 +35,14 @@ const LogoMarquee = () => {
 
   return (
     <section className="w-full bg-white py-16 overflow-hidden" ref={marqueeRef}>
-      <h2 className="text-center text-gray-600 text-sm font-semibold uppercase mb-10">
-        Trusted by leading brands
-      </h2>
-
       <div className="relative w-full overflow-hidden">
-        <div className="flex marquee-track gap-12">
+        <div className="flex marquee-track gap-4 md:gap-10">
           {extendedLogos.map((logo, index) => (
-            <div key={index} className="flex items-center justify-center min-w-[200px]">
+            <div key={index} className="flex items-center justify-center min-w-[100px] md:min-w-[200px]">
               <img
                 src={logo}
                 alt="logo"
-                className="h-16 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition"
+                className="h-8 md:h-10 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition"
               />
             </div>
           ))}
