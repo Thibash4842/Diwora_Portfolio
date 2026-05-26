@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Partner from './Partner';
 import ServicesSection from './ServicesSection';
 import ResultsSection from './ResultsSection';
+import ProcessSection from './ProcessSection';
 import datadriven from '../assets/advertising/datadriven.png';
 import expertise from '../assets/advertising/expertise.png';
 
@@ -270,55 +271,59 @@ const Advertising = () => {
           </div>
 
           {/* Cards Grid - Fully Responsive */}
-          <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-[1.1fr_auto_1fr] justify-center xl:items-start ">
+          <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch">
             {/* Card 1: Data Driven Strategy */}
-            <article className="rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-6 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
-              <div className="inline-flex items-center justify-center rounded-2xl">
+            <article className="flex flex-col h-full rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
+              <div className="inline-flex items-center justify-center rounded-2xl mb-6 h-48 sm:h-56 w-full overflow-hidden">
                 <img src={datadriven} alt="Data Driven Strategy" className="w-full h-full object-cover" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-black mb-2 sm:mb-3">
-                Data Driven Strategy
-              </h3>
-              <p className="text-sm sm:text-base text-neutral-500 leading-7 mb-6 sm:mb-8">
-                Every decision backed by real data and testing.
-              </p>
-              <button className="inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
-                Learn More
-              </button>
+              <div className="flex-grow flex flex-col">
+                <h3 className="text-xl sm:text-2xl font-semibold text-black mb-2 sm:mb-3">
+                  Data Driven Strategy
+                </h3>
+                <p className="text-sm sm:text-base text-neutral-500 leading-7 mb-6 sm:mb-8 flex-grow">
+                  Every decision backed by real data and testing.
+                </p>
+                <button className="mt-auto self-start inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
+                  Learn More
+                </button>
+              </div>
             </article>
 
             {/* Card 2: ROI Focused Execution (Featured) */}
-            <article className="rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-6 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
-              <div className="relative">
-                <div className="inline-flex items-center justify-center rounded-2xl">
-                  <img src="" alt="ROI Focused Execution" className="w-full h-full object-cover" />
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-black text-black mt-4 sm:mt-6 leading-tight mb-3 sm:mb-4">
+            <article className="flex flex-col h-full rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
+              <div className="inline-flex items-center justify-center rounded-2xl mb-6 h-48 sm:h-56 w-full overflow-hidden">
+                <img src="" alt="ROI Focused Execution" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-grow flex flex-col">
+                <h3 className="text-2xl sm:text-3xl font-black text-black mb-3 sm:mb-4 leading-tight">
                   ROI Focused Execution
                 </h3>
-                <p className="text-sm sm:text-base text-black leading-7 mb-8 sm:mb-10">
+                <p className="text-sm sm:text-base text-black leading-7 mb-8 sm:mb-10 flex-grow">
                   We optimize for revenue, not just clicks.
                 </p>
-                <button className="inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
+                <button className="mt-auto self-start inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
                   Learn More
                 </button>
               </div>
             </article>
 
             {/* Card 3: Full Funnel Expertise */}
-            <article className="p-6 md:col-span-2 lg:col-span-1 rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
-              <div className="inline-flex items-center justify-center rounded-2xl">
-                <img src={expertise} alt="Full Funnel Expertise" className="w-full md:h-[250px] lg:h-full h-full object-contain" />
+            <article className="md:col-span-2 lg:col-span-1 xl:col-span-1 flex flex-col h-full rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
+              <div className="inline-flex items-center justify-center rounded-2xl mb-6 h-48 sm:h-56 w-full overflow-hidden">
+                <img src={expertise} alt="Full Funnel Expertise" className="w-full h-full object-contain" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-black mb-2 sm:mb-3">
-                Full Funnel Expertise
-              </h3>
-              <p className="text-sm sm:text-base text-neutral-500 leading-7 mb-6 sm:mb-8">
-                From awareness to retention, we handle it all.
-              </p>
-              <button className="inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
-                Learn More
-              </button>
+              <div className="flex-grow flex flex-col">
+                <h3 className="text-xl sm:text-2xl font-semibold text-black mb-2 sm:mb-3">
+                  Full Funnel Expertise
+                </h3>
+                <p className="text-sm sm:text-base text-neutral-500 leading-7 mb-6 sm:mb-8 flex-grow">
+                  From awareness to retention, we handle it all.
+                </p>
+                <button className="mt-auto self-start inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
+                  Learn More
+                </button>
+              </div>
             </article>
           </div>
         </div>
@@ -364,12 +369,15 @@ const Advertising = () => {
           </motion.div>
         </div>
       </section>
-      
+
       {/* ─── Services Section ─── */}
       <ServicesSection />
 
       {/* ─── Results Section ─── */}
       <ResultsSection />
+
+      {/* ─── Process Section ─── */}
+      <ProcessSection />
 
     </div>
   );

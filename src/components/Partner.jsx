@@ -34,7 +34,7 @@ const LogoMarquee = () => {
   }, []);
 
   return (
-    <section className="w-full bg-white py-16 overflow-hidden" ref={marqueeRef}>
+    <section className="w-full bg-white py-14 overflow-hidden" ref={marqueeRef}>
       <div className="relative w-full overflow-hidden">
         <div className="flex marquee-track gap-4 md:gap-10">
           {extendedLogos.map((logo, index) => (
@@ -42,7 +42,7 @@ const LogoMarquee = () => {
               <img
                 src={logo}
                 alt="logo"
-                className="h-8 md:h-10 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition"
+                className="h-8 md:h-10 object-contain hover:scale-105 transition"
               />
             </div>
           ))}

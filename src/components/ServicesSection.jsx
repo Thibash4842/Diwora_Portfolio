@@ -57,8 +57,10 @@ const FloatingBadge = ({ children, className, delay = 0, yOffset = 8 }) => (
    Mockup Wrapper to center the Phone/Dashboard
    ────────────────────────────────────────────── */
 const MockupContainer = ({ children }) => (
-  <div className="relative w-full h-full flex items-center justify-center p-6 bg-gradient-to-b from-[#FAF9F6] to-[#F3F4F6]">
-    {children}
+  <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-b from-[#FAF9F6] to-[#F3F4F6] overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center origin-center scale-[0.65] sm:scale-75 md:scale-90 lg:scale-100">
+      {children}
+    </div>
   </div>
 );
 
@@ -519,29 +521,27 @@ const ServicesSection = () => {
   };
 
   return (
-    <div ref={sectionRef} className="relative w-full h-[320vh] bg-white font-['Inter',sans-serif] py-14">
-      {/* Sticky Split Layout Container - offsets top by 20 (80px) to sit exactly below the navbar */}
-      <div className="sticky top-[80px] h-[100vh] w-full flex items-center overflow-hidden">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+    <div ref={sectionRef} className="relative w-full h-[200vh] md:h-[320vh] bg-white font-['Inter',sans-serif] py-14">
+      {/* Header Area */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0">
+        <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
+          Services
+        </p>
+        <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-black tracking-[-0.04em] leading-[1.1] mb-2">
+          How we drive growth
+        </h2>
+        <p className="text-sm text-neutral-500 max-w-sm">
+          Tailored solutions for every stage of your business.
+        </p>
+      </div>
+
+      <div className="sticky top-[80px] h-[calc(120vh-80px)] md:h-[130vh] lg:h-[calc(100vh-80px)]  w-full flex items-center overflow-hidden">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-center">
 
           {/* Left Column: Headers & Card Navigation */}
-          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center h-full max-h-[80vh]">
-
-            {/* Header Area */}
-            <div className="flex flex-col gap-2 mb-8">
-              <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
-                Services
-              </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-black tracking-[-0.04em] leading-[1.1] mb-2">
-                How we drive growth
-              </h2>
-              <p className="text-sm text-neutral-500 max-w-sm">
-                Tailored solutions for every stage of your business.
-              </p>
-            </div>
-
+          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0">
             {/* Vertically Stacked Card Menu (Matches mockup exactly) */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2 sm:gap-3">
               {SERVICES.map((service, index) => {
                 const isActive = activeIndex === index;
                 return (
@@ -549,13 +549,13 @@ const ServicesSection = () => {
                     key={service.id}
                     onClick={() => handleTabClick(index)}
                     className={`cursor-pointer w-full rounded-2xl transition-all duration-300 select-none ${isActive
-                      ? 'bg-white border border-neutral-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-6'
-                      : 'bg-[#FCFCFD] border border-neutral-100/70 p-5 hover:bg-neutral-50/50'
+                      ? 'bg-white border border-neutral-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-4 lg:p-6'
+                      : 'bg-[#FCFCFD] border border-neutral-100/70 p-3 lg:p-5 hover:bg-neutral-50/50'
                       }`}
                   >
                     {/* Tab Header */}
                     <div className="flex justify-between items-center">
-                      <span className={`text-base sm:text-lg lg:text-[21px] font-bold tracking-tight transition-colors duration-300 ${isActive ? 'text-black' : 'text-neutral-700'
+                      <span className={`text-sm sm:text-base lg:text-[21px] font-bold tracking-tight transition-colors duration-300 ${isActive ? 'text-black' : 'text-neutral-700'
                         }`}>
                         {service.title}
                       </span>
@@ -571,16 +571,16 @@ const ServicesSection = () => {
                           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="pt-4 flex flex-col items-start gap-4">
-                            <h4 className="text-base sm:text-lg font-bold text-neutral-900 leading-tight">
+                          <div className="pt-3 lg:pt-4 flex flex-col items-start gap-3 lg:gap-4">
+                            <h4 className="text-sm sm:text-base lg:text-lg font-bold text-neutral-900 leading-tight">
                               {service.activeTitle}
                             </h4>
-                            <p className="text-xs sm:text-xs text-neutral-500 leading-relaxed max-w-sm font-medium">
+                            <p className="text-[11px] sm:text-xs text-neutral-500 leading-relaxed max-w-sm font-medium">
                               {service.description}
                             </p>
 
                             {/* CTA Button */}
-                            <button className="px-6 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white font-bold rounded-full transition-all duration-200 active:scale-[0.97] text-xs">
+                            <button className="px-5 py-2 lg:px-6 lg:py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white font-bold rounded-full transition-all duration-200 active:scale-[0.97] text-[10px] sm:text-[11px] lg:text-xs">
                               {service.cta}
                             </button>
                           </div>
@@ -591,12 +591,11 @@ const ServicesSection = () => {
                 );
               })}
             </div>
-
           </div>
 
           {/* Right Column: Visual Mockup Showcase Container */}
-          <div className="col-span-1 lg:col-span-7 flex justify-center items-center h-full">
-            <div className="relative w-full aspect-[4/3] max-w-[620px] rounded-3xl border border-neutral-100 overflow-hidden shadow-sm flex items-center justify-center bg-white">
+          <div className="col-span-1 lg:col-span-7 flex justify-center items-center w-full order-1 lg:order-2">
+            <div className="relative w-full h-[260px] sm:h-[360px] lg:h-auto lg:aspect-[4/3] max-w-[620px] rounded-2xl lg:rounded-3xl border border-neutral-100 overflow-hidden shadow-sm flex items-center justify-center bg-white">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
