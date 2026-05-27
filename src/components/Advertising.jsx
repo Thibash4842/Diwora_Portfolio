@@ -2,9 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Navbar from './Navbar';
 import Partner from './Partner';
+import Testimonial from './TestimonialSlider';
+import Footer from './Footer';
 import ServicesSection from './ServicesSection';
 import ResultsSection from './ResultsSection';
 import ProcessSection from './ProcessSection';
+import MarketplaceSection from './MarketplaceSection';
 import datadriven from '../assets/advertising/datadriven.png';
 import expertise from '../assets/advertising/expertise.png';
 
@@ -379,8 +382,18 @@ const Advertising = () => {
       {/* ─── Process Section ─── */}
       <ProcessSection />
 
+      {/* ─── Marketplace Section ─── */}
+      <MarketplaceSection />
+
+      {/* ─── Testimonial Slider Section ─── */}
+      <Testimonial />
+
+      {/* ─── Footer Section ─── */}
+      <Footer />
+
     </div>
   );
 };
 
 export default Advertising;
+

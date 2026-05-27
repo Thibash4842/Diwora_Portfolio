@@ -41,7 +41,7 @@ const FAQ = () => {
     const ctx = gsap.context(() => {
       cardsRef.current.forEach((card) => {
         gsap.fromTo(card,
-          { 
+          {
             opacity: 0.4,
             filter: "blur(10px)",
             y: 50,
@@ -69,9 +69,9 @@ const FAQ = () => {
 
 
   return (
-    <section ref={containerRef} className="w-full bg-white py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section ref={containerRef} className="w-full bg-white py-14 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8">
-        
+
         {/* Left Column */}
         <div className="flex flex-col items-start">
           <div className="flex items-center gap-2 mb-6">
@@ -79,14 +79,14 @@ const FAQ = () => {
             <span className="text-sm font-semibold uppercase tracking-wider text-black">Support</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-            Frequently Asked<br/>Questions
+            Frequently Asked<br />Questions
           </h2>
         </div>
 
         {/* Right Column (Accordion) */}
         <div className="flex flex-col gap-4">
           {faqData.map((faq, index) => (
-            <div 
+            <div
               key={faq.id}
               ref={(el) => (cardsRef.current[index] = el)}
               className="border border-gray-200 rounded-lg bg-white overflow-hidden transition-all duration-300 hover:shadow-md hover:border-gray-300 cursor-pointer group"
@@ -98,17 +98,16 @@ const FAQ = () => {
                 </h3>
                 <div className={`transform transition-transform duration-300 text-black group-hover:text-gray-700 ${openId === faq.id ? 'rotate-180' : ''}`}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
               </div>
-              
-              <div 
-                className={`grid transition-all duration-300 ease-in-out ${
-                  openId === faq.id 
-                    ? 'grid-rows-[1fr] opacity-100' 
+
+              <div
+                className={`grid transition-all duration-300 ease-in-out ${openId === faq.id
+                    ? 'grid-rows-[1fr] opacity-100'
                     : 'grid-rows-[0fr] opacity-0'
-                }`}
+                  }`}
               >
                 <div className="overflow-hidden">
                   <p className="px-6 pb-6 text-gray-600 leading-relaxed">
