@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
@@ -10,7 +11,19 @@ import HowWeWork from './components/HowWeWork'
 import TestimonialSlider from './components/TestimonialSlider'
 import FAQ from './components/FAQ'
 import Advertising from './components/Advertising'
+import AboutUs from './components/AboutUs'
 import './index.css'
+
+/* ─── Scroll To Top Component ─── */
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 /* ─── Portfolio Home (original layout) ─── */
 function Home() {
@@ -21,7 +34,7 @@ function Home() {
       <Partner />
       {/* <FullWidthImage /> */}
 
-      <section className="w-full h-screen bg-white px-6 md:px-12 lg:px-20">
+      <section data-theme="light" className="w-full h-screen bg-white px-6 md:px-12 lg:px-20">
         <img
           src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop"
           alt="Team workspace"
@@ -49,10 +62,14 @@ function Home() {
 /* ─── App Router ─── */
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/advertising" element={<Advertising />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/advertising" element={<Advertising />} />
+        <Route path="/about" element={<AboutUs />} />
+      </Routes>
+    </>
   )
 }
 

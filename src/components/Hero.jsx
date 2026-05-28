@@ -5,6 +5,7 @@ const Hero = () => {
     <section
       id="hero"
       className="relative min-h-screen w-full overflow-hidden bg-white flex flex-col items-center justify-center pt-28 pb-16 lg:pt-16 lg:pb-8"
+      data-theme="light"
     >
       {/* Subtle background gradients for premium depth */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -30,7 +31,7 @@ const Hero = () => {
             {/* <!-- From Uiverse.io by nathAd17 --> */}
             <button
               type="submit"
-              className="flex justify-center gap-2 items-center shadow-xl text-md bg-white hover:bg-black text-black hover:text-white backdrop-blur-md lg:font-semibold isolation-auto border border-gray-200 relative z-10 px-4 py-2 overflow-hidden rounded-full group transition-all duration-500"
+              className="flex justify-center gap-2 items-center shadow-xl text-md bg-white hover:bg-red-600 text-black hover:text-white backdrop-blur-md lg:font-semibold isolation-auto border border-gray-200 relative z-10 px-4 py-2 overflow-hidden rounded-full group transition-all duration-500"
             >
               Inquire Now
 

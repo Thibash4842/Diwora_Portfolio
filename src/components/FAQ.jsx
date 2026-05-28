@@ -69,7 +69,7 @@ const FAQ = () => {
 
 
   return (
-    <section ref={containerRef} className="w-full bg-white py-14 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section ref={containerRef} data-theme="light" className="w-full bg-white py-14 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8">
 
         {/* Left Column */}

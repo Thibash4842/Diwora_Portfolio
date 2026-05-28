@@ -58,7 +58,7 @@ const Footer = () => {
       {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 z-30 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg hover:shadow-blue-500/50 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+        className="fixed bottom-8 right-8 z-30 w-12 h-12 rounded-full bg-gradient-to-r from-red-500 to-red-700 text-white shadow-lg hover:shadow-red-500/50 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
         aria-label="Back to top"
         title="Back to top"
       >
@@ -136,7 +136,7 @@ const Footer = () => {
                   <FlipLink
                     href={link.href}
                     className="text-white/60 hover:text-white transition-colors duration-300 text-sm"
-                    underline={true}
+                  // underline={true}
                   >
                     {link.label}
                   </FlipLink>
@@ -154,7 +154,7 @@ const Footer = () => {
                   <FlipLink
                     href="#"
                     className="text-white/60 hover:text-white transition-colors duration-300 text-sm"
-                    underline={true}
+                  // underline={true}
                   >
                     {service}
                   </FlipLink>

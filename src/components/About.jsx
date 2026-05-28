@@ -45,7 +45,7 @@ const CountUp = ({ end, duration = 2000 }) => {
 
 const About = () => {
     return (
-        <section id="about" className="w-full bg-white dark:bg-[#16171d] pt-20 md:pt-22 pb-10 md:pb-16 border-t border-neutral-100/60 dark:border-neutral-800/40">
+        <section id="about" data-theme="light" className="w-full bg-white dark:bg-[#16171d] pt-20 md:pt-22 pb-10 md:pb-16 border-t border-neutral-100/60 dark:border-neutral-800/40">
             <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-10 gap-12 lg:gap-16 items-start">
 

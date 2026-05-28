@@ -20,19 +20,19 @@ const UnderstandIllustration = () => (
         <stop offset="100%" stopColor="#60a5fa" />
       </linearGradient>
     </defs>
-    
+
     {/* Grid Background */}
     <rect width="400" height="220" rx="16" fill="#09090b" />
     <path d="M 0,22 H 400 M 0,44 H 400 M 0,66 H 400 M 0,88 H 400 M 0,110 H 400 M 0,132 H 400 M 0,154 H 400 M 0,176 H 400 M 0,198 H 400" stroke="#18181b" strokeWidth="1" />
     <path d="M 40,0 V 220 M 80,0 V 220 M 120,0 V 220 M 160,0 V 220 M 200,0 V 220 M 240,0 V 220 M 280,0 V 220 M 320,0 V 220 M 360,0 V 220" stroke="#18181b" strokeWidth="1" />
-    
+
     {/* Abstract user persona box */}
     <rect x="50" y="55" width="110" height="65" rx="10" fill="url(#glowGrad1)" stroke="#3b82f6" strokeWidth="1.2" />
     <circle cx="85" cy="80" r="12" fill="#3b82f6" fillOpacity="0.15" stroke="#3b82f6" strokeWidth="1" />
     <line x1="110" y1="75" x2="145" y2="75" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.8" />
     <line x1="110" y1="85" x2="135" y2="85" stroke="#94a3b8" strokeWidth="1.8" strokeLinecap="round" strokeOpacity="0.5" />
     <line x1="70" y1="102" x2="145" y2="102" stroke="#27272a" strokeWidth="1.5" strokeLinecap="round" />
-    
+
     {/* Context overlap card */}
     <rect x="230" y="95" width="120" height="70" rx="10" fill="#0f172a" fillOpacity="0.6" stroke="#6366f1" strokeWidth="1.2" strokeOpacity="0.8" />
     <path d="M 255,120 L 270,135 L 290,115" stroke="#818cf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -61,7 +61,7 @@ const StrategyIllustration = () => (
         <stop offset="100%" stopColor="#d946ef" />
       </linearGradient>
     </defs>
-    
+
     {/* Grid Background */}
     <rect width="400" height="220" rx="16" fill="#09090b" />
     <path d="M 0,22 H 400 M 0,44 H 400 M 0,66 H 400 M 0,88 H 400 M 0,110 H 400 M 0,132 H 400 M 0,154 H 400 M 0,176 H 400 M 0,198 H 400" stroke="#18181b" strokeWidth="1" />
@@ -69,7 +69,7 @@ const StrategyIllustration = () => (
 
     {/* Flow Diagram / Roadmap spline */}
     <path d="M 60,150 L 140,90 L 250,130 L 330,60" stroke="url(#lineGrad2)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-    
+
     {/* Milestones */}
     <circle cx="60" cy="150" r="5" fill="#09090b" stroke="#a855f7" strokeWidth="3" />
     <circle cx="140" cy="90" r="5" fill="#09090b" stroke="#a855f7" strokeWidth="3" />
@@ -101,7 +101,7 @@ const DesignIllustration = () => (
         <stop offset="100%" stopColor="#ef4444" />
       </linearGradient>
     </defs>
-    
+
     {/* Grid Background */}
     <rect width="400" height="220" rx="16" fill="#09090b" />
     <path d="M 0,22 H 400 M 0,44 H 400 M 0,66 H 400 M 0,88 H 400 M 0,110 H 400 M 0,132 H 400 M 0,154 H 400 M 0,176 H 400 M 0,198 H 400" stroke="#18181b" strokeWidth="1" />
@@ -110,17 +110,17 @@ const DesignIllustration = () => (
     {/* Wireframe Phone Frame */}
     <rect x="140" y="30" width="120" height="160" rx="12" fill="url(#glowGrad3)" stroke="#f59e0b" strokeWidth="1.2" />
     <circle cx="200" cy="42" r="3.5" fill="#f59e0b" />
-    
+
     {/* UI blocks inside card */}
     <rect x="155" y="60" width="90" height="25" rx="6" fill="#18181b" stroke="#f59e0b" strokeWidth="1" strokeOpacity="0.4" />
     <rect x="155" y="95" width="40" height="40" rx="6" fill="#18181b" stroke="#ef4444" strokeWidth="1" strokeOpacity="0.4" />
     <rect x="205" y="95" width="40" height="40" rx="6" fill="#18181b" stroke="#ef4444" strokeWidth="1" strokeOpacity="0.4" />
     <rect x="155" y="145" width="90" height="25" rx="6" fill="#18181b" stroke="#52525b" strokeWidth="1" strokeOpacity="0.2" />
-    
+
     {/* Floating Pen curve representing vector graphics */}
     <path d="M 80,120 C 130,50 270,170 320,100" stroke="url(#lineGrad3)" strokeWidth="3" strokeLinecap="round" />
     <circle cx="200" cy="110" r="5.5" fill="#ffffff" stroke="#ef4444" strokeWidth="2.5" />
-    
+
     {/* Handles */}
     <line x1="200" y1="110" x2="225" y2="65" stroke="#f59e0b" strokeWidth="1.5" />
     <line x1="200" y1="110" x2="175" y2="155" stroke="#f59e0b" strokeWidth="1.5" />
@@ -141,7 +141,7 @@ const BuildIllustration = () => (
         <stop offset="100%" stopColor="#06b6d4" />
       </linearGradient>
     </defs>
-    
+
     {/* Grid Background */}
     <rect width="400" height="220" rx="16" fill="#09090b" />
     <path d="M 0,22 H 400 M 0,44 H 400 M 0,66 H 400 M 0,88 H 400 M 0,110 H 400 M 0,132 H 400 M 0,154 H 400 M 0,176 H 400 M 0,198 H 400" stroke="#18181b" strokeWidth="1" />
@@ -346,7 +346,7 @@ const HowWeWork = () => {
         className="w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-6 sm:px-12 lg:px-20"
       >
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center font-sans">
-          
+
           {/* Left Column — Heading and desktop interactive progress indicators */}
           <div className="col-span-1 lg:col-span-5 flex flex-col justify-center h-full">
             <span className="text-xs md:text-sm font-semibold tracking-[0.25em] text-neutral-400 uppercase">
@@ -399,7 +399,7 @@ const HowWeWork = () => {
                 </div>
               ))}
             </div>
-            
+
             {/* Mobile Current Phase Label */}
             <div className="lg:hidden mt-2">
               <span className="text-xs font-bold text-black uppercase tracking-wide">
@@ -415,7 +415,7 @@ const HowWeWork = () => {
                 <div
                   key={index}
                   ref={(el) => (cardsRef.current[index] = el)}
-                  className="absolute w-full h-full bg-zinc-900 border border-zinc-800/80 rounded-[28px] md:rounded-[32px] p-6 md:p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col gap-4"
+                  className="absolute w-full h-full bg-zinc-900 border border-zinc-800/80 rounded-[28px] md:rounded-[32px] p-6 md:p-8 shadow-[0_10px_25px_0px_rgba(0,0,0,0.3)] flex flex-col gap-4"
                 >
                   {/* Card Header (01.Understand) */}
                   <h3 className="text-lg md:text-xl font-bold text-white tracking-tight">
