@@ -132,7 +132,7 @@ const MarketplaceSection = () => {
               {/* Line 1 (Top Left) */}
               <path
                 d="M 120 0 L 120 50 L 150 50 L 150 130 L 255 130"
-                stroke="#ef4444" strokeWidth="1" fill="none" className="opacity-15"
+                stroke="#ffffff" strokeWidth="1" fill="none" className="opacity-15"
                 vectorEffect="non-scaling-stroke"
               />
               <motion.path
@@ -155,7 +155,7 @@ const MarketplaceSection = () => {
               {/* Line 2 (Bottom Left) */}
               <path
                 d="M 255 650 L 230 650 L 230 950"
-                stroke="#ef4444" strokeWidth="1" fill="none" className="opacity-15"
+                stroke="#fff" strokeWidth="1" fill="none" className="opacity-15"
                 vectorEffect="non-scaling-stroke"
               />
               <motion.path
@@ -178,7 +178,7 @@ const MarketplaceSection = () => {
               {/* Line 3 (Top Right / Menu Left) */}
               <path
                 d="M 660 50 L 660 330 L 620 330 L 620 530"
-                stroke="#ef4444" strokeWidth="1" fill="none" className="opacity-15"
+                stroke="#fff" strokeWidth="1" fill="none" className="opacity-15"
                 vectorEffect="non-scaling-stroke"
               />
               <motion.path
@@ -201,7 +201,7 @@ const MarketplaceSection = () => {
               {/* Line 4 (Middle Right / Menu Right) */}
               <path
                 d="M 930 250 L 970 250 L 970 150 L 1000 150"
-                stroke="#ef4444" strokeWidth="1" fill="none" className="opacity-15"
+                stroke="#fff" strokeWidth="1" fill="none" className="opacity-15"
                 vectorEffect="non-scaling-stroke"
               />
               <motion.path

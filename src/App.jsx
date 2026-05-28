@@ -6,6 +6,7 @@ import Partner from './components/Partner'
 import About from './components/About'
 import ScrollStack from './components/ScrollStack'
 import FeaturedWorks from './components/FeaturedWorks'
+import HowWeWork from './components/HowWeWork'
 import TestimonialSlider from './components/TestimonialSlider'
 import FAQ from './components/FAQ'
 import Advertising from './components/Advertising'
@@ -33,6 +34,7 @@ function Home() {
       <div id="works">
         <ScrollStack />
         <FeaturedWorks />
+        <HowWeWork />
       </div>
 
       <TestimonialSlider />
