@@ -382,7 +382,7 @@ const ProcessSection = () => {
           <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
             Process
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-white tracking-[-0.04em] leading-[1.1] mb-2">
+          <h2 className="text-3xl sm:text-4xl font-medium text-white tracking-[-0.04em] leading-[1.1] mb-2">
             Four steps to sustainable growth
           </h2>
           <p className="text-sm text-neutral-500 max-w-xl">
@@ -396,7 +396,7 @@ const ProcessSection = () => {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-center">
 
           {/* Left Column — Step List + Active Description */}
-          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0">
+          <div className="col-span-1 lg:col-span-6 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0">
             {/* Step items */}
             <div className="flex flex-col gap-0">
               {STEPS.map((step, index) => {
@@ -407,11 +407,6 @@ const ProcessSection = () => {
                     onClick={() => handleStepClick(index)}
                     className="cursor-pointer select-none group"
                   >
-                    {/* Separator */}
-                    {index === 0 && (
-                      <div className="h-px bg-neutral-800/60" />
-                    )}
-
                     <div className={`py-5 sm:py-6 transition-all duration-500 ${isActive ? 'opacity-100' : 'opacity-40 hover:opacity-60'}`}>
                       {/* Step title row */}
                       <div className="flex items-start gap-6 lg:gap-8">
@@ -433,7 +428,7 @@ const ProcessSection = () => {
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                             >
-                              <p className="text-sm text-neutral-400 leading-relaxed max-w-[260px] pt-1">
+                              <p className="text-sm text-neutral-400 leading-relaxed max-w-full pt-1">
                                 {step.description}
                               </p>
                             </motion.div>
@@ -459,9 +454,6 @@ const ProcessSection = () => {
                         )}
                       </AnimatePresence>
                     </div>
-
-                    {/* Bottom separator */}
-                    <div className="h-px bg-neutral-800/60" />
                   </div>
                 );
               })}
@@ -469,13 +461,13 @@ const ProcessSection = () => {
           </div>
 
           {/* Right Column — Illustration */}
-          <div className="col-span-1 lg:col-span-7 flex justify-center items-center w-full order-1 lg:order-2">
+          <div className="col-span-1 lg:col-span-6 flex justify-center items-center w-full order-1 lg:order-2">
             <div className="relative w-full h-[260px] sm:h-[360px] lg:h-auto lg:aspect-[4/3] max-w-[620px] flex items-center justify-center">
               <div className="relative w-full max-w-[260px] sm:max-w-[360px] lg:max-w-[480px] aspect-square">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
-                    className="absolute inset-0"
+                    className="absolute inset-0 object-cover w-full h-full"
                     initial={{ opacity: 0, scale: 0.92, filter: 'blur(8px)' }}
                     animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
                     exit={{ opacity: 0, scale: 1.04, filter: 'blur(8px)' }}

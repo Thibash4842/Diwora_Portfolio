@@ -34,7 +34,7 @@ const LogoMarquee = () => {
   }, []);
 
   return (
-    <section data-theme="light" className="w-full bg-white py-14 overflow-hidden" ref={marqueeRef}>
+    <section data-theme="light" className="w-full bg-white py-10 overflow-hidden" ref={marqueeRef}>
       <div className="relative w-full overflow-hidden">
         <div className="flex marquee-track gap-4 md:gap-10">
           {extendedLogos.map((logo, index) => (

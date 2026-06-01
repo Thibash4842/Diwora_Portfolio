@@ -1,35 +1,35 @@
-import { FaInstagram, FaFacebook, FaWhatsapp, FaLinkedin, FaYoutube, FaMapMarkerAlt, FaPhone, FaEnvelope, FaArrowUp } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import logo from '../assets/Dlogo-white.png';
 
-const FlipLink = ({ children, href, className = "", underline = false }) => {
-  return (
-    <a
-      href={href}
-      className={`relative group overflow-hidden inline-flex pb-1 ${className}`}
-    >
-      <span className="relative flex items-center gap-2 transition-transform duration-500 ease-in-out group-hover:-translate-y-full">
-        {children}
-      </span>
-      <span className="absolute top-full left-0 flex items-center gap-2 text-white transition-transform duration-500 ease-in-out group-hover:-translate-y-full">
-        {children}
-      </span>
-      {underline && (
-        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-500 ease-out z-10" />
-      )}
-    </a>
-  );
-};
+/* ─── Flip-link animation ─── */
+const FlipLink = ({ children, href, className = '' }) => (
+  <a
+    href={href}
+    className={`relative group overflow-hidden inline-flex pb-0.5 ${className}`}
+  >
+    <span className="flex items-center gap-2 transition-transform duration-500 ease-in-out group-hover:-translate-y-full">
+      {children}
+    </span>
+    <span className="absolute top-full left-0 flex items-center gap-2 transition-transform duration-500 ease-in-out group-hover:-translate-y-full">
+      {children}
+    </span>
+  </a>
+);
 
+/* ─── Shared column heading ─── */
+const ColHeading = ({ children }) => (
+  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/40 mb-5">
+    {children}
+  </p>
+);
 
+/* ─── Footer ─── */
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const quickLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'Works', href: '#works' },
-    { label: 'Careers', href: '#careers' },
-    { label: 'Contact us', href: '#contact' },
+    { label: 'About', href: '/about' },
+    { label: 'Works', href: '/works' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Contact us', href: '/contact' },
   ];
 
   const services = [
@@ -39,124 +39,114 @@ const Footer = () => {
     'Ideation & Scripting',
   ];
 
-  const contactInfo = [
-    { type: 'address', label: 'Address', value: 'Door No, Primus Building, SP-7A, South Phase, Guindy Industrial Estate, SIDCO Industrial Estate, Guindy, Chennai, Tamil Nadu 600032' },
-    { type: 'phone', label: 'Phone', value: '+91 95141 11996' },
-    { type: 'email', label: 'Email', value: 'connect@diwora.com' },
+  const legalLinks = [
+    { label: 'Terms & Conditions', href: '#' },
+    { label: 'Privacy Policy', href: '#' },
   ];
 
   const socialLinks = [
-    { name: 'Instagram', type: 'instagram', url: '#' },
-    { name: 'Facebook', type: 'facebook', url: '#' },
-    { name: 'Whatsapp', type: 'whatsapp', url: '#' },
-    { name: 'LinkedIn', type: 'linkedin', url: '#' },
-    { name: 'YouTube', type: 'youtube', url: '#' },
+    { label: 'Facebook', href: '#' },
+    { label: 'Instagram', href: '#' },
+    { label: 'LinkedIn', href: '#' },
+    { label: 'Youtube', href: '#' },
   ];
 
   return (
-    <footer data-theme="dark" className="relative bg-gradient-to-b from-slate-950 to-black border-t border-white/10">
-      {/* Back to Top Button */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 z-30 w-12 h-12 rounded-full bg-gradient-to-r from-red-500 to-red-700 text-white shadow-lg hover:shadow-red-500/50 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
-        aria-label="Back to top"
-        title="Back to top"
-      >
-        <FaArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
-      </button>
+    <footer
+      data-theme="dark"
+      className="relative overflow-hidden bg-[radial-gradient(ellipse_at_center,_#1a0505_0%,_#0d0202_45%,_#050000_55%,_#000000_100%)]"
+    >
 
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        {/* Divider */}
-        <div className="mb-16 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      {/* ═══════════════════════════════════════
+          MAIN CONTENT  — matches site container
+      ═══════════════════════════════════════ */}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-0 pb-0">
 
-        {/* Header Section with Logo and Tagline */}
-        <div className="mb-12 sm:mb-16 text-center">
-          <h3 className="text-6xl sm:text-7xl font-bold text-white/15 mb-8 sm:mb-10 tracking-wider">
-            Diwora
-          </h3>
-          <p className="text-white text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
-            We craft powerful ideas into impactful digital experiences. From branding to digital marketing, we help businesses grow with creativity and strategy.
-          </p>
-        </div>
+        {/* ── 4-Column grid ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
 
-        {/* 4 Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12 mb-12">
-          {/* Contact us */}
-          <div>
-            <h4 className="text-white font-semibold mb-6">Contact us</h4>
-            <ul className="space-y-4">
-              {contactInfo.map((info) => (
-                <li key={info.label} className="flex gap-3">
-                  <span className="text-xl flex-shrink-0 text-white/60">
-                    {info.type === 'address' && <FaMapMarkerAlt />}
-                    {info.type === 'phone' && <FaPhone />}
-                    {info.type === 'email' && <FaEnvelope />}
-                  </span>
-                  <div>
-                    <p className="text-white/80 text-sm leading-relaxed hover:text-white transition-colors duration-300 cursor-pointer">
-                      {info.value}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          {/* ── Col 1: Head Office ── */}
+          <div className="flex flex-col gap-3">
+            <ColHeading>Head Office</ColHeading>
+
+            {/* Address */}
+            <div className="flex items-start gap-3">
+              <FaMapMarkerAlt className="flex-shrink-0 mt-0.5 text-white/40 text-sm" />
+              <p className="text-sm text-white/60 leading-relaxed">
+                3rd floor, Abdullah Office Complex,<br />
+                1st Main Rd, Nungambakkam,<br />
+                Chennai – 600034.
+              </p>
+            </div>
+
+            {/* Phone */}
+            <div className="flex items-center gap-3">
+              <FaPhoneAlt className="flex-shrink-0 text-white/40 text-sm" />
+              <a
+                href="tel:+919514111996"
+                className="text-sm text-white/60 hover:text-white transition-colors duration-300"
+              >
+                +91 95141 11996
+              </a>
+            </div>
+
+            {/* Email */}
+            <div className="flex items-center gap-3">
+              <FaEnvelope className="flex-shrink-0 text-white/40 text-sm" />
+              <a
+                href="mailto:connect@diwora.com"
+                className="text-sm text-white/60 hover:text-white transition-colors duration-300"
+              >
+                connect@diwora.com
+              </a>
+            </div>
           </div>
 
-          {/* Socials */}
+          {/* ── Col 2: Navigation ── */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Socials</h4>
-            <ul className="space-y-3">
-              {socialLinks.map((social) => (
-                <li key={social.name}>
+            <ColHeading>Navigation</ColHeading>
+            <ul className="flex flex-col gap-3">
+              {quickLinks.map(({ label, href }) => (
+                <li key={label}>
                   <FlipLink
-                    href={social.url}
-                    className="text-white/60 hover:text-white transition-colors duration-300 text-sm font-medium"
+                    href={href}
+                    className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-300"
                   >
-                    <span className="text-lg flex-shrink-0">
-                      {social.type === 'instagram' && <FaInstagram />}
-                      {social.type === 'facebook' && <FaFacebook />}
-                      {social.type === 'whatsapp' && <FaWhatsapp />}
-                      {social.type === 'linkedin' && <FaLinkedin />}
-                      {social.type === 'youtube' && <FaYoutube />}
-                    </span>
-                    {social.name}
+                    {label}
                   </FlipLink>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {/* ── Col 3: Services ── */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
-                  <FlipLink
-                    href={link.href}
-                    className="text-white/60 hover:text-white transition-colors duration-300 text-sm"
-                  // underline={true}
-                  >
-                    {link.label}
-                  </FlipLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-white font-semibold mb-6">Services</h4>
-            <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service}>
+            <ColHeading>Services</ColHeading>
+            <ul className="flex flex-col gap-3">
+              {services.map((s) => (
+                <li key={s}>
                   <FlipLink
                     href="#"
-                    className="text-white/60 hover:text-white transition-colors duration-300 text-sm"
-                  // underline={true}
+                    className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-300"
                   >
-                    {service}
+                    {s}
+                  </FlipLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── Col 4: Legal ── */}
+          <div>
+            <ColHeading>Legal</ColHeading>
+            <ul className="flex flex-col gap-3">
+              {legalLinks.map(({ label, href }) => (
+                <li key={label}>
+                  <FlipLink
+                    href={href}
+                    className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-300"
+                  >
+                    {label}
                   </FlipLink>
                 </li>
               ))}
@@ -164,25 +154,39 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
+        {/* ── Copyright + Social bar ── */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-16 pb-8 border-t border-white/10 pt-6">
+          <span className="text-xs text-white/40 tracking-wide">
+            Copyright © 2026 Diwora. All rights reserved
+          </span>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-white/60 text-sm">
-          <p>©2025 Diwora. All rights reserved.</p>
-          <div className="flex gap-6">
-            <FlipLink href="#" className="hover:text-white transition-colors duration-300">
-              Privacy Policy
-            </FlipLink>
-            <FlipLink href="#" className="hover:text-white transition-colors duration-300">
-              Terms of Service
-            </FlipLink>
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+            {socialLinks.map(({ label, href }) => (
+              <FlipLink
+                key={label}
+                href={href}
+                className="text-xs font-medium text-white/40 hover:text-white transition-colors duration-300 tracking-wide"
+              >
+                {label}
+              </FlipLink>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Subtle Background Gradient */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+      {/* ── Divider ── */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="h-px bg-white/10" />
+      </div>
+
+      {/* ── Footer Logo ── */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-4">
+        <img
+          src={logo}
+          alt="Diwora"
+          draggable={false}
+          className="w-full h-auto object-contain select-none"
+        />
       </div>
     </footer>
   );

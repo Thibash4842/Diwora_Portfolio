@@ -527,7 +527,7 @@ const ServicesSection = () => {
         <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
           Services
         </p>
-        <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-black tracking-[-0.04em] leading-[1.1] mb-2">
+        <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-medium text-black tracking-[-0.04em] leading-[1.1] mb-2">
           How we drive growth
         </h2>
         <p className="text-sm text-neutral-500 max-w-sm">

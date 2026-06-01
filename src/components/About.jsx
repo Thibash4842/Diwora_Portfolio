@@ -1,5 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+
 import aboutImg from '../assets/about/About-us.png';
+
+const studioImages = [
+    "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200&h=800&fit=crop",
+    "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop",
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop",
+    "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=800&fit=crop"
+];
 
 const CountUp = ({ end, duration = 2000 }) => {
     const [count, setCount] = useState(0);
@@ -45,14 +57,14 @@ const CountUp = ({ end, duration = 2000 }) => {
 
 const About = () => {
     return (
-        <section id="about" data-theme="light" className="w-full bg-white dark:bg-[#16171d] pt-20 md:pt-22 pb-10 md:pb-16 border-t border-neutral-100/60 dark:border-neutral-800/40">
+        <section id="about" data-theme="light" className="w-full bg-white dark:bg-[#16171d] py-14 border-t border-neutral-100/60 dark:border-neutral-800/40">
             <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-10 gap-12 lg:gap-16 items-start">
 
                     {/* Left Column - About Label and Vision Card */}
                     <div className="lg:col-span-3 flex flex-col gap-4 w-full lg:sticky lg:top-20">
 
-                        <span className="text-2xl font-medium text-black dark:text-white tracking-wide">
+                        <span className="text-2xl font-normal text-black dark:text-white tracking-wide">
                             About Diwora
                         </span>
 
@@ -72,16 +84,16 @@ const About = () => {
 
                             {/* Vision Info */}
                             <div className="flex flex-col mb-6">
-                                <h3 className="text-xl font-bold text-black dark:text-white mb-2">Our Vision</h3>
+                                <h3 className="text-xl font-medium text-black dark:text-white mb-2">Our Vision</h3>
                                 <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
                                     To shape how brands exist visually in a world full of noise.
                                 </p>
                             </div>
 
                             {/* About Us Button */}
-                            <button className="px-6 py-2.5 bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-black dark:hover:bg-neutral-100 font-semibold rounded-lg text-sm transition-colors w-fit shadow-sm">
+                            <a href="/about" className="px-6 py-2.5 bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-black dark:hover:bg-neutral-100 font-normal rounded-lg text-sm transition-colors w-fit shadow-sm">
                                 About Us
-                            </button>
+                            </a>
                         </div>
                     </div>
 
@@ -89,7 +101,7 @@ const About = () => {
                     <div className="lg:col-span-7 flex flex-col gap-10 w-full">
 
                         {/* Main Large Heading */}
-                        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-black dark:text-white leading-[1.2] tracking-tight">
+                        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-normal text-black dark:text-white leading-[1.2] tracking-tight">
                             We approach every project with clarity combining creative thinking and strategy to build work that truly matters.
                         </h2>
 
@@ -134,7 +146,7 @@ const About = () => {
                                 {/* Counter Stats */}
                                 <div className="flex items-center gap-6 mt-2">
                                     <div>
-                                        <p className="text-xl md:text-2xl font-bold text-black dark:text-white">
+                                        <p className="text-xl md:text-4xl font-black text-black dark:text-white">
                                             <CountUp end={50} />+
                                         </p>
                                         <p className="text-xs text-neutral-500 mt-1 font-medium">Projects Completed</p>
@@ -144,7 +156,7 @@ const About = () => {
                                     <div className="w-px h-8 bg-neutral-300 dark:bg-neutral-700"></div>
 
                                     <div>
-                                        <p className="text-xl md:text-2xl font-bold text-black dark:text-white">
+                                        <p className="text-xl md:text-4xl font-black text-black dark:text-white">
                                             <CountUp end={25} />+
                                         </p>
                                         <p className="text-xs text-neutral-500 mt-1 font-medium">Happy Clients</p>
@@ -154,13 +166,34 @@ const About = () => {
 
                         </div>
 
-                        {/* Large Studio Photo */}
-                        <div className="w-full h-64 sm:h-80 lg:h-[450px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-neutral-100 dark:border-neutral-800/40 mt-4">
-                            <img
-                                src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200&h=800&fit=crop"
-                                alt="Photography Studio Workspace"
-                                className="w-full h-full object-cover"
-                            />
+                        {/* Large Studio Photo Carousel */}
+                        <div className="w-full h-64 sm:h-80 lg:h-[450px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-neutral-100 dark:border-neutral-800/40 mt-4 group">
+                            <Swiper
+                                modules={[Autoplay]}
+                                effect="slide"
+                                speed={1800}
+                                autoplay={{
+                                    delay: 3500,
+                                    disableOnInteraction: false,
+                                    pauseOnMouseEnter: true,
+                                }}
+                                loop={true}
+                                className="w-full h-full"
+                            >
+                                {studioImages.map((src, idx) => (
+                                    <SwiperSlide key={idx} className="w-full h-full overflow-hidden">
+                                        <div className="w-full h-full relative">
+                                            {/* Subtle overlay for premium cinematic feel */}
+                                            <div className="absolute inset-0 bg-black/5 dark:bg-black/20 z-10 transition-colors duration-500 group-hover:bg-transparent"></div>
+                                            <img
+                                                src={src}
+                                                alt={`Studio workspace ${idx + 1}`}
+                                                className="w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105"
+                                            />
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
                         </div>
 
                     </div>

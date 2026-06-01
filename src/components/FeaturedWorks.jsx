@@ -54,9 +54,9 @@ const FeaturedWorks = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} data-theme="light" className="w-full bg-white pt-10 pb-24 px-6 md:px-12 lg:px-20">
+    <section ref={sectionRef} data-theme="light" className="w-full bg-white pt-10 pb-10 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-16 md:mb-24">
+        <h2 className="text-4xl font-normal text-black mb-14">
           Featured Works
         </h2>
 
@@ -78,7 +78,7 @@ const FeaturedWorks = () => {
                 {/* Chroma/Overlay Effect */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/40 via-purple-500/40 to-pink-500/40 opacity-0 transition-opacity duration-700 group-hover:opacity-100 mix-blend-overlay"></div>
                 <div className="absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-700 group-hover:opacity-100"></div>
-                
+
                 {/* Optional Overlay Text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                   <span className="bg-white/90 text-black px-6 py-3 rounded-full font-medium text-sm shadow-lg backdrop-blur-sm transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">

@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full overflow-hidden bg-white flex flex-col items-center justify-center pt-28 pb-16 lg:pt-16 lg:pb-8"
+      className="relative min-h-screen w-full overflow-hidden bg-white flex flex-col items-center justify-center pt-28 pb-10 lg:pt-32 lg:pb-0"
       data-theme="light"
     >
       {/* Subtle background gradients for premium depth */}
@@ -18,8 +18,8 @@ const Hero = () => {
 
         {/* Title - Occupies full width, large, bold all-caps */}
         <div className="w-full mb-16 lg:mb-20">
-          <h1 className="text-4xl sm:text-6xl lg:text-[76px] font-black text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
-            LET’S MAKE IDEAS<br className="hidden sm:inline" /> HAPPEN WITH DIWORA
+          <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-bold text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
+            LET’S MAKE <br className="block sm:hidden" /> IDEAS<br /> HAPPEN<br className="block sm:hidden" /> WITH <br className="block sm:hidden" /> DIWORA
           </h1>
         </div>
 
@@ -27,11 +27,11 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start justify-between w-full">
 
           {/* Buttons on left */}
-          <div className="lg:col-span-7 flex flex-wrap gap-4 items-center">
+          <div className="lg:col-span-8 flex flex-wrap gap-4 items-center">
             {/* <!-- From Uiverse.io by nathAd17 --> */}
             <button
               type="submit"
-              className="flex justify-center gap-2 items-center shadow-xl text-md bg-white hover:bg-red-600 text-black hover:text-white backdrop-blur-md lg:font-semibold isolation-auto border border-gray-200 relative z-10 px-4 py-2 overflow-hidden rounded-full group transition-all duration-500"
+              className="flex justify-center gap-2 items-center shadow-xl text-md bg-red-600 hover:bg-black text-white backdrop-blur-md lg:font-normal isolation-auto border border-gray-200 relative z-10 px-4 py-2 overflow-hidden rounded-full group transition-all duration-500"
             >
               Inquire Now
 
@@ -47,7 +47,7 @@ const Hero = () => {
               </svg>
             </button>
 
-            <button className="relative flex items-center gap-1 px-8 py-2.5 rounded-full font-semibold text-md text-black bg-white shadow-[0_0_0_2px_black] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white hover:rounded-full hover:shadow-[0_0_0_12px_transparent] active:scale-95 active:shadow-[0_0_0_4px_black] group">
+            <button className="relative flex items-center gap-1 px-8 py-2.5 rounded-full font-normal text-md text-black bg-white shadow-[0_0_0_2px_black] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white hover:rounded-full hover:shadow-[0_0_0_12px_transparent] active:scale-95 active:shadow-[0_0_0_4px_black] group">
 
               {/* Left Arrow */}
               <svg
@@ -78,7 +78,7 @@ const Hero = () => {
           </div>
 
           {/* Description on right */}
-          <div className="lg:col-span-5 flex flex-col gap-2 max-w-xl lg:ml-auto">
+          <div className="lg:col-span-4 flex flex-col gap-2 max-w-xl lg:ml-auto">
             <p className="text-[14px] md:text-[15px] text-neutral-500 font-normal leading-relaxed">
               We craft ideas that connect, designs that inspire, and campaigns that perform.
             </p>

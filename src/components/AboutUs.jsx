@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Contact from './Contact';
 import founderImg from '../assets/about/About-us.png';
 import CinematicStats from './CinematicStats';
 import WhatSetsUsApart from './WhatSetsUsApart';
@@ -83,7 +84,7 @@ const AboutUs = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-[76px] font-black text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
+            <h1 className="text-4xl sm:text-6xl lg:text-[80px] font-medium text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
               WE MAKE<br />
               BRANDS FEEL<br />
               LIKE <span className="text-[#e10022]">SOMETHING</span>
@@ -141,7 +142,7 @@ const AboutUs = () => {
             <div className="lg:col-span-7 flex flex-col justify-center">
               {/* Bold Heading */}
               <motion.h2
-                className="text-3xl sm:text-4xl md:text-[44px] font-bold text-black leading-[1.1] tracking-[-0.03em] mb-10 text-left"
+                className="text-3xl sm:text-4xl md:text-[44px] font-medium text-black leading-[1.1] tracking-[-0.03em] mb-10 text-left"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -186,6 +187,9 @@ const AboutUs = () => {
 
       {/* What We Do Section */}
       <WhatWeDo />
+
+      {/* Contact Section */}
+      <Contact />
 
       {/* Footer Section */}
       <Footer />

@@ -13,8 +13,8 @@ const cardsData = [
     description: (
       <>
         <p>We create images that define how your brand is seen.</p>
-        <p>From <strong>Commercial Photography</strong> to creative direction, we focus on making your brand feel clear, consistent, and instantly recognizable ,not just visually appealing.</p>
-        <p>Every detail matters here , from lighting and composition to how your product or space is presented. The goal is simple: visuals that feel right and stay consistent wherever your brand shows up.</p>
+        <p>From <strong className='font-semibold'>Commercial Photography</strong> to creative direction, we focus on making your brand feel clear, consistent, and instantly recognizable ,not just visually appealing.</p>
+        <p>Every detail matters here, from lighting and composition to how your product or space is presented. The goal is simple: visuals that feel right and stay consistent wherever your brand shows up.</p>
       </>
     ),
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop',
@@ -22,14 +22,14 @@ const cardsData = [
   },
   {
     id: 2,
-    title: 'WEB EXPERIENCE',
+    title: 'MOTION & VIDEO',
     number: '02',
-    label: 'Development',
+    label: 'Approach',
     description: (
       <>
-        <p>We build digital experiences that perform and inspire.</p>
-        <p>Our team of experts is dedicated to bringing your vision to life with cutting-edge tech, focusing on seamless interactions and robust architecture.</p>
-        <p>Performance, accessibility, and modern aesthetics are at the core of our development process.</p>
+        <p>We approach video through structure and storytelling.</p>
+        <p>Each project begins with defining the message and how it should be experienced. We shape pacing, sequencing, and visual flow before moving into production.</p>
+        <p>The result is content that feels natural to watch, communicates clearly, and works across different platforms.</p>
       </>
     ),
     image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80',
@@ -37,14 +37,14 @@ const cardsData = [
   },
   {
     id: 3,
-    title: 'UI/UX DESIGN',
+    title: 'CONTENT & DIGITAL',
     number: '03',
-    label: 'Design',
+    label: 'Approach',
     description: (
       <>
-        <p>Interfaces that feel responsive and alive encourage interaction.</p>
-        <p>We focus on creating intuitive user journeys, ensuring that every touchpoint serves a clear purpose while looking exceptional.</p>
-        <p>By blending aesthetics with usability, we drive engagement and build trust with your audience.</p>
+        <p>Content without direction usually ends up going nowhere.</p>
+        <p>We look at how your brand shows up across platforms what you're saying, how often, and whether it actually connects. From there, we shape a clearer direction for both content and campaigns.</p>
+        <p>This includes planning what to create, how it's distributed, and how it performs over time. Not everything needs to go viral , it just needs to reach the right people consistently.</p>
       </>
     ),
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80',
@@ -52,14 +52,14 @@ const cardsData = [
   },
   {
     id: 4,
-    title: 'MARKETING STRATEGY',
+    title: 'IDEATION & SCRIPTING',
     number: '04',
-    label: 'Strategy',
+    label: 'Approach',
     description: (
       <>
-        <p>Reach your target audience effectively with data-driven approaches.</p>
-        <p>We develop creative campaigns that resonate with your market, blending analytics with compelling storytelling.</p>
-        <p>Our strategies ensure your brand not only stands out but also achieves sustainable growth.</p>
+        <p>We approach ideation by starting with clarity , what needs to be said and why it matters.</p>
+        <p>From there, we develop concepts and scripts that give structure to your content, shaping both message and direction before execution.</p>
+        <p>The result is work that feels considered, purposeful, and easier to understand.</p>
       </>
     ),
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
@@ -105,11 +105,10 @@ const ScrollStack = () => {
   return (
     <section ref={containerRef} className="w-full bg-white pt-10 md:pt-16 pb-10 md:pb-16 relative">
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-16 text-center md:text-left z-10 relative">
-        <h2 className="text-5xl font-bold text-black mb-4">What We Do</h2>
-        <p className="text-md text-gray-600">Selected projects and case studies</p>
+        <h2 className="text-4xl font-normal text-black mb-4">What We Do</h2>
       </div>
 
-      <div className="w-full flex flex-col gap-[10vh] md:gap-[20vh] relative">
+      <div className="w-full flex flex-col gap-[10vh] md:gap-[50vh] relative">
         {cardsData.map((card, index) => {
           const isDark = index % 2 !== 0;
           return (
@@ -130,7 +129,7 @@ const ScrollStack = () => {
                 <h3 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter w-full sm:w-[75%] md:w-2/3 leading-[1.1] md:leading-none z-10 ${isDark ? 'text-white' : 'text-black'}`}>
                   {card.title}
                 </h3>
-                <span className={`absolute right-6 md:right-12 top-0 md:relative md:right-auto md:top-auto text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-bold leading-none mt-0 md:-mt-8 lg:-mt-12 opacity-40 md:opacity-100 pointer-events-none z-0 ${isDark ? 'text-zinc-700 md:text-zinc-800' : 'text-gray-200 md:text-gray-100'}`}>
+                <span className={`absolute right-6 md:right-12 top-0 md:relative md:right-auto md:top-auto text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black leading-none mt-0 md:-mt-8 lg:-mt-12 opacity-40 md:opacity-100 pointer-events-none z-0 ${isDark ? 'text-zinc-700 md:text-zinc-800' : 'text-gray-200 md:text-gray-100'}`}>
                   {card.number}
                 </span>
               </div>
@@ -146,7 +145,7 @@ const ScrollStack = () => {
                 </div>
 
                 {/* Description text */}
-                <div className={`w-full lg:w-2/5 flex flex-col gap-6 text-sm md:text-base font-medium leading-relaxed pr-0 md:pr-8 ${isDark ? 'text-gray-300' : 'text-black'}`}>
+                <div className={`w-full lg:w-2/5 flex flex-col gap-6 text-sm md:text-base font-light leading-relaxed pr-0 md:pr-8 ${isDark ? 'text-gray-300' : 'text-black'}`}>
                   <div className="flex flex-col gap-4">
                     {card.description}
                   </div>

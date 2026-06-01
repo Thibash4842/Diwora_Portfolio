@@ -267,12 +267,10 @@ const HowWeWork = () => {
 
     const ctx = gsap.context(() => {
       // 1. Initial State Setup
-      // All cards fully opaque (no transparency overlap).
-      // Card 0 active at y: 0. Others translated down to y: 700 to hide completely off-screen.
-      gsap.set(cards[0], { opacity: 1, scale: 1, y: 0, zIndex: 10 });
-      for (let i = 1; i < cards.length; i++) {
-        gsap.set(cards[i], { opacity: 1, scale: 0.95, y: 700, zIndex: 10 + i });
-      }
+      gsap.set(cards[0], { opacity: 1, scale: 1, y: 0, x: 0, rotation: 0, zIndex: 40 });
+      gsap.set(cards[1], { opacity: 1, scale: 0.9, y: 800, x: 40, rotation: 10, zIndex: 50 });
+      gsap.set(cards[2], { opacity: 1, scale: 0.9, y: 800, x: -40, rotation: -10, zIndex: 60 });
+      gsap.set(cards[3], { opacity: 1, scale: 0.9, y: 800, x: 40, rotation: 10, zIndex: 70 });
 
       // Timeline indicator initial states
       gsap.set(textItems[0], { opacity: 1 });
@@ -305,25 +303,31 @@ const HowWeWork = () => {
         }
       });
 
-      // 3. Chain Transitions (Solid stacking card animations - NO opacity on cards)
-      // Step 0 -> Step 1: Card 1 slides UP from bottom to cover Card 0
-      tl.to(cards[1], { y: 0, scale: 1, ease: 'power2.inOut', duration: 1 })
+      // 3. Chain Transitions (Dynamic Stacking with rotation and translation)
+      // Step 0 -> Step 1: Card 1 slides UP and rotates into place. Card 0 scales down, moves up and rotates back.
+      tl.to(cards[0], { scale: 0.95, y: -30, rotation: -4, ease: 'power2.inOut', duration: 1 })
+        .to(cards[1], { y: 0, x: 0, rotation: 0, scale: 1, ease: 'power2.inOut', duration: 1 }, '<')
         .to(textItems[0], { opacity: 0.35, ease: 'power2.inOut', duration: 0.5 }, '<')
         .to(dots[0], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8', ease: 'power2.inOut', duration: 0.5 }, '<')
         .to(textItems[1], { opacity: 1, ease: 'power2.inOut', duration: 0.5 }, '<+=0.5')
         .to(dots[1], { opacity: 1, scale: 1.2, backgroundColor: STEPS[1].themeColor, ease: 'power2.inOut', duration: 0.5 }, '<')
         .to({}, { duration: 0.8 }); // Hold screen briefly
 
-      // Step 1 -> Step 2: Card 2 slides UP from bottom to cover Card 1
-      tl.to(cards[2], { y: 0, scale: 1, ease: 'power2.inOut', duration: 1 })
+      // Step 1 -> Step 2: Card 2 slides UP. Card 1 & 0 get pushed back and rotate.
+      tl.to(cards[0], { scale: 0.90, y: -60, rotation: -8, ease: 'power2.inOut', duration: 1 })
+        .to(cards[1], { scale: 0.95, y: -30, rotation: 3, ease: 'power2.inOut', duration: 1 }, '<')
+        .to(cards[2], { y: 0, x: 0, rotation: 0, scale: 1, ease: 'power2.inOut', duration: 1 }, '<')
         .to(textItems[1], { opacity: 0.35, ease: 'power2.inOut', duration: 0.5 }, '<')
         .to(dots[1], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8', ease: 'power2.inOut', duration: 0.5 }, '<')
         .to(textItems[2], { opacity: 1, ease: 'power2.inOut', duration: 0.5 }, '<+=0.5')
         .to(dots[2], { opacity: 1, scale: 1.2, backgroundColor: STEPS[2].themeColor, ease: 'power2.inOut', duration: 0.5 }, '<')
         .to({}, { duration: 0.8 }); // Hold screen briefly
 
-      // Step 2 -> Step 3: Card 3 slides UP from bottom to cover Card 2
-      tl.to(cards[3], { y: 0, scale: 1, ease: 'power2.inOut', duration: 1 })
+      // Step 2 -> Step 3: Card 3 slides UP. Cards 2, 1 & 0 get pushed back further and rotate.
+      tl.to(cards[0], { scale: 0.85, y: -90, rotation: -12, ease: 'power2.inOut', duration: 1 })
+        .to(cards[1], { scale: 0.90, y: -60, rotation: -1, ease: 'power2.inOut', duration: 1 }, '<')
+        .to(cards[2], { scale: 0.95, y: -30, rotation: 5, ease: 'power2.inOut', duration: 1 }, '<')
+        .to(cards[3], { y: 0, x: 0, rotation: 0, scale: 1, ease: 'power2.inOut', duration: 1 }, '<')
         .to(textItems[2], { opacity: 0.35, ease: 'power2.inOut', duration: 0.5 }, '<')
         .to(dots[2], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8', ease: 'power2.inOut', duration: 0.5 }, '<')
         .to(textItems[3], { opacity: 1, ease: 'power2.inOut', duration: 0.5 }, '<+=0.5')
@@ -352,12 +356,9 @@ const HowWeWork = () => {
             <span className="text-xs md:text-sm font-semibold tracking-[0.25em] text-neutral-400 uppercase">
               Our Process
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-neutral-900 mt-2">
+            <h2 className="text-4xl xl:text-5xl font-medium tracking-tight text-neutral-900 mt-2">
               How We Work
             </h2>
-            <p className="text-sm md:text-base text-neutral-500 max-w-sm mt-4 leading-relaxed font-medium">
-              We guide your product from conceptual vision to production-grade launch with a highly iterative, transparent, and structured methodology.
-            </p>
 
             {/* Desktop Timeline list */}
             <div className="hidden lg:flex flex-col gap-6 mt-12 w-fit">
@@ -408,17 +409,17 @@ const HowWeWork = () => {
             </div>
           </div>
 
-          {/* Right Column — Cards Stack (with overflow-hidden to clip incoming cards cleanly) */}
-          <div className="col-span-1 lg:col-span-7 relative flex items-center justify-center h-[400px] md:h-[480px] lg:h-[500px] w-full overflow-hidden">
+          {/* Right Column — Cards Stack (overflow-hidden removed to allow fanning out) */}
+          <div className="col-span-1 lg:col-span-7 relative flex items-center justify-center h-[400px] md:h-[480px] lg:h-[500px] w-full">
             <div className="relative w-full max-w-[460px] h-[360px] md:h-[440px] flex items-center justify-center">
               {STEPS.map((step, index) => (
                 <div
                   key={index}
                   ref={(el) => (cardsRef.current[index] = el)}
-                  className="absolute w-full h-full bg-zinc-900 border border-zinc-800/80 rounded-[28px] md:rounded-[32px] p-6 md:p-8 shadow-[0_10px_25px_0px_rgba(0,0,0,0.3)] flex flex-col gap-4"
+                  className="absolute w-full h-full bg-white rounded-[28px] md:rounded-[32px] p-6 md:p-8 shadow-[0_10px_25px_0px_rgba(0,0,0,0.3)] flex flex-col gap-4"
                 >
                   {/* Card Header (01.Understand) */}
-                  <h3 className="text-lg md:text-xl font-bold text-white tracking-tight">
+                  <h3 className="text-lg md:text-xl font-normal text-black tracking-tight">
                     {step.number}
                   </h3>
 
@@ -430,7 +431,7 @@ const HowWeWork = () => {
                   {/* Card Main Info / Description Paragraphs */}
                   <div className="flex flex-col gap-2.5 md:gap-3.5 my-auto">
                     {step.paragraphs.map((para, paraIdx) => (
-                      <p key={paraIdx} className="text-xs md:text-sm lg:text-[14px] text-zinc-400 leading-relaxed font-medium">
+                      <p key={paraIdx} className="text-xs md:text-sm lg:text-[14px] text-black leading-relaxed font-medium">
                         {para}
                       </p>
                     ))}

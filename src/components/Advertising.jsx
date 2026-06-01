@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Navbar from './Navbar';
 import Partner from './Partner';
+import Contact from './Contact';
 import Testimonial from './TestimonialSlider';
 import Footer from './Footer';
 import ServicesSection from './ServicesSection';
@@ -164,7 +165,7 @@ const Advertising = () => {
         <FloatingDot className="text-red-400 top-[55%] right-[35%] hidden md:block" delay={1.2} size={6} />
         <FloatingDot className="text-red-500 bottom-[30%] left-[45%] hidden lg:block" delay={0.5} size={5} />
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full flex flex-col justify-center gap-8 lg:gap-12 flex-1">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full flex flex-col justify-center gap-8 lg:gap-10 flex-1">
 
           {/* ─── Hero Heading ─── */}
           <motion.div
@@ -173,39 +174,45 @@ const Advertising = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-[76px] font-black text-black leading-[1.05] tracking-[-0.02em] uppercase max-w-6xl">
+            <h1 className="text-4xl sm:text-6xl lg:text-[80px] font-medium text-black text-black leading-[1.05] tracking-[-0.02em] uppercase max-w-6xl">
               SCALE YOUR REVENUE WITH PERFORMANCE DRIVEN MARKETING
             </h1>
           </motion.div>
 
           {/* ─── CTA + Description Row ─── */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start w-full">
             {/* CTA Button */}
             <motion.div
-              className="lg:col-span-7 flex items-center"
+              className="lg:col-span-8 flex items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <button className="group relative px-8 py-3.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:shadow-xl active:scale-[0.97] text-[15px]">
-                <span className="relative z-10 flex items-center gap-2">
-                  Inquire Now
-                  <svg
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
+
+              {/* <!-- From Uiverse.io by nathAd17 --> */}
+              <button
+                type="submit"
+                className="flex justify-center gap-2 items-center shadow-xl text-md bg-red-600 hover:bg-black text-white backdrop-blur-md lg:font-normal isolation-auto border border-gray-200 relative z-10 px-4 py-2 overflow-hidden rounded-full group transition-all duration-500"
+              >
+                Inquire Now
+
+                <svg
+                  className="w-8 h-8 justify-end rounded-full bg-black text-white group-hover:bg-white group-hover:text-black ease-linear duration-300 p-2 rotate-45 group-hover:rotate-90"
+                  viewBox="0 0 16 19"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                    fill="currentColor"
+                  />
+                </svg>
               </button>
+
             </motion.div>
 
             {/* Description */}
             <motion.div
-              className="lg:col-span-5 w-full"
+              className="lg:col-span-4 w-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -257,6 +264,9 @@ const Advertising = () => {
         </div>
       </section>
 
+      {/* ─── Partner ───  */}
+      <Partner />
+
       {/* ─── Why choose us ─── */}
       <section className="relative z-10 py-12 sm:py-16 lg:py-10">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
@@ -265,7 +275,7 @@ const Advertising = () => {
             <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
               Why choose us
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-black tracking-[-0.04em] leading-tight max-w-3xl">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-black tracking-[-0.04em] leading-tight max-w-3xl">
               What sets us apart
             </h2>
             <p className="text-sm sm:text-base text-neutral-500 leading-7 max-w-2xl">
@@ -280,14 +290,14 @@ const Advertising = () => {
               <div className="inline-flex items-center justify-center rounded-2xl mb-6 h-48 sm:h-56 w-full overflow-hidden">
                 <img src={datadriven} alt="Data Driven Strategy" className="w-full h-full object-cover" />
               </div>
-              <div className="flex-grow flex flex-col">
-                <h3 className="text-xl sm:text-2xl font-semibold text-black mb-2 sm:mb-3">
+              <div className="flex-grow flex flex-col gap-1">
+                <h3 className="text-2xl font-medium text-black">
                   Data Driven Strategy
                 </h3>
-                <p className="text-sm sm:text-base text-neutral-500 leading-7 mb-6 sm:mb-8 flex-grow">
+                <p className="text-sm sm:text-md text-black leading-7 flex-grow">
                   Every decision backed by real data and testing.
                 </p>
-                <button className="mt-auto self-start inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
+                <button className="self-start inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
                   Learn More
                 </button>
               </div>
@@ -298,14 +308,14 @@ const Advertising = () => {
               <div className="inline-flex items-center justify-center rounded-2xl mb-6 h-48 sm:h-56 w-full overflow-hidden">
                 <img src="" alt="ROI Focused Execution" className="w-full h-full object-cover" />
               </div>
-              <div className="flex-grow flex flex-col">
-                <h3 className="text-2xl sm:text-3xl font-black text-black mb-3 sm:mb-4 leading-tight">
+              <div className="flex-grow flex flex-col gap-1">
+                <h3 className="text-2xl font-medium text-black leading-tight">
                   ROI Focused Execution
                 </h3>
-                <p className="text-sm sm:text-base text-black leading-7 mb-8 sm:mb-10 flex-grow">
+                <p className="text-sm sm:text-md text-black leading-7 flex-grow">
                   We optimize for revenue, not just clicks.
                 </p>
-                <button className="mt-auto self-start inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
+                <button className="self-start inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
                   Learn More
                 </button>
               </div>
@@ -316,14 +326,14 @@ const Advertising = () => {
               <div className="inline-flex items-center justify-center rounded-2xl mb-6 h-48 sm:h-56 w-full overflow-hidden">
                 <img src={expertise} alt="Full Funnel Expertise" className="w-full h-full object-contain" />
               </div>
-              <div className="flex-grow flex flex-col">
-                <h3 className="text-xl sm:text-2xl font-semibold text-black mb-2 sm:mb-3">
+              <div className="flex-grow flex flex-col gap-1">
+                <h3 className="text-2xl font-medium text-black">
                   Full Funnel Expertise
                 </h3>
-                <p className="text-sm sm:text-base text-neutral-500 leading-7 mb-6 sm:mb-8 flex-grow">
+                <p className="text-sm sm:text-md text-black leading-7 flex-grow">
                   From awareness to retention, we handle it all.
                 </p>
-                <button className="mt-auto self-start inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
+                <button className="self-start inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black transition-all duration-300 hover:border-red-500 hover:text-red-600 hover:bg-red-50/50">
                   Learn More
                 </button>
               </div>
@@ -332,15 +342,14 @@ const Advertising = () => {
         </div>
       </section>
 
-      {/* ─── Partner ───  */}
-      <Partner />
+
 
       {/* ─── Performance Dashboard ─── */}
-      <section ref={dashboardRef} className="relative z-10 py-16 sm:py-20 lg:py-4">
+      <section ref={dashboardRef} className="relative z-10 py-16 sm:py-20 lg:py-6">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           {/* Section Title */}
           <motion.h2
-            className="text-2xl sm:text-3xl lg:text-[32px] font-semibold text-black tracking-[-0.02em] mb-8 sm:mb-10 lg:mb-12"
+            className="text-2xl sm:text-3xl lg:text-4xl font-normal text-black tracking-[-0.02em] mb-8 sm:mb-10 lg:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={dashboardInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -387,6 +396,9 @@ const Advertising = () => {
 
       {/* ─── Testimonial Slider Section ─── */}
       <Testimonial />
+
+      {/* ─── Contact Section ─── */}
+      <Contact />
 
       {/* ─── Footer Section ─── */}
       <Footer />

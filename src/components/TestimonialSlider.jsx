@@ -69,7 +69,7 @@ const StarRating = ({ rating }) => {
 
 const TestimonialSlider = () => {
   return (
-    <section data-theme="light" className="relative w-full bg-white dark:bg-[#16171d] py-14 overflow-hidden font-sans border-t border-gray-100/60 dark:border-neutral-800/40">
+    <section data-theme="light" className="relative w-full bg-white dark:bg-[#16171d] py-4 overflow-hidden font-sans border-t border-gray-100/60 dark:border-neutral-800/40">
 
       {/* Edge Gradient vignettes with subtle backdrop blur to fade-out overflowing cards on screen borders */}
       <div className="absolute left-0 top-0 bottom-0 w-8 md:w-20 lg:w-32 bg-gradient-to-r from-white via-white/80 to-transparent dark:from-[#16171d] dark:via-[#16171d]/80 pointer-events-none z-10 backdrop-blur-[1px]"></div>
@@ -79,7 +79,7 @@ const TestimonialSlider = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-10 mb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl lg:text-[46px] font-semibold tracking-tight text-black dark:text-white leading-[1.15]">
+            <h2 className="text-4xl md:text-5xl lg:text-[40px] font-normal tracking-tight text-black dark:text-white leading-[1.15]">
               What it’s like working with us
             </h2>
           </div>
@@ -106,8 +106,11 @@ const TestimonialSlider = () => {
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
-            speed={6000}
+            speed={5000}
             grabCursor={true}
+            mousewheel={{
+              forceToAxis: true,
+            }}
             slidesPerView={1}
             spaceBetween={24}
             breakpoints={{
@@ -122,9 +125,9 @@ const TestimonialSlider = () => {
             }}
             pagination={{
               clickable: true,
-              el: '.swiper-custom-pagination',
+              el: ".swiper-custom-pagination",
             }}
-            className="!overflow-visible"
+            className="!overflow-visible select-none"
           >
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial.id} className="h-auto py-4">

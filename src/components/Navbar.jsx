@@ -80,14 +80,16 @@ const Navbar = () => {
                     <div className="flex items-center justify-between h-20">
                         {/* Logo */}
                         <div className="flex-shrink-0">
-                            <Link to="/" aria-label="Diwora">
-                                <img 
-                                    src={logo} 
-                                    alt="Diwora" 
-                                    className="h-8 md:h-10 w-auto object-contain" 
-                                    style={{ 
-                                        filter: navTheme === 'dark' ? 'invert(1) hue-rotate(180deg)' : 'none', 
-                                        transition: 'filter 300ms ease-in-out' 
+                            <Link to="/" aria-label="Diwora home">
+                                <img
+                                    src={logo}
+                                    alt="Diwora"
+                                    className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-all duration-300 hover:opacity-80"
+                                    style={{
+                                        filter: navTheme === 'dark'
+                                            ? 'brightness(0) invert(1)'
+                                            : 'none',
+                                        transition: 'filter 300ms ease-in-out, opacity 300ms ease-in-out',
                                     }}
                                 />
                             </Link>
@@ -286,9 +288,14 @@ const Navbar = () => {
             >
                 {/* Mobile Menu Header */}
                 <div className="flex items-center justify-between p-4 border-b border-white/10">
-                    <span className="text-lg font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                        Menu
-                    </span>
+                    <Link to="/" onClick={() => setIsMobileMenuOpen(false)} aria-label="Diwora home">
+                        <img
+                            src={logo}
+                            alt="Diwora"
+                            className="h-8 w-auto object-contain"
+                            style={{ filter: 'brightness(0) invert(1)' }}
+                        />
+                    </Link>
                     <button
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"

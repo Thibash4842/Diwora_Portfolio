@@ -83,7 +83,7 @@ const WhatWeDo = () => {
 
           {/* Top Left: Title */}
           <div className="lg:col-span-8 flex flex-col items-start text-left">
-            <h2 className="text-4xl sm:text-5xl lg:text-[64px] font-medium text-black tracking-tight select-none">
+            <h2 className="text-4xl sm:text-5xl lg:text-[64px] font-normal text-black tracking-tight select-none">
               What We Do
             </h2>
           </div>

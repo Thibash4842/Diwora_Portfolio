@@ -82,7 +82,7 @@ const CinematicStats = () => {
 
         {/* Large Bold Uppercase Headline with Mixed Opacity */}
         <motion.h2
-          className="text-4xl sm:text-6xl lg:text-[76px] font-medium leading-[1.08] tracking-tight uppercase mb-12 sm:mb-16 select-none"
+          className="text-4xl sm:text-6xl lg:text-[68px] font-normal leading-[1.08] tracking-tight uppercase mb-12 sm:mb-16 select-none"
           variants={itemVariants}
         >
           <span className="text-white">ATTENTION</span>{' '}

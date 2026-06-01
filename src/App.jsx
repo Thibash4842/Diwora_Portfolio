@@ -10,6 +10,7 @@ import FeaturedWorks from './components/FeaturedWorks'
 import HowWeWork from './components/HowWeWork'
 import TestimonialSlider from './components/TestimonialSlider'
 import FAQ from './components/FAQ'
+import Contact from './components/Contact'
 import Advertising from './components/Advertising'
 import AboutUs from './components/AboutUs'
 import './index.css'
@@ -34,7 +35,7 @@ function Home() {
       <Partner />
       {/* <FullWidthImage /> */}
 
-      <section data-theme="light" className="w-full h-screen bg-white px-6 md:px-12 lg:px-20">
+      <section data-theme="light" className="w-full h-[30vh] sm:h-screen bg-white px-6 md:px-12 lg:px-20">
         <img
           src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop"
           alt="Team workspace"
@@ -53,6 +54,8 @@ function Home() {
       <TestimonialSlider />
 
       <FAQ />
+
+      <Contact />
 
       <Footer />
     </div>

@@ -76,10 +76,10 @@ const FAQ = () => {
         <div className="flex flex-col items-start">
           <div className="flex items-center gap-2 mb-6">
             <span className="w-2 h-2 rounded-full bg-black"></span>
-            <span className="text-sm font-semibold uppercase tracking-wider text-black">Support</span>
+            <span className="text-sm font-semibold uppercase tracking-wider text-black">FAQs</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-            Frequently Asked<br />Questions
+          <h2 className="text-4xl md:text-5xl lg:text-4xl font-bold text-black leading-tight">
+            Frequently Asked Questions
           </h2>
         </div>
 
@@ -105,8 +105,8 @@ const FAQ = () => {
 
               <div
                 className={`grid transition-all duration-300 ease-in-out ${openId === faq.id
-                    ? 'grid-rows-[1fr] opacity-100'
-                    : 'grid-rows-[0fr] opacity-0'
+                  ? 'grid-rows-[1fr] opacity-100'
+                  : 'grid-rows-[0fr] opacity-0'
                   }`}
               >
                 <div className="overflow-hidden">

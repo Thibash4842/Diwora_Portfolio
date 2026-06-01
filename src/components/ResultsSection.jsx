@@ -98,7 +98,7 @@ const ResultsSection = () => {
           </motion.p>
 
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-black tracking-[-0.04em] leading-tight max-w-3xl"
+            className="text-3xl sm:text-4xl font-medium text-black tracking-[-0.04em] leading-tight max-w-3xl"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
