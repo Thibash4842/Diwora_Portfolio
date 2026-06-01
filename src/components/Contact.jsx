@@ -233,7 +233,7 @@ const Contact = () => {
       >
 
         {/* ── Main content grid ── */}
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="relative z-10 max-w-full mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-8 items-stretch">
 
             {/* ════════════════════

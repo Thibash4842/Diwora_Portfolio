@@ -76,7 +76,7 @@ const WhatWeDo = () => {
       data-theme="light"
       className="relative w-full bg-[#f3f3f3] py-24 md:py-14 px-6 sm:px-12 lg:px-20 overflow-hidden font-['Inter',sans-serif]"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="max-w-full mx-auto w-full">
 
         {/* Top Header: Two-Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16 lg:mb-24">

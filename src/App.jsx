@@ -35,7 +35,7 @@ function Home() {
       <Partner />
       {/* <FullWidthImage /> */}
 
-      <section data-theme="light" className="w-full h-[30vh] sm:h-screen bg-white px-6 md:px-12 lg:px-20">
+      <section data-theme="light" className="w-full h-[30vh] sm:h-screen bg-white px-6 md:px-12 lg:px-20 py-4">
         <img
           src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop"
           alt="Team workspace"

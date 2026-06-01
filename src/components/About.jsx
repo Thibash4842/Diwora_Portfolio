@@ -57,23 +57,23 @@ const CountUp = ({ end, duration = 2000 }) => {
 
 const About = () => {
     return (
-        <section id="about" data-theme="light" className="w-full bg-white dark:bg-[#16171d] py-14 border-t border-neutral-100/60 dark:border-neutral-800/40">
-            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <section id="about" data-theme="light" className="w-full bg-white py-14 border-t border-neutral-100/60">
+            <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-10 gap-12 lg:gap-16 items-start">
 
                     {/* Left Column - About Label and Vision Card */}
                     <div className="lg:col-span-3 flex flex-col gap-4 w-full lg:sticky lg:top-20">
 
-                        <span className="text-2xl font-normal text-black dark:text-white tracking-wide">
+                        <span className="text-2xl font-normal text-black tracking-wide">
                             About Diwora
                         </span>
 
                         {/* Vision Card */}
-                        <div className="flex flex-col bg-[#f8f9fa] dark:bg-[#1f2028]/80 p-4 rounded-2xl border border-neutral-100 dark:border-neutral-800/40">
+                        <div className="flex flex-col bg-[#e3e3e3] p-4 rounded-2xl border border-neutral-100">
 
                             {/* Inner White Box containing Profile Image */}
-                            <div className="bg-white dark:bg-[#16171d] p-5 rounded-2xl border border-neutral-100/80 dark:border-neutral-800/60 shadow-[0_4px_25px_rgba(0,0,0,0.01)] dark:shadow-[0_4px_25px_rgba(0,0,0,0.15)] mb-6">
-                                <div className="relative w-full aspect-square bg-[#f8f9fa] dark:bg-[#1f2028] rounded-xl overflow-hidden flex items-center justify-center">
+                            <div className="bg-white p-5 rounded-2xl border border-neutral-100/80 shadow-[0_4px_25px_rgba(0,0,0,0.01)] mb-6">
+                                <div className="relative w-full aspect-square bg-[#f8f9fa] rounded-xl overflow-hidden flex items-center justify-center">
                                     <img
                                         src={aboutImg}
                                         alt="Profile Graphic"
@@ -84,14 +84,14 @@ const About = () => {
 
                             {/* Vision Info */}
                             <div className="flex flex-col mb-6">
-                                <h3 className="text-xl font-medium text-black dark:text-white mb-2">Our Vision</h3>
-                                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
+                                <h3 className="text-xl font-medium text-black mb-2">Our Vision</h3>
+                                <p className="text-sm text-neutral-600 leading-relaxed font-normal">
                                     To shape how brands exist visually in a world full of noise.
                                 </p>
                             </div>
 
                             {/* About Us Button */}
-                            <a href="/about" className="px-6 py-2.5 bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-black dark:hover:bg-neutral-100 font-normal rounded-lg text-sm transition-colors w-fit shadow-sm">
+                            <a href="/about" className="px-6 py-2.5 bg-neutral-900 hover:bg-black text-white font-normal rounded-lg text-sm transition-colors w-fit shadow-sm">
                                 About Us
                             </a>
                         </div>
@@ -101,7 +101,7 @@ const About = () => {
                     <div className="lg:col-span-7 flex flex-col gap-10 w-full">
 
                         {/* Main Large Heading */}
-                        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-normal text-black dark:text-white leading-[1.2] tracking-tight">
+                        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-normal text-black leading-[1.2] tracking-tight">
                             We approach every project with clarity combining creative thinking and strategy to build work that truly matters.
                         </h2>
 
@@ -123,15 +123,15 @@ const About = () => {
                                                 key={i}
                                                 src={img}
                                                 alt={`Reviewer ${i + 1}`}
-                                                className="w-10 h-10 rounded-full border-2 border-white dark:border-[#16171d] object-cover"
+                                                className="w-10 h-10 rounded-full border-2 border-white object-cover"
                                             />
                                         ))}
                                     </div>
-                                    <span className="text-[15px] font-semibold text-black dark:text-white">k+ Reviews</span>
+                                    <span className="text-[15px] font-semibold text-black">k+ Reviews</span>
                                 </div>
 
                                 {/* Purpose Statement */}
-                                <p className="text-sm text-neutral-800 dark:text-neutral-300 font-normal leading-relaxed max-w-sm">
+                                <p className="text-sm text-neutral-800 font-normal leading-relaxed max-w-sm">
                                     At Diwora, creativity is always guided by purpose. Every idea is shaped with intention built to communicate clearly and connect with the right audience.
                                 </p>
                             </div>
@@ -139,24 +139,24 @@ const About = () => {
                             {/* Column 2: Scope of Work and Counter Stats */}
                             <div className="flex flex-col gap-6">
                                 {/* Scope of Work */}
-                                <p className="text-[14px] md:text-[15px] text-neutral-500 dark:text-neutral-400 font-normal leading-relaxed max-w-sm">
+                                <p className="text-[14px] md:text-[15px] text-neutral-500 font-normal leading-relaxed max-w-sm">
                                     From photography and video to motion and campaigns, we create visual content that doesn't just look good it drives growth and keeps brands relevant
                                 </p>
 
                                 {/* Counter Stats */}
                                 <div className="flex items-center gap-6 mt-2">
                                     <div>
-                                        <p className="text-xl md:text-4xl font-black text-black dark:text-white">
+                                        <p className="text-xl md:text-4xl font-black text-black">
                                             <CountUp end={50} />+
                                         </p>
                                         <p className="text-xs text-neutral-500 mt-1 font-medium">Projects Completed</p>
                                     </div>
 
                                     {/* Vertical Divider */}
-                                    <div className="w-px h-8 bg-neutral-300 dark:bg-neutral-700"></div>
+                                    <div className="w-px h-8 bg-neutral-300"></div>
 
                                     <div>
-                                        <p className="text-xl md:text-4xl font-black text-black dark:text-white">
+                                        <p className="text-xl md:text-4xl font-black text-black">
                                             <CountUp end={25} />+
                                         </p>
                                         <p className="text-xs text-neutral-500 mt-1 font-medium">Happy Clients</p>
@@ -167,7 +167,7 @@ const About = () => {
                         </div>
 
                         {/* Large Studio Photo Carousel */}
-                        <div className="w-full h-64 sm:h-80 lg:h-[450px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-neutral-100 dark:border-neutral-800/40 mt-4 group">
+                        <div className="w-full h-64 sm:h-80 lg:h-[450px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-neutral-100 mt-4 group">
                             <Swiper
                                 modules={[Autoplay]}
                                 effect="slide"
@@ -184,7 +184,7 @@ const About = () => {
                                     <SwiperSlide key={idx} className="w-full h-full overflow-hidden">
                                         <div className="w-full h-full relative">
                                             {/* Subtle overlay for premium cinematic feel */}
-                                            <div className="absolute inset-0 bg-black/5 dark:bg-black/20 z-10 transition-colors duration-500 group-hover:bg-transparent"></div>
+                                            <div className="absolute inset-0 bg-black/5 z-10 transition-colors duration-500 group-hover:bg-transparent"></div>
                                             <img
                                                 src={src}
                                                 alt={`Studio workspace ${idx + 1}`}

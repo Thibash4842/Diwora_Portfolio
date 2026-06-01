@@ -349,7 +349,7 @@ const HowWeWork = () => {
         ref={stickyRef}
         className="w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-6 sm:px-12 lg:px-20"
       >
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center font-sans">
+        <div className="max-w-full mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center font-sans">
 
           {/* Left Column — Heading and desktop interactive progress indicators */}
           <div className="col-span-1 lg:col-span-5 flex flex-col justify-center h-full">

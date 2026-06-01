@@ -84,7 +84,7 @@ const ResultsSection = () => {
       ref={sectionRef}
       className="relative z-10 bg-white font-['Inter',sans-serif] py-14"
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12">
 
         {/* ─── Section Header ─── */}
         <div className="flex flex-col items-start gap-2 sm:gap-3 mb-10 sm:mb-12 lg:mb-16">

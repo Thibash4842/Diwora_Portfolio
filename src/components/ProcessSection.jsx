@@ -359,7 +359,7 @@ const ProcessSection = () => {
       </div>
 
       {/* Header Area */}
-      <div className="max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0 relative z-10">
+      <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -381,7 +381,7 @@ const ProcessSection = () => {
       </div>
 
       <div className="sticky top-[80px] h-[calc(120vh-80px)] md:h-[130vh] lg:h-[calc(100vh-80px)] w-full flex items-center overflow-hidden z-10">
-        <div className="max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-2 xl:gap-2 items-center">
+        <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-2 xl:gap-2 items-center">
 
           {/* Left Column — Step List + Active Description */}
           <div className="col-span-1 lg:col-span-5 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0 relative z-20">

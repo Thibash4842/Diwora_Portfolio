@@ -104,7 +104,7 @@ const ScrollStack = () => {
 
   return (
     <section ref={containerRef} className="w-full bg-white pt-10 md:pt-16 pb-10 md:pb-16 relative">
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-16 text-center md:text-left z-10 relative">
+      <div className="w-full max-w-full mx-auto px-6 sm:px-8 lg:px-12 mb-16 text-center md:text-left z-10 relative">
         <h2 className="text-4xl font-normal text-black mb-4">What We Do</h2>
       </div>
 

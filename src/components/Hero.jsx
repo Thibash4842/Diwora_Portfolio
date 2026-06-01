@@ -14,7 +14,7 @@ const Hero = () => {
       </div>
 
       {/* Hero Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full flex flex-col justify-center min-h-[calc(100vh-140px)]">
+      <div className="relative z-10 max-w-full mx-auto px-6 sm:px-8 lg:px-12 w-full flex flex-col justify-center min-h-[calc(100vh-140px)]">
 
         {/* Title - Occupies full width, large, bold all-caps */}
         <div className="w-full mb-16 lg:mb-20">

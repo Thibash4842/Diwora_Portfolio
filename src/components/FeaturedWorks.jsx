@@ -55,7 +55,7 @@ const FeaturedWorks = () => {
 
   return (
     <section ref={sectionRef} data-theme="light" className="w-full bg-white pt-10 pb-10 px-6 md:px-12 lg:px-20">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full mx-auto">
         <h2 className="text-4xl font-normal text-black mb-14">
           Featured Works
         </h2>
