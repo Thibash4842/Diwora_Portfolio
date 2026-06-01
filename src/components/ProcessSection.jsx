@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+// import optimization from '../assets/advertising/process/optimization01.png';
 
 /* ──────────────────────────────────────────────
    Process step data matching the reference design
@@ -35,264 +36,251 @@ const STEPS = [
    Inline SVG Illustrations for each step
    ────────────────────────────────────────────── */
 const AuditIllustration = () => (
-  <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <defs>
-      <radialGradient id="auditGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.06)" />
-        <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-      </radialGradient>
-      <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#e5e5e5" />
-        <stop offset="100%" stopColor="#737373" />
-      </linearGradient>
-      <linearGradient id="lensGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#404040" />
-        <stop offset="100%" stopColor="#1a1a1a" />
-      </linearGradient>
-    </defs>
-    <circle cx="200" cy="200" r="180" fill="url(#auditGlow)" />
-    {/* Magnifying glass lens */}
-    <circle cx="185" cy="175" r="100" stroke="#525252" strokeWidth="6" fill="url(#lensGrad)" opacity="0.9" />
-    <circle cx="185" cy="175" r="95" stroke="rgba(255,255,255,0.08)" strokeWidth="1" fill="none" />
-    {/* Bar chart inside lens */}
-    <motion.rect x="130" y="195" width="18" height="50" rx="3" fill="url(#barGrad)" initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 0.6, delay: 0.1 }} style={{ originY: 1, originX: 0.5 }} />
-    <motion.rect x="155" y="165" width="18" height="80" rx="3" fill="url(#barGrad)" initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 0.6, delay: 0.2 }} style={{ originY: 1, originX: 0.5 }} />
-    <motion.rect x="180" y="140" width="18" height="105" rx="3" fill="#ffffff" initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 0.6, delay: 0.3 }} style={{ originY: 1, originX: 0.5 }} />
-    <motion.rect x="205" y="175" width="18" height="70" rx="3" fill="url(#barGrad)" initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 0.6, delay: 0.4 }} style={{ originY: 1, originX: 0.5 }} />
-    <motion.rect x="230" y="155" width="18" height="90" rx="3" fill="url(#barGrad)" initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 0.6, delay: 0.5 }} style={{ originY: 1, originX: 0.5 }} />
-    {/* Handle */}
-    <line x1="260" y1="250" x2="320" y2="320" stroke="#525252" strokeWidth="14" strokeLinecap="round" />
-    <line x1="260" y1="250" x2="320" y2="320" stroke="#404040" strokeWidth="10" strokeLinecap="round" />
-    {/* Lens reflection */}
-    <ellipse cx="155" cy="135" rx="30" ry="8" fill="rgba(255,255,255,0.06)" transform="rotate(-20 155 135)" />
-  </svg>
+  <div className="w-full h-full flex items-center justify-center relative perspective-[1200px]">
+    {/* Ambient Glow */}
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="w-64 h-64 bg-indigo-500/20 rounded-full blur-[80px]" />
+    </div>
+
+    <motion.div
+      initial={{ opacity: 0, rotateX: 20, rotateY: -15, y: 30, scale: 0.9 }}
+      animate={{ opacity: 1, rotateX: 10, rotateY: -10, y: 0, scale: 1 }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      className="relative w-[85%] max-w-[320px] aspect-[4/3] rounded-2xl border border-white/[0.08] bg-[#111111]/80 backdrop-blur-xl shadow-[0_30px_60px_rgba(0,0,0,0.4)] p-5 flex flex-col justify-between z-10"
+      style={{ transformStyle: 'preserve-3d' }}
+    >
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-indigo-400">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <div className="h-2.5 w-24 bg-white/20 rounded-full" />
+          <div className="h-1.5 w-16 bg-white/10 rounded-full" />
+        </div>
+      </div>
+
+      <div className="flex items-end justify-between h-24 mt-6 border-b border-white/[0.05] pb-2 relative" style={{ transform: "translateZ(20px)" }}>
+        {[45, 75, 55, 95, 65, 85].map((h, i) => (
+          <motion.div
+            key={i}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: `${h}%`, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className={`w-[12%] rounded-t-sm ${i === 3 ? 'bg-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.5)]' : 'bg-white/10'}`}
+          />
+        ))}
+      </div>
+
+      {/* Floating Metric Card */}
+      <motion.div
+        animate={{ y: [-8, 8, -8] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -right-6 -bottom-6 w-36 p-3 rounded-xl border border-white/[0.08] bg-white/5 backdrop-blur-2xl shadow-xl z-20 flex flex-col gap-1"
+        style={{ transform: "translateZ(40px)" }}
+      >
+        <span className="text-[10px] text-neutral-400 font-medium">Market Share</span>
+        <div className="flex items-end gap-2">
+          <span className="text-lg font-bold text-white leading-none">24.5%</span>
+          <span className="text-[10px] text-emerald-400 font-medium pb-0.5">+4.2%</span>
+        </div>
+      </motion.div>
+    </motion.div>
+  </div>
 );
 
 const ExecutionIllustration = () => (
-  <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <defs>
-      <radialGradient id="execGlow" cx="50%" cy="40%" r="50%">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.06)" />
-        <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-      </radialGradient>
-      <linearGradient id="rocketBody" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#ffffff" />
-        <stop offset="100%" stopColor="#a3a3a3" />
-      </linearGradient>
-      <linearGradient id="flameGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#f97316" />
-        <stop offset="50%" stopColor="#ef4444" />
-        <stop offset="100%" stopColor="#dc2626" />
-      </linearGradient>
-    </defs>
-    <circle cx="200" cy="200" r="180" fill="url(#execGlow)" />
-    {/* Rocket body */}
-    <motion.g initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
-      <path d="M200 80 C200 80, 230 130, 230 200 L230 260 L170 260 L170 200 C170 130, 200 80, 200 80Z" fill="url(#rocketBody)" />
-      {/* Nose cone */}
-      <path d="M200 80 C195 100, 185 130, 180 160 L220 160 C215 130, 205 100, 200 80Z" fill="#e5e5e5" />
-      {/* Window */}
-      <circle cx="200" cy="180" r="16" fill="#1a1a1a" stroke="#525252" strokeWidth="3" />
-      <circle cx="200" cy="180" r="10" fill="#262626" />
-      <ellipse cx="196" cy="176" rx="3" ry="2" fill="rgba(255,255,255,0.3)" />
-      {/* Fins */}
-      <path d="M170 230 L145 275 L170 260Z" fill="#737373" />
-      <path d="M230 230 L255 275 L230 260Z" fill="#737373" />
-      {/* Flame */}
-      <motion.g animate={{ scaleY: [1, 1.15, 0.95, 1.1, 1], opacity: [0.9, 1, 0.85, 1, 0.9] }} transition={{ duration: 0.8, repeat: Infinity }}>
-        <path d="M185 260 L200 330 L215 260Z" fill="url(#flameGrad)" opacity="0.9" />
-        <path d="M190 260 L200 310 L210 260Z" fill="#fbbf24" opacity="0.7" />
-      </motion.g>
-    </motion.g>
-    {/* Speed lines */}
-    <motion.g initial={{ opacity: 0 }} animate={{ opacity: [0, 0.3, 0] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}>
-      <line x1="155" y1="300" x2="155" y2="350" stroke="#525252" strokeWidth="2" strokeLinecap="round" />
-      <line x1="245" y1="295" x2="245" y2="340" stroke="#525252" strokeWidth="2" strokeLinecap="round" />
-      <line x1="130" y1="280" x2="130" y2="315" stroke="#404040" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="270" y1="285" x2="270" y2="320" stroke="#404040" strokeWidth="1.5" strokeLinecap="round" />
-    </motion.g>
-  </svg>
+  <div className="w-full h-full flex items-center justify-center relative perspective-[1200px]">
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="w-64 h-64 bg-orange-500/15 rounded-full blur-[80px]" />
+    </div>
+
+    {/* Multi-layered Launch UI */}
+    <motion.div
+      initial={{ opacity: 0, rotateX: -10, rotateY: 15, scale: 0.9 }}
+      animate={{ opacity: 1, rotateX: 5, rotateY: 10, scale: 1 }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      className="relative w-[90%] max-w-[340px] aspect-[16/10] z-10 flex items-center justify-center"
+      style={{ transformStyle: 'preserve-3d' }}
+    >
+      {/* Background Dashboard */}
+      <div className="absolute inset-0 rounded-2xl border border-white/[0.05] bg-[#111111]/60 backdrop-blur-md p-4 flex flex-col justify-between">
+        <div className="flex justify-between items-center">
+          <div className="flex gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
+          </div>
+          <div className="h-2 w-16 bg-white/10 rounded-full" />
+        </div>
+        <div className="w-full space-y-2">
+          <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+            <motion.div initial={{ width: 0 }} animate={{ width: "100%" }} transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }} className="h-full bg-orange-500/30" />
+          </div>
+          <div className="h-1.5 w-3/4 bg-white/5 rounded-full overflow-hidden">
+            <motion.div initial={{ width: 0 }} animate={{ width: "100%" }} transition={{ duration: 2.2, delay: 0.6, ease: "easeInOut" }} className="h-full bg-orange-500/30" />
+          </div>
+        </div>
+      </div>
+
+      {/* Foreground Rocket / Launch Node */}
+      <motion.div
+        animate={{ y: [-5, 5, -5] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="relative z-20 w-32 h-32 rounded-2xl border border-orange-500/30 bg-[#161616]/90 backdrop-blur-xl shadow-[0_0_40px_rgba(249,115,22,0.15)] flex flex-col items-center justify-center gap-3"
+        style={{ transform: "translateZ(50px)" }}
+      >
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="w-12 h-12 rounded-xl bg-gradient-to-tr from-orange-600 to-red-500 flex items-center justify-center shadow-[0_0_20px_rgba(249,115,22,0.4)]"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+          </svg>
+        </motion.div>
+        <div className="px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/30 text-[10px] text-orange-400 font-semibold tracking-wider">
+          DEPLOYING
+        </div>
+      </motion.div>
+    </motion.div>
+  </div>
 );
 
 const OptimizationIllustration = () => (
-  <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <defs>
-      <radialGradient id="optGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.06)" />
-        <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-      </radialGradient>
-      <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#404040" />
-        <stop offset="100%" stopColor="#262626" />
-      </linearGradient>
-    </defs>
-    <circle cx="200" cy="200" r="180" fill="url(#optGlow)" />
-    {/* Gauge outer ring */}
-    <circle cx="200" cy="210" r="120" stroke="#333333" strokeWidth="3" fill="none" />
-    <circle cx="200" cy="210" r="115" stroke="rgba(255,255,255,0.04)" strokeWidth="1" fill="url(#gaugeGrad)" />
-    {/* Gauge track */}
-    <motion.path
-      d="M100 270 A 120 120 0 0 1 300 270"
-      stroke="#333333"
-      strokeWidth="16"
-      strokeLinecap="round"
-      fill="none"
-    />
-    {/* Gauge fill — animated */}
-    <motion.path
-      d="M100 270 A 120 120 0 0 1 300 270"
-      stroke="url(#gaugeActive)"
-      strokeWidth="16"
-      strokeLinecap="round"
-      fill="none"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 0.78 }}
-      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-    />
-    <defs>
-      <linearGradient id="gaugeActive" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#525252" />
-        <stop offset="50%" stopColor="#a3a3a3" />
-        <stop offset="100%" stopColor="#ffffff" />
-      </linearGradient>
-    </defs>
-    {/* Tick marks */}
-    {[...Array(9)].map((_, i) => {
-      const angle = -180 + i * 22.5;
-      const rad = (angle * Math.PI) / 180;
-      const x1 = 200 + 95 * Math.cos(rad);
-      const y1 = 210 + 95 * Math.sin(rad);
-      const x2 = 200 + 105 * Math.cos(rad);
-      const y2 = 210 + 105 * Math.sin(rad);
-      return (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#525252" strokeWidth="2" strokeLinecap="round" />
-      );
-    })}
-    {/* Needle */}
-    <motion.g
-      style={{ transformOrigin: '200px 210px' }}
-      initial={{ rotate: -90 }}
-      animate={{ rotate: 50 }}
-      transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-    >
-      <line x1="200" y1="210" x2="200" y2="120" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-      <circle cx="200" cy="210" r="8" fill="#ffffff" />
-    </motion.g>
-    <circle cx="200" cy="210" r="5" fill="#1a1a1a" />
-    {/* Labels */}
-    <text x="200" y="260" textAnchor="middle" fill="#a3a3a3" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="700">78%</text>
-    <text x="200" y="278" textAnchor="middle" fill="#525252" fontSize="10" fontFamily="Inter, sans-serif">Conversion Rate</text>
-    {/* A/B indicator */}
-    <rect x="155" y="300" width="36" height="22" rx="6" fill="#333333" />
-    <text x="173" y="315" textAnchor="middle" fill="#ffffff" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="800">A</text>
-    <rect x="209" y="300" width="36" height="22" rx="6" fill="#ffffff" />
-    <text x="227" y="315" textAnchor="middle" fill="#0a0a0a" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="800">B</text>
-  </svg>
+  <div className="w-full h-full flex items-center justify-center relative perspective-[1200px]">
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="w-64 h-64 bg-emerald-500/15 rounded-full blur-[80px]" />
+    </div>
+
+    <div className="relative w-full h-full flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
+      {/* Variant A */}
+      <motion.div
+        initial={{ opacity: 0, x: -30, rotateY: 15, scale: 0.9 }}
+        animate={{ opacity: 1, x: -20, rotateY: 10, scale: 1 }}
+        transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute z-10 w-40 p-4 rounded-xl border border-white/[0.05] bg-[#111111]/80 backdrop-blur-xl shadow-xl flex flex-col gap-3"
+      >
+        <motion.div animate={{ y: [-4, 4, -4] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}>
+          <div className="flex justify-between items-center">
+            <span className="text-[10px] text-neutral-400 font-bold bg-white/10 px-2 py-0.5 rounded-md">VAR A</span>
+            <div className="w-2 h-2 rounded-full bg-neutral-600" />
+          </div>
+          <div className="h-16 w-full border border-white/5 rounded-lg flex items-end p-2 gap-1 bg-white/[0.02] mt-3">
+            <div className="w-full bg-white/10 rounded-sm h-[40%]" />
+            <div className="w-full bg-white/10 rounded-sm h-[60%]" />
+            <div className="w-full bg-white/10 rounded-sm h-[45%]" />
+          </div>
+          <div className="text-sm font-bold text-neutral-300 mt-2">2.4% <span className="text-[10px] text-neutral-500 font-normal">conv.</span></div>
+        </motion.div>
+      </motion.div>
+
+      {/* Variant B (Winner) */}
+      <motion.div
+        initial={{ opacity: 0, x: 30, rotateY: -15, scale: 0.9, z: 20 }}
+        animate={{ opacity: 1, x: 20, rotateY: -10, scale: 1.05, z: 40 }}
+        transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute z-20 w-44 p-4 rounded-xl border border-emerald-500/30 bg-[#161616]/90 backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex flex-col gap-3"
+      >
+        <motion.div animate={{ y: [4, -4, 4] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}>
+          <div className="flex justify-between items-center">
+            <span className="text-[10px] text-emerald-400 font-bold bg-emerald-500/20 px-2 py-0.5 rounded-md border border-emerald-500/20">VAR B</span>
+            <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+          </div>
+          <div className="h-16 w-full border border-emerald-500/10 rounded-lg flex items-end p-2 gap-1 bg-emerald-500/[0.02] relative overflow-hidden mt-3">
+            <div className="w-full bg-emerald-500/30 rounded-sm h-[50%]" />
+            <div className="w-full bg-emerald-500/50 rounded-sm h-[75%]" />
+            <div className="w-full bg-emerald-500 rounded-sm h-[90%] shadow-[0_0_15px_rgba(16,185,129,0.5)]" />
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1 }}
+              className="absolute top-1 right-2 text-emerald-400"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </motion.div>
+          </div>
+          <div className="text-lg font-bold text-white mt-2">5.8% <span className="text-[10px] text-emerald-400 font-medium">conv.</span></div>
+        </motion.div>
+      </motion.div>
+    </div>
+  </div>
 );
 
 const ScalingIllustration = () => (
-  <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <defs>
-      <radialGradient id="scaleGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.06)" />
-        <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-      </radialGradient>
-      <linearGradient id="lineGrad" x1="0" y1="1" x2="1" y2="0">
-        <stop offset="0%" stopColor="#525252" />
-        <stop offset="100%" stopColor="#ffffff" />
-      </linearGradient>
-      <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.12)" />
-        <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-      </linearGradient>
-    </defs>
-    <circle cx="200" cy="200" r="180" fill="url(#scaleGlow)" />
-    {/* Grid lines */}
-    {[120, 170, 220, 270, 320].map((y, i) => (
-      <line key={i} x1="60" y1={y} x2="340" y2={y} stroke="#1f1f1f" strokeWidth="1" />
-    ))}
-    {/* Area fill */}
-    <motion.path
-      d="M60 320 L100 290 L140 270 L180 230 L220 200 L260 150 L300 110 L340 80 L340 320Z"
-      fill="url(#areaGrad)"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1, delay: 0.3 }}
-    />
-    {/* Main growth line */}
-    <motion.path
-      d="M60 320 L100 290 L140 270 L180 230 L220 200 L260 150 L300 110 L340 80"
-      stroke="url(#lineGrad)"
-      strokeWidth="3.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      fill="none"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
+  <div className="w-full h-full flex items-center justify-center relative perspective-[1200px]">
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="w-64 h-64 bg-cyan-500/15 rounded-full blur-[80px]" />
+    </div>
+
+    <motion.div
+      initial={{ opacity: 0, rotateX: 30, rotateZ: -10, y: 20, scale: 0.9 }}
+      animate={{ opacity: 1, rotateX: 20, rotateZ: -5, y: 0, scale: 1 }}
       transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-    />
-    {/* Data points */}
-    {[
-      [100, 290], [140, 270], [180, 230], [220, 200], [260, 150], [300, 110], [340, 80]
-    ].map(([cx, cy], i) => (
-      <motion.circle
-        key={i}
-        cx={cx}
-        cy={cy}
-        r="5"
-        fill="#0a0a0a"
-        stroke="#ffffff"
-        strokeWidth="2.5"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.2 + i * 0.1 }}
-      />
-    ))}
-    {/* Branching paths from the last point */}
-    <motion.path
-      d="M340 80 L360 60"
-      stroke="#a3a3a3"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeDasharray="4 4"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: 0.5, delay: 1.2 }}
-    />
-    <motion.path
-      d="M340 80 L370 75"
-      stroke="#737373"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeDasharray="4 4"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: 0.5, delay: 1.3 }}
-    />
-    <motion.path
-      d="M340 80 L365 50"
-      stroke="#525252"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeDasharray="4 4"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: 0.5, delay: 1.4 }}
-    />
-    {/* Arrow head at the end */}
-    <motion.polygon
-      points="340,80 332,88 336,80 332,72"
-      fill="#ffffff"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1 }}
-    />
-    {/* Growth percentage label */}
-    <motion.g initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.3 }}>
-      <rect x="285" y="60" width="50" height="22" rx="6" fill="rgba(255,255,255,0.1)" />
-      <text x="310" y="75" textAnchor="middle" fill="#ffffff" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="800">+340%</text>
-    </motion.g>
-  </svg>
+      className="relative w-[85%] max-w-[320px] aspect-[4/3] rounded-2xl border border-white/[0.08] bg-[#111111]/80 backdrop-blur-xl shadow-[0_30px_60px_rgba(0,0,0,0.5)] p-5 z-10"
+      style={{ transformStyle: 'preserve-3d' }}
+    >
+      {/* 3D Grid background */}
+      <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-20 pointer-events-none">
+        <div className="w-full h-full border-[0.5px] border-white/20" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+      </div>
+
+      <div className="flex flex-col h-full justify-between relative z-10">
+        <div className="flex justify-between items-start">
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] text-neutral-400 uppercase tracking-wider font-semibold">Total Revenue</span>
+            <span className="text-2xl font-bold text-white">$4.2M</span>
+          </div>
+          <div className="px-2 py-1 rounded-md bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 text-[10px] font-bold">
+            +340% YOY
+          </div>
+        </div>
+
+        {/* 3D Chart Line */}
+        <div className="relative h-24 w-full mt-auto" style={{ transform: "translateZ(30px)" }}>
+          <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="rgba(6, 182, 212, 0.3)" />
+                <stop offset="100%" stopColor="rgba(6, 182, 212, 0)" />
+              </linearGradient>
+            </defs>
+            <motion.path
+              d="M0 100 L 20 80 L 40 85 L 60 50 L 80 40 L 100 10"
+              fill="url(#chartGrad)"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            />
+            <motion.path
+              d="M0 100 L 20 80 L 40 85 L 60 50 L 80 40 L 100 10"
+              fill="none"
+              stroke="#06b6d4"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            />
+          </svg>
+
+          {/* Floating Data Point */}
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.5, type: "spring" }}
+            className="absolute top-[10%] right-0 w-3 h-3 rounded-full bg-white border-2 border-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.8)]"
+          />
+        </div>
+      </div>
+    </motion.div>
+  </div>
 );
 
 /* ──────────────────────────────────────────────
@@ -371,7 +359,7 @@ const ProcessSection = () => {
       </div>
 
       {/* Header Area */}
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0 relative z-10">
+      <div className="max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -393,10 +381,10 @@ const ProcessSection = () => {
       </div>
 
       <div className="sticky top-[80px] h-[calc(120vh-80px)] md:h-[130vh] lg:h-[calc(100vh-80px)] w-full flex items-center overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-center">
+        <div className="max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-2 xl:gap-2 items-center">
 
           {/* Left Column — Step List + Active Description */}
-          <div className="col-span-1 lg:col-span-6 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0">
+          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0 relative z-20">
             {/* Step items */}
             <div className="flex flex-col gap-0">
               {STEPS.map((step, index) => {
@@ -411,7 +399,7 @@ const ProcessSection = () => {
                       {/* Step title row */}
                       <div className="flex items-start gap-6 lg:gap-8">
                         <h3
-                          className={`text-lg sm:text-xl lg:text-2xl font-bold tracking-[-0.02em] transition-colors duration-500 whitespace-nowrap ${isActive ? 'text-white' : 'text-neutral-400'
+                          className={`text-lg sm:text-xl lg:text-2xl font-bold tracking-[-0.02em] transition-colors duration-500 whitespace-nowrap ${isActive ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.8)]' : 'text-neutral-400'
                             }`}
                         >
                           {step.title}
@@ -428,7 +416,7 @@ const ProcessSection = () => {
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                             >
-                              <p className="text-sm text-neutral-400 leading-relaxed max-w-full pt-1">
+                              <p className="text-sm text-neutral-400 leading-relaxed max-w-full pt-1 [text-shadow:0_0_10px_rgba(255,255,255,0.8)]">
                                 {step.description}
                               </p>
                             </motion.div>
@@ -461,9 +449,9 @@ const ProcessSection = () => {
           </div>
 
           {/* Right Column — Illustration */}
-          <div className="col-span-1 lg:col-span-6 flex justify-center items-center w-full order-1 lg:order-2">
-            <div className="relative w-full h-[260px] sm:h-[360px] lg:h-auto lg:aspect-[4/3] max-w-[620px] flex items-center justify-center">
-              <div className="relative w-full max-w-[260px] sm:max-w-[360px] lg:max-w-[480px] aspect-square">
+          <div className="col-span-1 lg:col-span-7 flex justify-center lg:justify-end xl:justify-center items-center w-full order-1 lg:order-2 pointer-events-none z-10">
+            <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[600px] xl:h-[750px] flex items-center justify-center lg:justify-end xl:justify-center">
+              <div className="relative w-[340px] h-[340px] scale-[0.85] sm:scale-100 lg:scale-[1.3] xl:scale-[1.6] 2xl:scale-[1.8] origin-center lg:origin-right xl:origin-center">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}

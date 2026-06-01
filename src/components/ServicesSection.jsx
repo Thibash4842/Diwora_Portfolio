@@ -595,15 +595,25 @@ const ServicesSection = () => {
 
           {/* Right Column: Visual Mockup Showcase Container */}
           <div className="col-span-1 lg:col-span-7 flex justify-center items-center w-full order-1 lg:order-2">
-            <div className="relative w-full h-[260px] sm:h-[360px] lg:h-auto lg:aspect-[4/3] max-w-[620px] rounded-2xl lg:rounded-3xl border border-neutral-100 overflow-hidden shadow-sm flex items-center justify-center bg-white">
+            <div className="relative w-full h-[260px] sm:h-[360px] lg:h-auto lg:aspect-[4/3] max-w-[720px] rounded-2xl lg:rounded-3xl border border-neutral-100 overflow-hidden shadow-sm flex items-center justify-center bg-white">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
                   className="w-full h-full"
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  initial={{
+                    opacity: 0,
+                    x: 180,
+                    scale: 0.85,
+                    rotateY: 20,
+                    filter: "blur(15px)"
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                    scale: 1,
+                    rotateY: 0,
+                    filter: "blur(0px)"
+                  }}
                 >
                   {renderVisual(activeIndex)}
                 </motion.div>
