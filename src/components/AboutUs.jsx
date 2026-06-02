@@ -84,7 +84,7 @@ const AboutUs = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-[80px] font-medium text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
+            <h1 className="text-4xl sm:text-6xl lg:text-[80px] font-poppins font-bold text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
               WE MAKE<br />
               BRANDS FEEL<br />
               LIKE <span className="text-[#e10022]">SOMETHING</span>

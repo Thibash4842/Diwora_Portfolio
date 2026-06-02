@@ -343,7 +343,7 @@ const HowWeWork = () => {
     <section
       ref={containerRef}
       data-theme="light"
-      className="w-full relative bg-[#f9f8f6] py-1 md:py-2"
+      className="w-full relative bg-white py-1 md:py-2"
     >
       <div
         ref={stickyRef}

@@ -29,14 +29,16 @@ const Footer = () => {
     { label: 'About', href: '/about' },
     { label: 'Works', href: '/works' },
     { label: 'Careers', href: '/careers' },
-    { label: 'Contact us', href: '/contact' },
+    { label: 'Contact us', href: '#contact' },
   ];
 
   const services = [
-    'Brand Visual',
-    'Motion & Video',
-    'Content & Digital',
-    'Ideation & Scripting',
+    "Advertising",
+    "Brand Visual",
+    "Motion Video",
+    "Digital Marketing",
+    "Ideation & Scripting",
+    "Website Development"
   ];
 
   const legalLinks = [
@@ -60,7 +62,7 @@ const Footer = () => {
       {/* ═══════════════════════════════════════
           MAIN CONTENT  — matches site container
       ═══════════════════════════════════════ */}
-      <div className="relative z-10 max-w-full mx-auto px-6 md:px-12 lg:px-20 pt-0 pb-0">
+      <div className="relative z-10 max-w-full mx-auto px-6 md:px-12 lg:px-20 pt-10 pb-0">
 
         {/* ── 4-Column grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
@@ -155,7 +157,7 @@ const Footer = () => {
         </div>
 
         {/* ── Copyright + Social bar ── */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-16 pb-8 border-t border-white/10 pt-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-10 pb-8 border-t border-white/10 pt-6">
           <span className="text-xs text-white/40 tracking-wide">
             Copyright © 2026 Diwora. All rights reserved
           </span>

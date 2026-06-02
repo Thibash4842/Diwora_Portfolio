@@ -11,6 +11,7 @@ import HowWeWork from './components/HowWeWork'
 import TestimonialSlider from './components/TestimonialSlider'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
+import Careers from './components/Careers'
 import Advertising from './components/Advertising'
 import AboutUs from './components/AboutUs'
 import './index.css'
@@ -35,12 +36,20 @@ function Home() {
       <Partner />
 
       {/* <FullWidthImage /> */}
-      <section data-theme="light" className="w-full h-[30vh] sm:h-screen bg-white px-6 md:px-12 lg:px-20 py-4">
-        <img
-          src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop"
-          alt="Team workspace"
+      <section
+        data-theme="light"
+        className="w-full h-[30vh] sm:h-screen lg:h-[90vh] bg-white px-6 md:px-12 lg:px-20 py-4"
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover rounded-xl"
-        />
+        >
+          <source src="https://www.pexels.com/download/video/31259707/" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </section>
 
       <About />
@@ -71,6 +80,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/advertising" element={<Advertising />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/careers" element={<Careers />} />
       </Routes>
     </>
   )

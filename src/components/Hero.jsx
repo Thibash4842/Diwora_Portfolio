@@ -18,7 +18,7 @@ const Hero = () => {
 
         {/* Title - Occupies full width, large, bold all-caps */}
         <div className="w-full mb-16 lg:mb-20">
-          <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-bold text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
+          <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-poppins font-bold text-black leading-[1.08] tracking-tight capitalize max-w-5xl">
             LET’S MAKE <br className="block sm:hidden" /> IDEAS<br /> HAPPEN<br className="block sm:hidden" /> WITH <br className="block sm:hidden" /> DIWORA
           </h1>
         </div>

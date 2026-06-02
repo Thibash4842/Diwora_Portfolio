@@ -406,6 +406,10 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} noValidate>
                   <div className="flex flex-col gap-4">
 
+                    <div>
+                      <p className="text-white text-sm mb-2 mt-2">We believe great partnerships start with great conversations. Reach out today and let's turn your vision into reality.</p>
+                    </div>
+
                     {/* Name */}
                     <div ref={(el) => (fieldsRef.current[0] = el)}>
                       <input

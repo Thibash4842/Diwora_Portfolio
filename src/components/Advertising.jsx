@@ -174,7 +174,7 @@ const Advertising = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-[80px] font-medium text-black text-black leading-[1.05] tracking-[-0.02em] uppercase max-w-6xl">
+            <h1 className="text-4xl sm:text-6xl lg:text-[80px] font-poppins font-bold text-black text-black leading-[1.05] tracking-[-0.02em] uppercase max-w-6xl">
               SCALE YOUR REVENUE WITH PERFORMANCE DRIVEN MARKETING
             </h1>
           </motion.div>

@@ -169,7 +169,7 @@ const Navbar = () => {
                 },
             ]
         },
-        { label: 'Careers', href: '#careers' },
+        { label: 'Careers', to: '/careers' },
     ];
 
     // Determine the navbar colors based on state
@@ -378,7 +378,6 @@ const Navbar = () => {
 
                                     {/* Right Column: Vertical Links */}
                                     <div className="w-full lg:w-1/3 flex flex-col gap-4">
-                                        <p className="text-sm font-medium tracking-widest text-gray-400 uppercase mb-4">Explore</p>
                                         {activeLink.subLinks.map((sub, idx) => (
                                             <Link
                                                 key={idx}
@@ -386,7 +385,7 @@ const Navbar = () => {
                                                 onClick={() => setActiveDropdown(null)}
                                                 onMouseEnter={() => setHoveredService(sub.label)}
                                                 className={`group inline-flex items-center text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-light transition-colors duration-300 w-fit ${hoveredService === sub.label
-                                                    ? 'text-white'
+                                                    ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.7)]'
                                                     : 'text-gray-500 hover:text-gray-300'
                                                     }`}
                                             >
@@ -449,7 +448,6 @@ const Navbar = () => {
 
                                             {/* Left: Service list — tap to switch cards */}
                                             <div className="flex flex-col gap-1 sm:w-1/3">
-                                                <p className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-3">Explore</p>
                                                 {link.subLinks.map((sub) => (
                                                     <Link
                                                         key={sub.label}
@@ -537,7 +535,7 @@ const Navbar = () => {
 
                         {/* CTA Button */}
                         <div className="pt-6">
-                            <button className="w-full group relative flex items-center justify-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-3 transition-all duration-300 active:scale-95 overflow-hidden">
+                            <a href="#contact" className="w-full group relative flex items-center justify-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-3 transition-all duration-300 active:scale-95 overflow-hidden">
                                 <span className="absolute right-0 top-0 h-full w-[45px] rounded-full bg-white transition-all duration-700 ease-out group-hover:w-full group-hover:bg-[#1c1c1c]" />
                                 <span className="relative z-10 text-[16px] font-normal tracking-[0.05em] text-white">
                                     Contact
@@ -551,7 +549,7 @@ const Navbar = () => {
                                     <path d="M1 5L11 5" strokeWidth="2" strokeLinecap="round" />
                                     <polyline points="8 1 12 5 8 9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                            </button>
+                            </a>
                         </div>
 
                     </div>
