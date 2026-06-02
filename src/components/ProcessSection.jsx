@@ -359,7 +359,7 @@ const ProcessSection = () => {
       </div>
 
       {/* Header Area */}
-      <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0 relative z-10">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -381,7 +381,7 @@ const ProcessSection = () => {
       </div>
 
       <div className="sticky top-[80px] h-[calc(120vh-80px)] md:h-[130vh] lg:h-[calc(100vh-80px)] w-full flex items-center overflow-hidden z-10">
-        <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-2 xl:gap-2 items-center">
+        <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-2 xl:gap-2 items-center">
 
           {/* Left Column — Step List + Active Description */}
           <div className="col-span-1 lg:col-span-5 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0 relative z-20">
@@ -399,7 +399,7 @@ const ProcessSection = () => {
                       {/* Step title row */}
                       <div className="flex items-start gap-6 lg:gap-8">
                         <h3
-                          className={`text-lg sm:text-xl lg:text-2xl font-bold tracking-[-0.02em] transition-colors duration-500 whitespace-nowrap ${isActive ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.8)]' : 'text-neutral-400'
+                          className={`text-lg sm:text-xl lg:text-2xl font-bold tracking-[-0.02em] transition-colors duration-500 whitespace-nowrap ${isActive ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.7)]' : 'text-neutral-400'
                             }`}
                         >
                           {step.title}
@@ -416,7 +416,7 @@ const ProcessSection = () => {
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                             >
-                              <p className="text-sm text-neutral-400 leading-relaxed max-w-full pt-1 [text-shadow:0_0_10px_rgba(255,255,255,0.8)]">
+                              <p className="text-sm text-neutral-400 leading-relaxed max-w-full pt-1">
                                 {step.description}
                               </p>
                             </motion.div>

@@ -63,7 +63,7 @@ const WhatSetsUsApart = () => {
   return (
     <section
       data-theme="light"
-      className="relative w-full bg-[#f8f9fa] py-24 md:py-14 px-6 sm:px-12 lg:px-20 overflow-hidden font-['Inter',sans-serif]"
+      className="relative w-full bg-[#f8f9fa] py-24 md:py-14 px-6 md:px-12 lg:px-20 overflow-hidden font-['Inter',sans-serif]"
     >
       <div className="max-w-full mx-auto w-full">
 

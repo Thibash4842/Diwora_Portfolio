@@ -165,7 +165,7 @@ const Advertising = () => {
         <FloatingDot className="text-red-400 top-[55%] right-[35%] hidden md:block" delay={1.2} size={6} />
         <FloatingDot className="text-red-500 bottom-[30%] left-[45%] hidden lg:block" delay={0.5} size={5} />
 
-        <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12 w-full flex flex-col justify-center gap-8 lg:gap-10 flex-1">
+        <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col justify-center gap-8 lg:gap-10 flex-1">
 
           {/* ─── Hero Heading ─── */}
           <motion.div
@@ -269,7 +269,7 @@ const Advertising = () => {
 
       {/* ─── Why choose us ─── */}
       <section className="relative z-10 py-12 sm:py-16 lg:py-10">
-        <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
           {/* Section Header */}
           <div className="flex flex-col items-start gap-2 sm:gap-3 mb-10 sm:mb-12 lg:mb-16">
             <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
@@ -346,7 +346,7 @@ const Advertising = () => {
 
       {/* ─── Performance Dashboard ─── */}
       <section ref={dashboardRef} className="relative z-10 py-16 sm:py-20 lg:py-6">
-        <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
           {/* Section Title */}
           <motion.h2
             className="text-2xl sm:text-3xl lg:text-4xl font-normal text-black tracking-[-0.02em] mb-8 sm:mb-10 lg:mb-12"

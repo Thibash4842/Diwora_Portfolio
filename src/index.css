@@ -13,6 +13,7 @@ html {
   html,
   body {
     @apply font-sans antialiased;
+
   }
 
   /* Ensure all form elements strictly inherit the global font */

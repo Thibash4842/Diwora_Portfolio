@@ -523,7 +523,7 @@ const ServicesSection = () => {
   return (
     <div ref={sectionRef} className="relative w-full h-[200vh] md:h-[320vh] bg-white font-['Inter',sans-serif] py-14">
       {/* Header Area */}
-      <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0">
         <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
           Services
         </p>
@@ -536,7 +536,7 @@ const ServicesSection = () => {
       </div>
 
       <div className="sticky top-[80px] h-[calc(120vh-80px)] md:h-[130vh] lg:h-[calc(100vh-80px)]  w-full flex items-center overflow-hidden">
-        <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-center">
+        <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-center">
 
           {/* Left Column: Headers & Card Navigation */}
           <div className="col-span-1 lg:col-span-5 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0">

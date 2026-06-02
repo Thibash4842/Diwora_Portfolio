@@ -58,7 +58,7 @@ const CountUp = ({ end, duration = 2000 }) => {
 const About = () => {
     return (
         <section id="about" data-theme="light" className="w-full bg-white py-14 border-t border-neutral-100/60">
-            <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
                 <div className="grid grid-cols-1 lg:grid-cols-10 gap-12 lg:gap-16 items-start">
 
                     {/* Left Column - About Label and Vision Card */}

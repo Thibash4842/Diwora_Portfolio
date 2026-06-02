@@ -112,7 +112,7 @@ const MarketplaceSection = () => {
     >
 
       {/* Header Area */}
-      <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12 w-full flex flex-col gap-3 mb-8 md:mb-12 pt-4 md:pt-0 relative z-10">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col gap-3 mb-8 md:mb-12 pt-4 md:pt-0 relative z-10">
         <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-medium text-black tracking-[-0.03em] leading-tight max-w-xl">
           Marketplace Management
         </h2>
@@ -123,7 +123,7 @@ const MarketplaceSection = () => {
 
       {/* Sticky Container */}
       <div className="sticky top-[80px] h-[calc(140vh-80px)] md:h-[150vh] lg:h-[calc(100vh-80px)] w-full flex items-center overflow-hidden z-10">
-        <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12 w-full h-full relative flex items-center">
+        <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full h-full relative flex items-center">
 
           {/* Background Layer: Animated SVG Lines & GlowDots */}
           <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">

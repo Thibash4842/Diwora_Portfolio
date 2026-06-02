@@ -76,7 +76,7 @@ const TestimonialSlider = () => {
       <div className="absolute right-0 top-0 bottom-0 w-8 md:w-20 lg:w-32 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none z-10 backdrop-blur-[1px]"></div>
 
       {/* Header Container */}
-      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-10 mb-16">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 mb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
             <h2 className="text-4xl md:text-5xl lg:text-[40px] font-normal tracking-tight text-black leading-[1.15]">
@@ -84,7 +84,7 @@ const TestimonialSlider = () => {
             </h2>
           </div>
           <div className="md:max-w-xs text-left md:text-right">
-            <p className="text-[15px] text-neutral-800 font-normal leading-relaxed">
+            <p className="text-[15px] text-gray-600 font-normal leading-relaxed">
               How clients describe the work and the process.
             </p>
           </div>
@@ -131,13 +131,13 @@ const TestimonialSlider = () => {
           >
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial.id} className="h-auto py-4">
-                <div className="h-full flex flex-col justify-between bg-white border border-[#f1f1f4] rounded-2xl p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.015)] transition-all duration-300 ease-out hover:scale-[1.015] hover:shadow-[0_15px_40px_rgba(0,0,0,0.035)]">
+                <div className="h-full flex flex-col justify-between bg-white border border-gray-100 rounded-2xl p-8 md:p-10 shadow-sm transition-all duration-300 ease-out hover:scale-[1.015] hover:shadow-md">
                   <div>
                     {/* Star Rating */}
                     <StarRating rating={testimonial.rating} />
 
                     {/* Testimonial Text */}
-                    <p className="text-neutral-700 text-[15px] md:text-[16px] font-normal leading-relaxed mb-10">
+                    <p className="text-gray-600 text-[15px] md:text-[16px] font-normal leading-relaxed mb-10">
                       {testimonial.text}
                     </p>
                   </div>
@@ -147,13 +147,13 @@ const TestimonialSlider = () => {
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border border-neutral-100"
+                      className="w-12 h-12 rounded-full object-cover border border-gray-100"
                     />
                     <div>
                       <h4 className="text-base font-semibold text-black leading-tight">
                         {testimonial.name}
                       </h4>
-                      <p className="text-sm text-neutral-400 font-medium mt-0.5">
+                      <p className="text-sm text-gray-600 font-medium mt-0.5">
                         {testimonial.role}
                       </p>
                     </div>

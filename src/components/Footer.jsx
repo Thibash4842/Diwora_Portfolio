@@ -1,5 +1,5 @@
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
-import logo from '../assets/Dlogo-white.png';
+import logo from '../assets/Dlogo-white-footer.png';
 
 /* ─── Flip-link animation ─── */
 const FlipLink = ({ children, href, className = '' }) => (
@@ -60,7 +60,7 @@ const Footer = () => {
       {/* ═══════════════════════════════════════
           MAIN CONTENT  — matches site container
       ═══════════════════════════════════════ */}
-      <div className="relative z-10 max-w-full mx-auto px-5 sm:px-8 lg:px-12 pt-0 pb-0">
+      <div className="relative z-10 max-w-full mx-auto px-6 md:px-12 lg:px-20 pt-0 pb-0">
 
         {/* ── 4-Column grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
@@ -175,12 +175,12 @@ const Footer = () => {
       </div>
 
       {/* ── Divider ── */}
-      <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
         <div className="h-px bg-white/10" />
       </div>
 
       {/* ── Footer Logo ── */}
-      <div className="max-w-full mx-auto px-5 sm:px-8 lg:px-12 pb-4">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 pb-4">
         <img
           src={logo}
           alt="Diwora"

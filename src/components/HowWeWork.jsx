@@ -268,9 +268,9 @@ const HowWeWork = () => {
     const ctx = gsap.context(() => {
       // 1. Initial State Setup
       gsap.set(cards[0], { opacity: 1, scale: 1, y: 0, x: 0, rotation: 0, zIndex: 40 });
-      gsap.set(cards[1], { opacity: 1, scale: 0.9, y: 800, x: 40, rotation: 10, zIndex: 50 });
-      gsap.set(cards[2], { opacity: 1, scale: 0.9, y: 800, x: -40, rotation: -10, zIndex: 60 });
-      gsap.set(cards[3], { opacity: 1, scale: 0.9, y: 800, x: 40, rotation: 10, zIndex: 70 });
+      gsap.set(cards[1], { opacity: 1, scale: 0.9, y: 800, x: 0, rotation: 10, zIndex: 50 });
+      gsap.set(cards[2], { opacity: 1, scale: 0.9, y: 800, x: 0, rotation: -10, zIndex: 60 });
+      gsap.set(cards[3], { opacity: 1, scale: 0.9, y: 800, x: 0, rotation: 10, zIndex: 70 });
 
       // Timeline indicator initial states
       gsap.set(textItems[0], { opacity: 1 });
@@ -347,7 +347,7 @@ const HowWeWork = () => {
     >
       <div
         ref={stickyRef}
-        className="w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-6 sm:px-12 lg:px-20"
+        className="w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-6 md:px-12 lg:px-20"
       >
         <div className="max-w-full mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center font-sans">
 
@@ -409,8 +409,8 @@ const HowWeWork = () => {
             </div>
           </div>
 
-          {/* Right Column — Cards Stack (overflow-hidden removed to allow fanning out) */}
-          <div className="col-span-1 lg:col-span-7 relative flex items-center justify-center h-[400px] md:h-[480px] lg:h-[500px] w-full">
+          {/* Right Column — Cards Stack */}
+          <div className="col-span-1 lg:col-span-7 relative flex items-center justify-center h-[400px] md:h-[480px] lg:h-[500px] w-full overflow-hidden">
             <div className="relative w-full max-w-[460px] h-[360px] md:h-[440px] flex items-center justify-center">
               {STEPS.map((step, index) => (
                 <div

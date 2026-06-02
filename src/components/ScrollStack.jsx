@@ -104,7 +104,7 @@ const ScrollStack = () => {
 
   return (
     <section ref={containerRef} className="w-full bg-white pt-10 md:pt-16 pb-10 md:pb-16 relative">
-      <div className="w-full max-w-full mx-auto px-6 sm:px-8 lg:px-12 mb-16 text-center md:text-left z-10 relative">
+      <div className="w-full max-w-full mx-auto px-6 md:px-12 lg:px-20 mb-16 text-center md:text-left z-10 relative">
         <h2 className="text-4xl font-normal text-black mb-4">What We Do</h2>
       </div>
 
@@ -138,7 +138,7 @@ const ScrollStack = () => {
               <div className={`w-full h-[1px] my-8 md:my-12 ${isDark ? 'bg-zinc-800' : 'bg-black'}`}></div>
 
               {/* Bottom Section */}
-              <div className="flex flex-col lg:flex-row gap-8 px-8 md:px-12 lg:px-20 items-start justify-between w-full">
+              <div className="flex flex-col lg:flex-row gap-8 px-6 md:px-12 lg:px-20 items-start justify-between w-full">
                 {/* Approach label */}
                 <div className="w-full lg:w-1/5">
                   <span className={`text-lg md:text-xl font-medium ${isDark ? 'text-white' : 'text-black'}`}>{card.label}</span>

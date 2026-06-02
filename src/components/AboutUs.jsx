@@ -75,7 +75,7 @@ const AboutUs = () => {
         ))}
 
         {/* Hero Content Container - Matches Hero.jsx exact structure */}
-        <div className="relative z-10 max-w-full mx-auto px-6 sm:px-8 lg:px-12 w-full flex flex-col justify-center min-h-[calc(100vh-140px)]">
+        <div className="relative z-10 max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col justify-center min-h-[calc(100vh-140px)]">
 
           {/* Title - Occupies full width, large, bold all-caps */}
           <motion.div
@@ -112,7 +112,7 @@ const AboutUs = () => {
       {/* Founder Story Section */}
       <section
         data-theme="light"
-        className="relative w-full bg-[#ffffff] py-14 md:py-12 px-6 sm:px-12 lg:px-20 overflow-hidden"
+        className="relative w-full bg-[#ffffff] py-14 md:py-12 px-6 md:px-12 lg:px-20 overflow-hidden"
       >
         <div className="max-w-full mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
