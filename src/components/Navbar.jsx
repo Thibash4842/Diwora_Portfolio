@@ -228,7 +228,7 @@ const Navbar = () => {
                                             onMouseEnter={() => handleMouseEnter(link.label)}
                                         >
                                             <button
-                                                className={`relative group overflow-hidden inline-flex items-center gap-1 pb-1 transition-colors duration-300 text-sm font-medium ${navTextColor}`}
+                                                className={`relative group overflow-hidden inline-flex items-center gap-1 pb-1 transition-all duration-300 text-sm font-medium ${navTextColor} hover:text-red-600`}
                                                 aria-expanded={activeDropdown === link.label}
                                                 aria-haspopup="true"
                                             >
@@ -244,7 +244,7 @@ const Navbar = () => {
                                         /* ─── Regular Nav Link (React Router) ─── */
                                         <Link
                                             to={link.to}
-                                            className={`relative group overflow-hidden inline-flex pb-1 px-2 transition-colors duration-300 text-sm font-medium ${navTextColor}`}
+                                            className={`relative group overflow-hidden inline-flex pb-1 px-2 transition-all duration-300 text-sm font-medium ${navTextColor} hover:text-red-600`}
                                             aria-label={link.label}
                                             onMouseEnter={() => handleMouseEnter(null)}
                                         >
@@ -259,7 +259,7 @@ const Navbar = () => {
                                         /* ─── Regular Nav Link (Anchor) ─── */
                                         <a
                                             href={link.href}
-                                            className={`relative group overflow-hidden inline-flex pb-1 px-2 transition-colors duration-300 text-sm font-medium ${navTextColor}`}
+                                            className={`relative group overflow-hidden inline-flex pb-1 px-2 transition-all duration-300 text-sm font-medium ${navTextColor} hover:text-red-600`}
                                             aria-label={link.label}
                                             onMouseEnter={() => handleMouseEnter(null)}
                                         >
@@ -384,9 +384,9 @@ const Navbar = () => {
                                                 to={sub.to}
                                                 onClick={() => setActiveDropdown(null)}
                                                 onMouseEnter={() => setHoveredService(sub.label)}
-                                                className={`group inline-flex items-center text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-light transition-colors duration-300 w-fit ${hoveredService === sub.label
+                                                className={`group inline-flex items-center text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-light transition-all duration-300 w-fit ${hoveredService === sub.label
                                                     ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.7)]'
-                                                    : 'text-gray-500 hover:text-gray-300'
+                                                    : 'text-gray-500 hover:text-red-600'
                                                     }`}
                                             >
                                                 <span className="relative overflow-hidden inline-block pb-0">
@@ -426,7 +426,7 @@ const Navbar = () => {
                                             setIsMobileServicesOpen(opening);
                                             if (opening) setHoveredService('Advertising');
                                         }}
-                                        className="w-full flex items-center justify-between py-3 text-white font-medium text-base tracking-wide transition-colors duration-300 hover:text-gray-300 border-b border-white/5"
+                                        className="w-full flex items-center justify-between py-3 text-white font-medium text-base tracking-wide transition-all duration-300 active:text-red-600 border-b border-white/5"
                                     >
                                         {link.label}
                                         <svg
@@ -458,9 +458,9 @@ const Navbar = () => {
                                                             setIsMobileMenuOpen(false);
                                                             setIsMobileServicesOpen(false);
                                                         }}
-                                                        className={`block py-1.5 text-base font-light transition-colors duration-300 ${hoveredService === sub.label
+                                                        className={`block py-1.5 text-base font-light transition-all duration-300 ${hoveredService === sub.label
                                                             ? 'text-white'
-                                                            : 'text-gray-500 hover:text-gray-300'
+                                                            : 'text-gray-500 active:text-red-600'
                                                             }`}
                                                     >
                                                         {sub.label}
@@ -516,7 +516,7 @@ const Navbar = () => {
                                     key={link.label}
                                     to={link.to}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="py-3 text-white font-medium text-base tracking-wide hover:text-gray-300 transition-colors duration-300 border-b border-white/5"
+                                    className="py-3 text-white font-medium text-base tracking-wide active:text-red-600 transition-all duration-300 border-b border-white/5"
                                 >
                                     {link.label}
                                 </Link>
@@ -526,7 +526,7 @@ const Navbar = () => {
                                     key={link.label}
                                     href={link.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="py-3 text-white font-medium text-base tracking-wide hover:text-gray-300 transition-colors duration-300 border-b border-white/5"
+                                    className="py-3 text-white font-medium text-base tracking-wide active:text-red-600 transition-all duration-300 border-b border-white/5"
                                 >
                                     {link.label}
                                 </a>

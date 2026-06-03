@@ -289,7 +289,7 @@ const MarketplaceSection = () => {
                     >
                       <h3
                         className={`text-2xl sm:text-3xl lg:text-[32px] transition-all duration-500 ease-out whitespace-nowrap ${isActive
-                          ? 'text-neutral-500 font-normal translate-x-2 lg:translate-x-4'
+                          ? 'text-neutral-900 font-normal translate-x-2 lg:translate-x-4'
                           : 'text-neutral-400 font-light hover:text-neutral-500'
                           }`}
                         style={{

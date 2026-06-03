@@ -17,9 +17,9 @@ const Hero = () => {
       <div className="relative z-10 max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col justify-center min-h-[calc(100vh-140px)]">
 
         {/* Title - Occupies full width, large, bold all-caps */}
-        <div className="w-full mb-16 lg:mb-20">
+        <div className="w-full mb-10 lg:mb-20">
           <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-poppins font-bold text-black leading-[1.08] tracking-tight capitalize max-w-5xl">
-            LET’S MAKE <br className="block sm:hidden" /> IDEAS<br /> HAPPEN<br className="block sm:hidden" /> WITH <br className="block sm:hidden" /> DIWORA
+            LET’S MAKE <br className="block sm:hidden" /> IDEAS<br /> HAPPEN<br className="block sm:hidden" /> WITH <br className="block sm:hidden" /> <span className="text-red-600">DIWORA</span>
           </h1>
         </div>
 
@@ -31,12 +31,12 @@ const Hero = () => {
             {/* <!-- From Uiverse.io by nathAd17 --> */}
             <button
               type="submit"
-              className="flex justify-center gap-2 items-center shadow-xl text-md bg-red-600 hover:bg-black text-white backdrop-blur-md lg:font-normal isolation-auto border border-gray-200 relative z-10 px-4 py-2 overflow-hidden rounded-full group transition-all duration-500"
+              className="flex justify-center gap-1 sm:gap-2 items-center shadow-xl text-sm sm:text-md bg-red-600 hover:bg-black text-white backdrop-blur-md lg:font-normal isolation-auto border border-gray-200 relative z-10 px-3 py-2 sm:px-4 sm:py-2 overflow-hidden rounded-full group transition-all duration-500"
             >
               Inquire Now
 
               <svg
-                className="w-8 h-8 justify-end rounded-full bg-black text-white group-hover:bg-white group-hover:text-black ease-linear duration-300 p-2 rotate-45 group-hover:rotate-90"
+                className="w-6 h-6 md:w-8 md:h-8 justify-end rounded-full bg-black text-white group-hover:bg-white group-hover:text-black ease-linear duration-300 p-1.5 md:p-2 rotate-45 group-hover:rotate-90"
                 viewBox="0 0 16 19"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -47,30 +47,30 @@ const Hero = () => {
               </svg>
             </button>
 
-            <button className="relative flex items-center gap-1 px-8 py-2.5 rounded-full font-normal text-md text-black bg-white shadow-[0_0_0_2px_black] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white hover:rounded-full hover:shadow-[0_0_0_12px_transparent] active:scale-95 active:shadow-[0_0_0_4px_black] group">
+            <button className="relative flex items-center gap-1 px-5 py-2 sm:px-8 sm:py-3 rounded-full font-normal text-sm sm:text-md text-black bg-white shadow-[0_0_0_2px_black] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white hover:rounded-full hover:shadow-[0_0_0_12px_transparent] active:scale-95 active:shadow-[0_0_0_4px_black] group">
 
               {/* Left Arrow */}
               <svg
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute w-6 fill-black left-[-25%] z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                className="absolute w-4 sm:w-6 fill-black left-[-25%] z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-3 sm:group-hover:left-4 group-hover:fill-white"
               >
                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
               </svg>
 
               {/* Text */}
-              <span className="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3">
+              <span className="relative z-10 -translate-x-2 sm:-translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 sm:group-hover:translate-x-3">
                 View Works
               </span>
 
               {/* Circle Background */}
-              <span className="absolute top-1/2 left-1/2 w-5 h-5 rounded-full bg-black opacity-0 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+              <span className="absolute top-1/2 left-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-black opacity-0 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[180px] sm:group-hover:w-[220px] group-hover:h-[180px] sm:group-hover:h-[220px] group-hover:opacity-100"></span>
 
               {/* Right Arrow */}
               <svg
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute w-6 fill-black right-4 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                className="absolute w-4 sm:w-6 fill-black right-3 sm:right-4 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
               >
                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
               </svg>

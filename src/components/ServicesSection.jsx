@@ -580,8 +580,22 @@ const ServicesSection = () => {
                             </p>
 
                             {/* CTA Button */}
-                            <button className="px-5 py-2 lg:px-6 lg:py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white font-bold rounded-full transition-all duration-200 active:scale-[0.97] text-[10px] sm:text-[11px] lg:text-xs">
+                            <button
+                              type="submit"
+                              className="flex justify-center gap-1 sm:gap-2 items-center text-sm sm:text-md bg-red-600 hover:bg-black text-white backdrop-blur-md lg:font-normal isolation-auto border border-gray-200 relative z-10 px-3 py-2 sm:px-3 sm:py-1.5 overflow-hidden rounded-full group transition-all duration-500"
+                            >
                               {service.cta}
+
+                              <svg
+                                className="w-6 h-6 justify-end rounded-full bg-black text-white group-hover:bg-white group-hover:text-black ease-linear duration-300 p-1.5 rotate-45 group-hover:rotate-90"
+                                viewBox="0 0 16 19"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
                             </button>
                           </div>
                         </motion.div>
@@ -595,24 +609,41 @@ const ServicesSection = () => {
 
           {/* Right Column: Visual Mockup Showcase Container */}
           <div className="col-span-1 lg:col-span-7 flex justify-center items-center w-full order-1 lg:order-2">
-            <div className="relative w-full h-[260px] sm:h-[360px] lg:h-auto lg:aspect-[4/3] max-w-[720px] rounded-2xl lg:rounded-3xl border border-neutral-100 overflow-hidden shadow-sm flex items-center justify-center bg-white">
+            <div className="relative w-full h-[260px] sm:h-[360px] lg:h-auto lg:aspect-[4/3] max-w-[720px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-sm flex items-center justify-center bg-white">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
                   className="w-full h-full"
                   initial={{
                     opacity: 0,
-                    x: 180,
+                    y: 100,
+                    x: 100,
                     scale: 0.85,
-                    rotateY: 20,
-                    filter: "blur(15px)"
+                    filter: "blur(10px)"
                   }}
                   animate={{
-                    opacity: 1,
-                    x: 0,
-                    scale: 1,
-                    rotateY: 0,
-                    filter: "blur(0px)"
+                    opacity: [0, 1, 1, 1],
+                    y: [100, 40, 40, 0],
+                    x: [100, 100, 0, 0],
+                    scale: [0.85, 0.9, 0.95, 1],
+                    filter: ["blur(10px)", "blur(4px)", "blur(0px)", "blur(0px)"]
+                  }}
+                  exit={{
+                    opacity: [1, 1, 0.5, 0],
+                    y: [0, -40, -40, -100],
+                    x: [0, 0, 100, 100],
+                    scale: [1, 0.95, 0.9, 0.85],
+                    filter: ["blur(0px)", "blur(0px)", "blur(4px)", "blur(10px)"],
+                    transition: {
+                      duration: 0.9,
+                      times: [0, 0.35, 0.7, 1],
+                      ease: "easeInOut"
+                    }
+                  }}
+                  transition={{
+                    duration: 0.9,
+                    times: [0, 0.35, 0.7, 1],
+                    ease: "easeInOut"
                   }}
                 >
                   {renderVisual(activeIndex)}
