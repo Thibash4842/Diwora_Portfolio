@@ -5,15 +5,7 @@ import artboardImg from '../assets/contact/Artboard.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─── Service options ─── */
-const SERVICE_OPTIONS = [
-  'Brand Visual',
-  'Motion & Video',
-  'Content & Digital',
-  'Ideation & Scripting',
-  'Web Design & Development',
-  'Social Media Marketing',
-];
+/* ─── Removed SERVICE_OPTIONS since form fields changed ─── */
 
 /* ─── Floating particle ─── */
 const Particle = ({ style }) => (
@@ -54,9 +46,9 @@ const Contact = () => {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    company: '',
-    service: '',
-    details: '',
+    phone: '',
+    subject: '',
+    message: '',
   });
   const [errors, setErrors] = useState({});
   const [focusedField, setFocusedField] = useState(null);
@@ -66,9 +58,9 @@ const Contact = () => {
   /* ─── Validate ─── */
   const validate = () => {
     const e = {};
-    if (!form.company.trim()) e.company = 'Company name is required';
-    if (!form.service) e.service = 'Please choose a service';
-    if (!form.details.trim()) e.details = 'Project details are required';
+    if (!form.phone.trim()) e.phone = 'Phone number is required';
+    if (!form.subject.trim()) e.subject = 'Subject is required';
+    if (!form.message.trim()) e.message = 'Message is required';
     return e;
   };
 
@@ -396,7 +388,7 @@ const Contact = () => {
                     <p className="text-sm text-white/50">We'll get back to you within 24 hours.</p>
                   </div>
                   <button
-                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', company: '', service: '', details: '' }); }}
+                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', subject: '', message: '' }); }}
                     className="mt-2 text-xs text-white/40 hover:text-white/70 underline underline-offset-4 transition-colors duration-300"
                   >
                     Send another message
@@ -440,74 +432,59 @@ const Contact = () => {
                       />
                     </div>
 
-                    {/* Company Name */}
+                    {/* Phone Number */}
                     <div ref={(el) => (fieldsRef.current[2] = el)}>
                       <input
-                        id="contact-company"
-                        type="text"
-                        placeholder="Company Name"
-                        value={form.company}
-                        onChange={handleChange('company')}
-                        onFocus={() => setFocusedField('company')}
+                        id="contact-phone"
+                        type="tel"
+                        placeholder="Phone Number"
+                        value={form.phone}
+                        onChange={handleChange('phone')}
+                        onFocus={() => setFocusedField('phone')}
                         onBlur={() => setFocusedField(null)}
-                        className={inputBase('company')}
-                        autoComplete="organization"
+                        className={inputBase('phone')}
+                        autoComplete="tel"
                         aria-required="true"
-                        aria-invalid={!!errors.company}
-                        aria-describedby={errors.company ? 'company-error' : undefined}
+                        aria-invalid={!!errors.phone}
+                        aria-describedby={errors.phone ? 'phone-error' : undefined}
                       />
-                      {errors.company && <FieldError msg={errors.company} />}
+                      {errors.phone && <FieldError msg={errors.phone} />}
                     </div>
 
-                    {/* Choose a Service */}
+                    {/* Subject */}
                     <div ref={(el) => (fieldsRef.current[3] = el)}>
-                      <label
-                        htmlFor="contact-service"
-                        className="block text-xs text-white/50 font-semibold uppercase tracking-widest mb-2"
-                      >
-                        Choose a Service <span className="text-red-500">*</span>
-                      </label>
-                      <select
-                        id="contact-service"
-                        value={form.service}
-                        onChange={handleChange('service')}
-                        onFocus={() => setFocusedField('service')}
+                      <input
+                        id="contact-subject"
+                        type="text"
+                        placeholder="Subject"
+                        value={form.subject}
+                        onChange={handleChange('subject')}
+                        onFocus={() => setFocusedField('subject')}
                         onBlur={() => setFocusedField(null)}
-                        className={`${inputBase('service')} contact-select appearance-none cursor-pointer`}
+                        className={inputBase('subject')}
                         aria-required="true"
-                        aria-invalid={!!errors.service}
-                        aria-describedby={errors.service ? 'service-error' : undefined}
-                        style={{
-                          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='rgba(255,255,255,0.4)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
-                          backgroundRepeat: 'no-repeat',
-                          backgroundPosition: 'right 14px center',
-                          paddingRight: '2.5rem',
-                        }}
-                      >
-                        <option value="" disabled>--- Select Choice ---</option>
-                        {SERVICE_OPTIONS.map((s) => (
-                          <option key={s} value={s}>{s}</option>
-                        ))}
-                      </select>
-                      {errors.service && <FieldError msg={errors.service} />}
+                        aria-invalid={!!errors.subject}
+                        aria-describedby={errors.subject ? 'subject-error' : undefined}
+                      />
+                      {errors.subject && <FieldError msg={errors.subject} />}
                     </div>
 
-                    {/* Project Details */}
+                    {/* Message */}
                     <div ref={(el) => (fieldsRef.current[4] = el)}>
                       <textarea
-                        id="contact-details"
-                        placeholder="Enter Project Details"
-                        value={form.details}
-                        onChange={handleChange('details')}
-                        onFocus={() => setFocusedField('details')}
+                        id="contact-message"
+                        placeholder="Message"
+                        value={form.message}
+                        onChange={handleChange('message')}
+                        onFocus={() => setFocusedField('message')}
                         onBlur={() => setFocusedField(null)}
                         rows={4}
-                        className={`${inputBase('details')} resize-none`}
+                        className={`${inputBase('message')} resize-none`}
                         aria-required="true"
-                        aria-invalid={!!errors.details}
-                        aria-describedby={errors.details ? 'details-error' : undefined}
+                        aria-invalid={!!errors.message}
+                        aria-describedby={errors.message ? 'message-error' : undefined}
                       />
-                      {errors.details && <FieldError msg={errors.details} />}
+                      {errors.message && <FieldError msg={errors.message} />}
                     </div>
 
                     {/* Submit button */}

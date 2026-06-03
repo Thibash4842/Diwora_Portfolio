@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -14,6 +14,8 @@ import Contact from './components/Contact'
 import Careers from './components/Careers'
 import Advertising from './components/Advertising'
 import AboutUs from './components/AboutUs'
+import ContactPage from './components/ContactPage'
+import Loader from './components/Loader'
 import './index.css'
 
 /* ─── Scroll To Top Component ─── */
@@ -73,14 +75,18 @@ function Home() {
 
 /* ─── App Router ─── */
 function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <>
+      {loading && <Loader onComplete={() => setLoading(false)} />}
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/advertising" element={<Advertising />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/careers" element={<Careers />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </>
   )

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Navbar from './Navbar';
+import HeroBackground from './HeroBackground';
 import Partner from './Partner';
 import Contact from './Contact';
 import Testimonial from './TestimonialSlider';
@@ -146,25 +147,7 @@ const Advertising = () => {
       {/* ─── Hero Section ─── */}
       <section className="relative z-10 flex flex-col justify-center pt-28 pb-12 sm:pt-32 lg:pt-32 lg:pb-16">
 
-        {/* ─── Subtle Grid Pattern Background ─── */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="adGrid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(0,0,0,0.08)" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#adGrid)" />
-          </svg>
-        </div>
-
-
-        {/* Decorative Dots */}
-        <FloatingDot className="text-red-400 top-28 left-[28%] hidden md:block" delay={0.3} size={7} />
-        <FloatingDot className="text-red-500 top-36 right-[22%] hidden lg:block" delay={0.6} size={5} />
-        <FloatingDot className="text-red-300 top-[45%] left-[15%] hidden lg:block" delay={0.9} size={8} />
-        <FloatingDot className="text-red-400 top-[55%] right-[35%] hidden md:block" delay={1.2} size={6} />
-        <FloatingDot className="text-red-500 bottom-[30%] left-[45%] hidden lg:block" delay={0.5} size={5} />
+        <HeroBackground />
 
         <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col justify-center gap-8 lg:gap-10 flex-1">
 
@@ -175,8 +158,8 @@ const Advertising = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-[80px] font-poppins font-bold text-black text-black leading-[1.05] tracking-[-0.02em] uppercase max-w-6xl">
-              SCALE YOUR REVENUE WITH PERFORMANCE DRIVEN <span className="text-red-600">MARKETING</span>
+            <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-poppins font-bold text-black text-black leading-[1.05] tracking-[-0.02em] uppercase max-w-6xl">
+              SCALE YOUR REVENUE<br className="block sm:hidden" /> WITH<br className="block sm:hidden" /> PERFORMANCE DRIVEN <span className="text-red-600">MARKETING</span>
             </h1>
           </motion.div>
 

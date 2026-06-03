@@ -7,16 +7,10 @@ import founderImg from '../assets/about/About-us.png';
 import CinematicStats from './CinematicStats';
 import WhatSetsUsApart from './WhatSetsUsApart';
 import WhatWeDo from './WhatWeDo';
+import HeroBackground from './HeroBackground';
 
 const AboutUs = () => {
-  // Red dots position matching the reference image layout
-  const redDots = [
-    { left: '31%', top: '4%', delay: 0 },
-    { left: '58%', top: '20%', delay: 0.8 },
-    { left: '82%', top: '43%', delay: 1.6 },
-    { left: '27%', top: '75%', delay: 0.4 },
-    { left: '90%', top: '75%', delay: 1.2 },
-  ];
+
 
   return (
     <div className="relative w-full min-h-screen bg-[#f5f5f7] overflow-x-hidden font-['Inter',sans-serif]">
@@ -28,51 +22,7 @@ const AboutUs = () => {
         data-theme="light"
         className="relative min-h-screen w-full overflow-hidden bg-[#f5f5f7] flex flex-col items-center justify-center pt-28 pb-16 lg:pt-32 lg:pb-8"
       >
-        {/* Subtle Grid Pattern Background */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="aboutHeroGrid" width="80" height="80" patternUnits="userSpaceOnUse">
-                <path
-                  d="M 80 0 L 0 0 0 80"
-                  fill="none"
-                  stroke="rgba(0, 0, 0, 0.08)"
-                  strokeWidth="0.75"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#aboutHeroGrid)" />
-          </svg>
-        </div>
-
-        {/* Pulsing Red Dots on Grid Intersections */}
-        {redDots.map((dot, index) => (
-          <div
-            key={index}
-            className="absolute z-10 pointer-events-none"
-            style={{ left: dot.left, top: dot.top }}
-          >
-            <motion.div
-              className="w-[3px] h-[3px] bg-[#e10022] rounded-sm"
-              initial={{ opacity: 0.3, scale: 0.8 }}
-              animate={{
-                opacity: [0.3, 1, 0.3],
-                scale: [0.9, 1.2, 0.9],
-                boxShadow: [
-                  '0 0 0px rgba(225, 0, 34, 0)',
-                  '0 0 6px rgba(225, 0, 34, 0.9)',
-                  '0 0 0px rgba(225, 0, 34, 0)',
-                ],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: dot.delay,
-                ease: 'easeInOut',
-              }}
-            />
-          </div>
-        ))}
+        <HeroBackground />
 
         {/* Hero Content Container - Matches Hero.jsx exact structure */}
         <div className="relative z-10 max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col justify-center min-h-[calc(100vh-140px)]">
@@ -84,7 +34,7 @@ const AboutUs = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-[80px] font-poppins font-bold text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
+            <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-poppins font-bold text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
               WE MAKE<br />
               BRANDS FEEL<br />
               LIKE <span className="text-[#e10022]">SOMETHING</span>

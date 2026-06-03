@@ -1,24 +1,28 @@
 import React from 'react';
+// import HeroBackground from './HeroBackground';
 
 const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full overflow-hidden bg-white flex flex-col items-center justify-center pt-28 pb-10 lg:pt-32 lg:pb-0"
+      className="relative min-h-screen w-full overflow-hidden bg-black flex flex-col items-center justify-center pt-28 pb-10 lg:pt-32 lg:pb-0"
       data-theme="light"
     >
-      {/* Subtle background gradients for premium depth */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
+      {/* Final image from Loader to create a seamless transition */}
+      <img
+        src="https://cdn.prod.website-files.com/69da551bc91ee431738ed14d/69da551cc91ee431738ed1af_minimalist-architecture-1.avif"
+        alt="Hero Background"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0 opacity-70"
+      />
+
+      {/* <HeroBackground /> */}
 
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col justify-center min-h-[calc(100vh-140px)]">
 
         {/* Title - Occupies full width, large, bold all-caps */}
         <div className="w-full mb-10 lg:mb-20">
-          <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-poppins font-bold text-black leading-[1.08] tracking-tight capitalize max-w-5xl">
+          <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-poppins font-bold text-white leading-[1.08] tracking-tight capitalize max-w-5xl">
             LET’S MAKE <br className="block sm:hidden" /> IDEAS<br /> HAPPEN<br className="block sm:hidden" /> WITH <br className="block sm:hidden" /> <span className="text-red-600">DIWORA</span>
           </h1>
         </div>
@@ -79,10 +83,10 @@ const Hero = () => {
 
           {/* Description on right */}
           <div className="lg:col-span-4 flex flex-col gap-2 max-w-xl lg:ml-auto">
-            <p className="text-[14px] md:text-[15px] text-neutral-500 font-normal leading-relaxed">
+            <p className="text-[14px] md:text-[15px] text-white font-normal leading-relaxed">
               We craft ideas that connect, designs that inspire, and campaigns that perform.
             </p>
-            <p className="text-[14px] md:text-[15px] text-neutral-500 font-normal leading-relaxed">
+            <p className="text-[14px] md:text-[15px] text-white font-normal leading-relaxed">
               From concept to execution, we bring your brand's story to life with impactful visuals and meaningful communication
             </p>
           </div>

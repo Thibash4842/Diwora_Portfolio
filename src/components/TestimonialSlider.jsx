@@ -1,6 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { motion } from 'framer-motion';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -41,6 +42,17 @@ const testimonials = [
   }
 ];
 
+const backgroundAvatars = [
+  { id: 1, img: testimonials[0].image, top: "10%", left: "5%", size: 64, x: [0, 30, 0], y: [0, -40, 0], duration: 15, delay: 0 },
+  { id: 2, img: testimonials[1].image, top: "65%", left: "8%", size: 80, x: [0, -30, 0], y: [0, 40, 0], duration: 18, delay: 2 },
+  { id: 3, img: testimonials[2].image, top: "15%", right: "8%", size: 72, x: [0, -40, 0], y: [0, 30, 0], duration: 20, delay: 1 },
+  { id: 4, img: testimonials[3].image, top: "70%", right: "5%", size: 56, x: [0, 30, 0], y: [0, -40, 0], duration: 16, delay: 3 },
+  { id: 5, img: testimonials[0].image, top: "35%", left: "20%", size: 48, x: [0, 25, 0], y: [0, 35, 0], duration: 14, delay: 4 },
+  { id: 6, img: testimonials[2].image, top: "80%", right: "20%", size: 60, x: [0, -20, 0], y: [0, -30, 0], duration: 17, delay: 5 },
+  { id: 7, img: testimonials[1].image, top: "50%", right: "12%", size: 50, x: [0, 35, 0], y: [0, 20, 0], duration: 19, delay: 1.5 },
+  { id: 8, img: testimonials[3].image, top: "45%", left: "12%", size: 55, x: [0, -25, 0], y: [0, -25, 0], duration: 15, delay: 2.5 },
+];
+
 const StarRating = ({ rating }) => {
   return (
     <div className="flex gap-[5px] mb-5">
@@ -60,6 +72,38 @@ const StarRating = ({ rating }) => {
 const TestimonialSlider = () => {
   return (
     <section className="relative w-full bg-white py-4 overflow-hidden font-sans">
+      {/* Background Floating Avatars */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {backgroundAvatars.map((avatar) => (
+          <motion.div
+            key={avatar.id}
+            className="absolute rounded-full bg-cover bg-center shadow-lg"
+            style={{
+              top: avatar.top,
+              left: avatar.left,
+              right: avatar.right,
+              width: avatar.size,
+              height: avatar.size,
+              backgroundImage: `url(${avatar.img})`,
+              filter: 'blur(3px)',
+              opacity: 0.15,
+            }}
+            animate={{
+              x: avatar.x,
+              y: avatar.y,
+              scale: [1, 1.05, 1],
+              opacity: [0.15, 0.25, 0.15],
+            }}
+            transition={{
+              duration: avatar.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: avatar.delay,
+            }}
+          />
+        ))}
+      </div>
+
 
       {/* Decorative blurred circles */}
       <div className="absolute left-[-2%] top-[55%] -translate-y-1/2 w-[150px] h-[150px] bg-black/15 blur-[60px] rounded-full pointer-events-none z-0"></div>

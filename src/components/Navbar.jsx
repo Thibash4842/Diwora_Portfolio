@@ -277,7 +277,7 @@ const Navbar = () => {
 
                         {/* CTA Button */}
                         <div className="hidden lg:flex items-center h-full" onMouseEnter={() => handleMouseEnter(null)}>
-                            <button className="group relative items-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-2 transition-all duration-300 active:scale-95 overflow-hidden flex">
+                            <Link to="/contact" className="group relative items-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-2 transition-all duration-300 active:scale-95 overflow-hidden flex">
                                 {/* Expanding Background */}
                                 <span className="absolute right-0 top-0 h-full w-[45px] rounded-full bg-white transition-all duration-700 ease-out group-hover:w-full group-hover:bg-[#1c1c1c]"></span>
 
@@ -301,7 +301,7 @@ const Navbar = () => {
                                         strokeLinejoin="round"
                                     />
                                 </svg>
-                            </button>
+                            </Link>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -535,7 +535,7 @@ const Navbar = () => {
 
                         {/* CTA Button */}
                         <div className="pt-6">
-                            <a href="#contact" className="w-full group relative flex items-center justify-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-3 transition-all duration-300 active:scale-95 overflow-hidden">
+                            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="w-full group relative flex items-center justify-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-3 transition-all duration-300 active:scale-95 overflow-hidden">
                                 <span className="absolute right-0 top-0 h-full w-[45px] rounded-full bg-white transition-all duration-700 ease-out group-hover:w-full group-hover:bg-[#1c1c1c]" />
                                 <span className="relative z-10 text-[16px] font-normal tracking-[0.05em] text-white">
                                     Contact
@@ -549,7 +549,7 @@ const Navbar = () => {
                                     <path d="M1 5L11 5" strokeWidth="2" strokeLinecap="round" />
                                     <polyline points="8 1 12 5 8 9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
 
                     </div>
