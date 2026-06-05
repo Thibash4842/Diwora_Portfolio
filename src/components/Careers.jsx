@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import ApplicationModal from './ApplicationModal';
+import useScrollAnimations from '../hooks/useScrollAnimations';
 
 const jobs = [
     {
@@ -25,7 +27,7 @@ const jobs = [
     }
 ];
 
-const AccordionItem = ({ job, isOpen, onClick }) => {
+const AccordionItem = ({ job, isOpen, onClick, onApply }) => {
     const contentRef = useRef(null);
     const [height, setHeight] = useState(0);
 
@@ -66,7 +68,10 @@ const AccordionItem = ({ job, isOpen, onClick }) => {
                     <p className="text-[14px] md:text-[15px] text-neutral-600 leading-relaxed max-w-3xl mb-6 font-normal">
                         {job.description}
                     </p>
-                    <button className="px-6 py-2 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-black transition-colors duration-300 hover:shadow-md">
+                    <button
+                        onClick={(e) => { e.stopPropagation(); onApply(job.title); }}
+                        className="px-6 py-2 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-black transition-colors duration-300 hover:shadow-md"
+                    >
                         Apply Now
                     </button>
                 </div>
@@ -77,35 +82,53 @@ const AccordionItem = ({ job, isOpen, onClick }) => {
 
 const Careers = () => {
     const [openIndex, setOpenIndex] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedJob, setSelectedJob] = useState('');
+    const sectionRef = useRef(null);
+
+    useScrollAnimations(sectionRef);
+
+    const handleApply = (jobTitle) => {
+        setSelectedJob(jobTitle);
+        setIsModalOpen(true);
+    };
 
     return (
-        <div className="relative w-full min-h-screen bg-white font-['Inter',sans-serif]">
+        <div data-theme="light" className="relative w-full min-h-screen bg-white font-['Inter',sans-serif]">
             <Navbar />
-            <section data-theme="light" id="careers" className="w-full bg-white pt-32 pb-20 md:pt-40 md:pb-32">
+            <section ref={sectionRef} id="careers" className="w-full bg-white pt-32 pb-20 md:pt-40 md:pb-32">
                 <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
                     <div className="max-w-5xl">
-                        <h2 className="text-[56px] md:text-7xl lg:text-[80px] font-bold text-black tracking-tight mb-10 md:mb-14">
+                        <h2 className="text-[56px] md:text-7xl lg:text-[80px] font-bold text-black tracking-tight mb-10 md:mb-14" data-animate="fade-up">
                             Careers
                         </h2>
 
-                        <p className="text-[22px] md:text-[28px] lg:text-[32px] text-black font-normal leading-[1.3] md:leading-[1.3] mb-16 md:mb-20 tracking-tight">
+                        <p className="text-[22px] md:text-[28px] lg:text-[32px] text-black font-normal leading-[1.3] md:leading-[1.3] mb-16 md:mb-20 tracking-tight" data-animate="fade-up" data-animate-delay="0.1">
                             Join the clan of diwora and be a part of our family, where your ideas are valued, your creativity is celebrated, we'll continue to craft extraordinary stories that captivate the world.
                         </p>
                     </div>
 
-                    <div className="w-full max-w-full border-t border-neutral-200">
+                    <div className="w-full max-w-full border-t border-neutral-200" data-animate="fade-up" data-animate-stagger="0.15">
                         {jobs.map((job, index) => (
+
                             <AccordionItem
                                 key={index}
                                 job={job}
                                 isOpen={openIndex === index}
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                onApply={handleApply}
                             />
                         ))}
                     </div>
                 </div>
             </section>
             <Footer />
+
+            <ApplicationModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                jobTitle={selectedJob}
+            />
         </div>
     );
 };

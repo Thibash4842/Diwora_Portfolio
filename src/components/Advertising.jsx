@@ -5,10 +5,11 @@ import HeroBackground from './HeroBackground';
 import Partner from './Partner';
 import Contact from './Contact';
 import Testimonial from './TestimonialSlider';
+import useScrollAnimations from '../hooks/useScrollAnimations';
 import Footer from './Footer';
 import ServicesSection from './ServicesSection';
 import ResultsSection from './ResultsSection';
-import ProcessSection from './ProcessSection';
+// import ProcessSection from './ProcessSection';
 import SecondProcessSection from './SecondProcessSection';
 import MarketplaceSection from './MarketplaceSection';
 import datadriven from '../assets/advertising/datadriven.png';
@@ -134,14 +135,17 @@ const DashboardStat = ({ prefix = '', value, suffix = '', label, inView, dark = 
    Main Advertising Landing Page
    ────────────────────────────────────────────── */
 const Advertising = () => {
+  const pageRef = useRef(null);
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, { once: true, margin: '-50px' });
 
   const dashboardRef = useRef(null);
   const dashboardInView = useInView(dashboardRef, { once: true, margin: '-80px' });
 
+  useScrollAnimations(pageRef);
+
   return (
-    <div className="relative w-full min-h-screen bg-white overflow-x-clip font-['Inter',sans-serif]">
+    <div ref={pageRef} className="relative w-full min-h-screen bg-white overflow-x-clip font-['Inter',sans-serif]">
       <Navbar />
 
       {/* ─── Hero Section ─── */}
@@ -255,7 +259,7 @@ const Advertising = () => {
       <section className="relative z-10 py-12 sm:py-16 lg:py-10">
         <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
           {/* Section Header */}
-          <div className="flex flex-col items-start gap-2 sm:gap-3 mb-10 sm:mb-12 lg:mb-16">
+          <div className="flex flex-col items-start gap-2 sm:gap-3 mb-10 sm:mb-12 lg:mb-16" data-animate="fade-up">
             <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
               Why choose us
             </p>
@@ -270,7 +274,7 @@ const Advertising = () => {
           {/* Cards Grid - Fully Responsive */}
           <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch">
             {/* Card 1: Data Driven Strategy */}
-            <article className="flex flex-col h-full rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
+            <article className="flex flex-col h-full rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]" data-animate="zoom-in">
               <div className="inline-flex items-center justify-center rounded-2xl mb-6 h-48 sm:h-56 w-full overflow-hidden">
                 <img src={datadriven} alt="Data Driven Strategy" className="w-full h-full object-cover" />
               </div>
@@ -288,7 +292,7 @@ const Advertising = () => {
             </article>
 
             {/* Card 2: ROI Focused Execution (Featured) */}
-            <article className="flex flex-col h-full rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
+            <article className="flex flex-col h-full rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]" data-animate="zoom-in" data-animate-delay="0.1">
               <div className="inline-flex items-center justify-center rounded-2xl mb-6 h-48 sm:h-56 w-full overflow-hidden">
                 <img src="" alt="ROI Focused Execution" className="w-full h-full object-cover" />
               </div>
@@ -306,7 +310,7 @@ const Advertising = () => {
             </article>
 
             {/* Card 3: Full Funnel Expertise */}
-            <article className="md:col-span-2 lg:col-span-1 xl:col-span-1 flex flex-col h-full rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
+            <article className="md:col-span-2 lg:col-span-1 xl:col-span-1 flex flex-col h-full rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/95 p-6 sm:p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]" data-animate="zoom-in" data-animate-delay="0.2">
               <div className="inline-flex items-center justify-center rounded-2xl mb-6 h-48 sm:h-56 w-full overflow-hidden">
                 <img src={expertise} alt="Full Funnel Expertise" className="w-full h-full object-contain" />
               </div>
@@ -329,7 +333,7 @@ const Advertising = () => {
 
 
       {/* ─── Performance Dashboard ─── */}
-      <section ref={dashboardRef} className="relative z-10 py-16 sm:py-20 lg:py-6">
+      <section ref={dashboardRef} className="relative z-10 py-10 md:py-10 lg:py-6">
         <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
           {/* Section Title */}
           <motion.h2
@@ -373,7 +377,7 @@ const Advertising = () => {
       <ResultsSection />
 
       {/* ─── Process Section ─── */}
-      <ProcessSection />
+      {/* <ProcessSection /> */}
 
       {/* ─── Second Process Section ─── */}
       <SecondProcessSection />

@@ -1,5 +1,7 @@
+import { useRef } from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import logo from '../assets/Dlogo-white-footer.png';
+import useScrollAnimations from '../hooks/useScrollAnimations';
 
 /* ─── Flip-link animation ─── */
 const FlipLink = ({ children, href, className = '' }) => (
@@ -25,6 +27,9 @@ const ColHeading = ({ children }) => (
 
 /* ─── Footer ─── */
 const Footer = () => {
+  const footerRef = useRef(null);
+  useScrollAnimations(footerRef);
+
   const quickLinks = [
     { label: 'About', href: '/about' },
     { label: 'Works', href: '/works' },
@@ -55,6 +60,7 @@ const Footer = () => {
 
   return (
     <footer
+      ref={footerRef}
       data-theme="dark"
       className="relative overflow-hidden bg-[radial-gradient(ellipse_at_center,_#1a0505_0%,_#0d0202_45%,_#050000_55%,_#000000_100%)]"
     >
@@ -65,19 +71,22 @@ const Footer = () => {
       <div className="relative z-10 max-w-full mx-auto px-6 md:px-12 lg:px-20 pt-10 pb-0">
 
         {/* ── 4-Column grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8" data-animate="fade-up" data-animate-stagger="0.12">
 
           {/* ── Col 1: Head Office ── */}
-          <div className="flex flex-col gap-3">
-            <ColHeading>Head Office</ColHeading>
+          <div className="lg:col-span-2 flex flex-col gap-3">
+            <ColHeading><b className="text-white">Head Office</b></ColHeading>
 
             {/* Address */}
             <div className="flex items-start gap-3">
               <FaMapMarkerAlt className="flex-shrink-0 mt-0.5 text-white/40 text-sm" />
               <p className="text-sm text-white/60 leading-relaxed">
-                3rd floor, Abdullah Office Complex,<br />
-                1st Main Rd, Nungambakkam,<br />
-                Chennai – 600034.
+                Door No, Primus Building,<br className="block sm:hidden" />
+                SP–7A, South Phase,<br />
+                Guindy Industrial Estate,<br className="block sm:hidden" />
+                SIDCO Industrial Estate,<br />
+                Guindy, Chennai,<br className="block sm:hidden" />
+                Tamil Nadu 600032
               </p>
             </div>
 
@@ -105,8 +114,8 @@ const Footer = () => {
           </div>
 
           {/* ── Col 2: Navigation ── */}
-          <div>
-            <ColHeading>Navigation</ColHeading>
+          <div className='lg:col-span-1'>
+            <ColHeading><b className="text-white">Navigation</b></ColHeading>
             <ul className="flex flex-col gap-3">
               {quickLinks.map(({ label, href }) => (
                 <li key={label}>
@@ -122,8 +131,8 @@ const Footer = () => {
           </div>
 
           {/* ── Col 3: Services ── */}
-          <div>
-            <ColHeading>Services</ColHeading>
+          <div className='lg:col-span-1'>
+            <ColHeading><b className="text-white">Services</b></ColHeading>
             <ul className="flex flex-col gap-3">
               {services.map((s) => (
                 <li key={s}>
@@ -139,8 +148,8 @@ const Footer = () => {
           </div>
 
           {/* ── Col 4: Legal ── */}
-          <div>
-            <ColHeading>Legal</ColHeading>
+          <div className='lg:col-span-1'>
+            <ColHeading><b className="text-white">Legal</b></ColHeading>
             <ul className="flex flex-col gap-3">
               {legalLinks.map(({ label, href }) => (
                 <li key={label}>
@@ -157,8 +166,8 @@ const Footer = () => {
         </div>
 
         {/* ── Copyright + Social bar ── */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-10 pb-8 border-t border-white/10 pt-6">
-          <span className="text-xs text-white/40 tracking-wide">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-10 pb-8 border-t border-white/10 pt-6" data-animate="fade-up" data-animate-delay="0.3">
+          <span className="text-xs text-white tracking-wide">
             Copyright © 2026 Diwora. All rights reserved
           </span>
 
@@ -167,7 +176,7 @@ const Footer = () => {
               <FlipLink
                 key={label}
                 href={href}
-                className="text-xs font-medium text-white/40 hover:text-white transition-colors duration-300 tracking-wide"
+                className="text-xs font-medium text-white hover:text-white transition-colors duration-300 tracking-wide"
               >
                 {label}
               </FlipLink>
@@ -182,7 +191,7 @@ const Footer = () => {
       </div>
 
       {/* ── Footer Logo ── */}
-      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 pb-4">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 pb-4" data-animate="zoom-in" data-animate-delay="0.4">
         <img
           src={logo}
           alt="Diwora"

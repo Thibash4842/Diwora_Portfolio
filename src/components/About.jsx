@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import useScrollAnimations from '../hooks/useScrollAnimations';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 
-import aboutImg from '../assets/about/About-us.png';
+import aboutImg from '../assets/about/diwora-team.png';
 
 const studioImages = [
     "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200&h=800&fit=crop",
@@ -56,13 +57,16 @@ const CountUp = ({ end, duration = 2000 }) => {
 };
 
 const About = () => {
+    const sectionRef = useRef(null);
+    useScrollAnimations(sectionRef);
+
     return (
-        <section id="about" data-theme="light" className="w-full bg-white py-14 border-t border-neutral-100/60">
+        <section id="about" ref={sectionRef} data-theme="light" className="w-full bg-white py-14 border-t border-neutral-100/60">
             <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
                 <div className="grid grid-cols-1 lg:grid-cols-10 gap-12 lg:gap-16 items-start">
 
                     {/* Left Column - About Label and Vision Card */}
-                    <div className="lg:col-span-3 flex flex-col gap-4 w-full lg:sticky lg:top-20">
+                    <div className="lg:col-span-3 flex flex-col gap-4 w-full lg:sticky lg:top-20" data-animate="fade-left" data-animate-duration="1">
 
                         <span className="text-2xl font-normal text-black tracking-wide">
                             About Diwora
@@ -72,7 +76,7 @@ const About = () => {
                         <div className="flex flex-col bg-[#e3e3e3] p-4 rounded-2xl border border-neutral-100">
 
                             {/* Inner White Box containing Profile Image */}
-                            <div className="bg-white p-5 rounded-2xl border border-neutral-100/80 shadow-[0_4px_25px_rgba(0,0,0,0.01)] mb-6">
+                            <div className="bg-white rounded-2xl border border-neutral-100/80 shadow-[0_4px_25px_rgba(0,0,0,0.01)] mb-6">
                                 <div className="relative w-full aspect-square bg-[#f8f9fa] rounded-xl overflow-hidden flex items-center justify-center">
                                     <img
                                         src={aboutImg}
@@ -101,12 +105,12 @@ const About = () => {
                     <div className="lg:col-span-7 flex flex-col gap-10 w-full">
 
                         {/* Main Large Heading */}
-                        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-normal text-black leading-[1.2] tracking-tight">
+                        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-normal text-black leading-[1.2] tracking-tight" data-animate="fade-right" data-animate-duration="1" data-animate-delay="0.1">
                             We approach every project with clarity combining creative thinking and strategy to build work that truly matters.
                         </h2>
 
                         {/* Two-Column Details Sub-Layout */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start" data-animate="fade-up" data-animate-duration="0.9" data-animate-delay="0.2">
 
                             {/* Column 1: Reviews and Purpose Statement */}
                             <div className="flex flex-col gap-6">
@@ -167,7 +171,7 @@ const About = () => {
                         </div>
 
                         {/* Large Studio Photo Carousel */}
-                        <div className="w-full h-64 sm:h-80 lg:h-[450px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-neutral-100 mt-4 group">
+                        <div className="w-full h-64 sm:h-80 lg:h-[450px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-neutral-100 mt-4 group" data-animate="zoom-in" data-animate-duration="1.1" data-animate-delay="0.15">
                             <Swiper
                                 modules={[Autoplay]}
                                 effect="slide"

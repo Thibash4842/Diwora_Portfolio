@@ -71,7 +71,7 @@ const StarRating = ({ rating }) => {
 
 const TestimonialSlider = () => {
   return (
-    <section className="relative w-full bg-white py-4 overflow-hidden font-sans">
+    <section className="relative w-full bg-white py-4 overflow-hidden">
       {/* Background Floating Avatars */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {backgroundAvatars.map((avatar) => (

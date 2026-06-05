@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import useScrollAnimations from '../hooks/useScrollAnimations';
 
 const MARKETPLACE_ITEMS = [
   {
@@ -59,6 +60,8 @@ const MarketplaceSection = () => {
   const sectionRef = useRef(null);
   const isClickingRef = useRef(false);
 
+  useScrollAnimations(sectionRef);
+
   const totalItems = MARKETPLACE_ITEMS.length;
 
   // Scroll logic to update active tab based on view progress
@@ -112,7 +115,7 @@ const MarketplaceSection = () => {
     >
 
       {/* Header Area */}
-      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col gap-3 mb-8 md:mb-12 pt-4 md:pt-0 relative z-10">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col gap-3 mb-8 md:mb-12 pt-4 md:pt-0 relative z-10" data-animate="fade-up">
         <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-medium text-black tracking-[-0.03em] leading-tight max-w-xl">
           Marketplace Management
         </h2>

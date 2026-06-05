@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import useScrollAnimations from '../hooks/useScrollAnimations';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -234,9 +235,13 @@ const HowWeWork = () => {
   const cardsRef = useRef([]);
   const textItemsRef = useRef([]);
   const dotsRef = useRef([]);
+  // eslint-disable-next-line no-unused-vars
   const [activeIndex, setActiveIndex] = useState(0);
 
+  useScrollAnimations(containerRef);
+
   // Handler to scroll to a specific step on click
+  // eslint-disable-next-line no-unused-vars
   const handleStepClick = (index) => {
     if (!containerRef.current) return;
     const scrollTriggerInstance = ScrollTrigger.getById('howWeWorkTrigger');
@@ -273,11 +278,11 @@ const HowWeWork = () => {
       gsap.set(cards[3], { opacity: 1, scale: 0.9, y: 800, x: 0, rotation: 10, zIndex: 70 });
 
       // Timeline indicator initial states
-      gsap.set(textItems[0], { opacity: 1 });
-      gsap.set(dots[0], { opacity: 1, scale: 1.2, backgroundColor: STEPS[0].themeColor });
+      if (textItems[0]) gsap.set(textItems[0], { opacity: 1 });
+      if (dots[0]) gsap.set(dots[0], { opacity: 1, scale: 1.2, backgroundColor: STEPS[0].themeColor });
       for (let i = 1; i < textItems.length; i++) {
-        gsap.set(textItems[i], { opacity: 0.35 });
-        gsap.set(dots[i], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8' });
+        if (textItems[i]) gsap.set(textItems[i], { opacity: 0.35 });
+        if (dots[i]) gsap.set(dots[i], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8' });
       }
 
       // 2. Timeline Definition with ScrollTrigger Pinned container
@@ -306,33 +311,39 @@ const HowWeWork = () => {
       // 3. Chain Transitions (Dynamic Stacking with rotation and translation)
       // Step 0 -> Step 1: Card 1 slides UP and rotates into place. Card 0 scales down, moves up and rotates back.
       tl.to(cards[0], { scale: 0.95, y: -30, rotation: -4, ease: 'power2.inOut', duration: 1 })
-        .to(cards[1], { y: 0, x: 0, rotation: 0, scale: 1, ease: 'power2.inOut', duration: 1 }, '<')
-        .to(textItems[0], { opacity: 0.35, ease: 'power2.inOut', duration: 0.5 }, '<')
-        .to(dots[0], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8', ease: 'power2.inOut', duration: 0.5 }, '<')
-        .to(textItems[1], { opacity: 1, ease: 'power2.inOut', duration: 0.5 }, '<+=0.5')
-        .to(dots[1], { opacity: 1, scale: 1.2, backgroundColor: STEPS[1].themeColor, ease: 'power2.inOut', duration: 0.5 }, '<')
-        .to({}, { duration: 0.8 }); // Hold screen briefly
+        .to(cards[1], { y: 0, x: 0, rotation: 0, scale: 1, ease: 'power2.inOut', duration: 1 }, '<');
+      
+      if (textItems[0]) tl.to(textItems[0], { opacity: 0.35, ease: 'power2.inOut', duration: 0.5 }, '<');
+      if (dots[0]) tl.to(dots[0], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8', ease: 'power2.inOut', duration: 0.5 }, '<');
+      if (textItems[1]) tl.to(textItems[1], { opacity: 1, ease: 'power2.inOut', duration: 0.5 }, '<+=0.5');
+      if (dots[1]) tl.to(dots[1], { opacity: 1, scale: 1.2, backgroundColor: STEPS[1].themeColor, ease: 'power2.inOut', duration: 0.5 }, '<');
+      
+      tl.to({}, { duration: 0.8 }); // Hold screen briefly
 
       // Step 1 -> Step 2: Card 2 slides UP. Card 1 & 0 get pushed back and rotate.
       tl.to(cards[0], { scale: 0.90, y: -60, rotation: -8, ease: 'power2.inOut', duration: 1 })
         .to(cards[1], { scale: 0.95, y: -30, rotation: 3, ease: 'power2.inOut', duration: 1 }, '<')
-        .to(cards[2], { y: 0, x: 0, rotation: 0, scale: 1, ease: 'power2.inOut', duration: 1 }, '<')
-        .to(textItems[1], { opacity: 0.35, ease: 'power2.inOut', duration: 0.5 }, '<')
-        .to(dots[1], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8', ease: 'power2.inOut', duration: 0.5 }, '<')
-        .to(textItems[2], { opacity: 1, ease: 'power2.inOut', duration: 0.5 }, '<+=0.5')
-        .to(dots[2], { opacity: 1, scale: 1.2, backgroundColor: STEPS[2].themeColor, ease: 'power2.inOut', duration: 0.5 }, '<')
-        .to({}, { duration: 0.8 }); // Hold screen briefly
+        .to(cards[2], { y: 0, x: 0, rotation: 0, scale: 1, ease: 'power2.inOut', duration: 1 }, '<');
+      
+      if (textItems[1]) tl.to(textItems[1], { opacity: 0.35, ease: 'power2.inOut', duration: 0.5 }, '<');
+      if (dots[1]) tl.to(dots[1], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8', ease: 'power2.inOut', duration: 0.5 }, '<');
+      if (textItems[2]) tl.to(textItems[2], { opacity: 1, ease: 'power2.inOut', duration: 0.5 }, '<+=0.5');
+      if (dots[2]) tl.to(dots[2], { opacity: 1, scale: 1.2, backgroundColor: STEPS[2].themeColor, ease: 'power2.inOut', duration: 0.5 }, '<');
+      
+      tl.to({}, { duration: 0.8 }); // Hold screen briefly
 
       // Step 2 -> Step 3: Card 3 slides UP. Cards 2, 1 & 0 get pushed back further and rotate.
       tl.to(cards[0], { scale: 0.85, y: -90, rotation: -12, ease: 'power2.inOut', duration: 1 })
         .to(cards[1], { scale: 0.90, y: -60, rotation: -1, ease: 'power2.inOut', duration: 1 }, '<')
         .to(cards[2], { scale: 0.95, y: -30, rotation: 5, ease: 'power2.inOut', duration: 1 }, '<')
-        .to(cards[3], { y: 0, x: 0, rotation: 0, scale: 1, ease: 'power2.inOut', duration: 1 }, '<')
-        .to(textItems[2], { opacity: 0.35, ease: 'power2.inOut', duration: 0.5 }, '<')
-        .to(dots[2], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8', ease: 'power2.inOut', duration: 0.5 }, '<')
-        .to(textItems[3], { opacity: 1, ease: 'power2.inOut', duration: 0.5 }, '<+=0.5')
-        .to(dots[3], { opacity: 1, scale: 1.2, backgroundColor: STEPS[3].themeColor, ease: 'power2.inOut', duration: 0.5 }, '<')
-        .to({}, { duration: 0.8 }); // Hold screen briefly
+        .to(cards[3], { y: 0, x: 0, rotation: 0, scale: 1, ease: 'power2.inOut', duration: 1 }, '<');
+      
+      if (textItems[2]) tl.to(textItems[2], { opacity: 0.35, ease: 'power2.inOut', duration: 0.5 }, '<');
+      if (dots[2]) tl.to(dots[2], { opacity: 0.3, scale: 1, backgroundColor: '#d4d4d8', ease: 'power2.inOut', duration: 0.5 }, '<');
+      if (textItems[3]) tl.to(textItems[3], { opacity: 1, ease: 'power2.inOut', duration: 0.5 }, '<+=0.5');
+      if (dots[3]) tl.to(dots[3], { opacity: 1, scale: 1.2, backgroundColor: STEPS[3].themeColor, ease: 'power2.inOut', duration: 0.5 }, '<');
+      
+      tl.to({}, { duration: 0.8 }); // Hold screen briefly
 
     }, container);
 
@@ -343,16 +354,16 @@ const HowWeWork = () => {
     <section
       ref={containerRef}
       data-theme="light"
-      className="w-full relative bg-white py-1 md:py-2"
+      className="w-full relative z-30 bg-white py-1 md:py-2"
     >
       <div
         ref={stickyRef}
-        className="w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-6 md:px-12 lg:px-20"
+        className="w-full min-h-screen flex items-center justify-center pt-24 md:pt-28 pb-16 px-6 md:px-12 lg:px-20"
       >
-        <div className="max-w-full mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center font-sans">
+        <div className="max-w-full mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
 
           {/* Left Column — Heading and desktop interactive progress indicators */}
-          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center h-full">
+          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center h-full" data-animate="fade-up">
             <span className="text-xs md:text-sm font-semibold tracking-[0.25em] text-neutral-400 uppercase">
               Our Process
             </span>
@@ -361,7 +372,7 @@ const HowWeWork = () => {
             </h2>
 
             {/* Desktop Timeline list */}
-            <div className="hidden lg:flex flex-col gap-6 mt-12 w-fit">
+            {/* <div className="hidden lg:flex flex-col gap-6 mt-12 w-fit">
               {STEPS.map((step, idx) => (
                 <div
                   key={idx}
@@ -380,10 +391,10 @@ const HowWeWork = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
 
             {/* Mobile Visual Progress Bar */}
-            <div className="lg:hidden flex items-center gap-2 mt-6 max-w-sm">
+            {/* <div className="lg:hidden flex items-center gap-2 mt-6 max-w-sm">
               {STEPS.map((step, idx) => (
                 <div
                   key={idx}
@@ -399,24 +410,24 @@ const HowWeWork = () => {
                   />
                 </div>
               ))}
-            </div>
+            </div> */}
 
             {/* Mobile Current Phase Label */}
-            <div className="lg:hidden mt-2">
+            {/* <div className="lg:hidden mt-2">
               <span className="text-xs font-bold text-black uppercase tracking-wide">
                 Phase {STEPS[activeIndex].number}
               </span>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column — Cards Stack */}
-          <div className="col-span-1 lg:col-span-7 relative flex items-center justify-center h-[400px] md:h-[480px] lg:h-[500px] w-full overflow-hidden">
+          <div className="col-span-1 lg:col-span-7 relative flex items-center justify-center h-[400px] md:h-[480px] lg:h-[500px] w-full">
             <div className="relative w-full max-w-[460px] h-[360px] md:h-[440px] flex items-center justify-center">
               {STEPS.map((step, index) => (
                 <div
                   key={index}
                   ref={(el) => (cardsRef.current[index] = el)}
-                  className="absolute w-full h-full bg-white rounded-[28px] md:rounded-[32px] p-6 md:p-8 shadow-[0_10px_25px_0px_rgba(0,0,0,0.3)] flex flex-col gap-4"
+                  className="absolute w-full h-full bg-white rounded-[28px] md:rounded-[32px] p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.25)] flex flex-col gap-4"
                 >
                   {/* Card Header (01.Understand) */}
                   <h3 className="text-lg md:text-xl font-normal text-black tracking-tight">

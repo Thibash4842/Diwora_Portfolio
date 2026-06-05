@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import useScrollAnimations from './hooks/useScrollAnimations'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
@@ -16,31 +19,46 @@ import Advertising from './components/Advertising'
 import AboutUs from './components/AboutUs'
 import ContactPage from './components/ContactPage'
 import Loader from './components/Loader'
+import CustomCursor from './components/CustomCursor'
 import './index.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 /* ─── Scroll To Top Component ─── */
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Wait for the new page to render before scrolling up
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 10);
+
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return null;
 }
 
 /* ─── Portfolio Home (original layout) ─── */
-function Home() {
+function Home({ heroRef, navRevealed, loading }) {
+  const homeRef = useRef(null);
+  useScrollAnimations(homeRef);
+
   return (
-    <div className="w-full min-h-screen bg-white">
-      <Navbar />
-      <Hero />
+    <div ref={homeRef} className="w-full min-h-screen bg-white">
+      <Navbar revealed={navRevealed} />
+      <Hero ref={heroRef} skipAnimation={!loading} />
       <Partner />
 
       {/* <FullWidthImage /> */}
       <section
         data-theme="light"
         className="w-full h-[30vh] sm:h-screen lg:h-[90vh] bg-white px-6 md:px-12 lg:px-20 py-4"
+        data-animate="zoom-in"
+        data-animate-duration="1.2"
       >
         <video
           autoPlay
@@ -75,14 +93,83 @@ function Home() {
 
 /* ─── App Router ─── */
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => {
+    try {
+      return sessionStorage.getItem('hasVisited') !== 'true';
+    } catch (e) {
+      return true;
+    }
+  });
+  const [navRevealed, setNavRevealed] = useState(() => {
+    try {
+      return sessionStorage.getItem('hasVisited') === 'true';
+    } catch (e) {
+      return false;
+    }
+  });
+  const heroRef = useRef(null);
+
+  // Prevent automatic scroll restoration on load
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    } else {
+      document.body.style.overflow = 'auto';
+
+      const forceScrollTop = () => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      };
+
+      // Perform immediate and delayed scrolls to override any async layout/rendering scroll adjustments
+      forceScrollTop();
+      requestAnimationFrame(forceScrollTop);
+      setTimeout(forceScrollTop, 10);
+      setTimeout(forceScrollTop, 50);
+      setTimeout(forceScrollTop, 100);
+      setTimeout(forceScrollTop, 200);
+
+      // Force ScrollTrigger to recalculate dimensions now that the scrollbar is visible
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+    }
+  }, [loading]);
 
   return (
     <>
-      {loading && <Loader onComplete={() => setLoading(false)} />}
+      <CustomCursor />
+      {loading && <Loader
+        onTransitionStart={() => {
+          // Step 1: Navbar slides in
+          setNavRevealed(true);
+          // Step 2: Hero reveal starts after navbar begins animating
+          setTimeout(() => {
+            if (heroRef.current) heroRef.current.reveal();
+          }, 500);
+        }}
+        onComplete={() => {
+          setLoading(false);
+          try {
+            sessionStorage.setItem('hasVisited', 'true');
+          } catch (e) {
+            // ignore
+          }
+        }}
+      />}
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home heroRef={heroRef} navRevealed={navRevealed} loading={loading} />} />
         <Route path="/advertising" element={<Advertising />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/careers" element={<Careers />} />

@@ -1,10 +1,28 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
 import logoLight from '../assets/logo.png';
 import logoDark from '../assets/Dlogo-white.png';
+import ContactModal from './ContactModal';
 
-const Navbar = () => {
+const Navbar = ({ revealed = true }) => {
+    const navRef = useRef(null);
+    const hasRevealedRef = useRef(false);
+
+    // Animate navbar into view when `revealed` flips to true
+    useEffect(() => {
+        if (revealed && !hasRevealedRef.current && navRef.current) {
+            hasRevealedRef.current = true;
+            gsap.to(navRef.current, {
+                opacity: 1,
+                y: 0,
+                duration: 0.9,
+                ease: 'power3.out',
+            });
+        }
+    }, [revealed]);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [navTheme, setNavTheme] = useState('light');
     const [activeDropdown, setActiveDropdown] = useState(null);
@@ -25,14 +43,40 @@ const Navbar = () => {
 
         // Use Intersection Observer for theme detection
         const themeElements = document.querySelectorAll('[data-theme]');
+        const activeIntersecting = new Set();
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    // When a section intersects our top detection zone, it's behind the navbar
                     if (entry.isIntersecting) {
-                        setNavTheme(entry.target.getAttribute('data-theme'));
+                        activeIntersecting.add(entry.target);
+                    } else {
+                        activeIntersecting.delete(entry.target);
                     }
                 });
+
+                // Filter out any parent elements that contain other intersecting elements
+                const elements = Array.from(activeIntersecting);
+                const leaves = elements.filter((el) => 
+                    !elements.some((other) => other !== el && el.contains(other))
+                );
+
+                if (leaves.length > 0) {
+                    // Find the one closest to the top of the viewport
+                    let activeEl = leaves[0];
+                    let minDistance = Math.abs(activeEl.getBoundingClientRect().top);
+                    for (let i = 1; i < leaves.length; i++) {
+                        const dist = Math.abs(leaves[i].getBoundingClientRect().top);
+                        if (dist < minDistance) {
+                            minDistance = dist;
+                            activeEl = leaves[i];
+                        }
+                    }
+                    const theme = activeEl.getAttribute('data-theme');
+                    setNavTheme(theme);
+                } else {
+                    setNavTheme('light');
+                }
             },
             {
                 // Detection zone: a band starting 40px from top, ending at 90% from bottom (i.e. top 10% of screen)
@@ -189,7 +233,9 @@ const Navbar = () => {
         <>
             {/* Desktop & Tablet Navbar */}
             <nav
+                ref={navRef}
                 className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ease-in-out ${navBgClass}`}
+                style={!hasRevealedRef.current ? { opacity: 0, transform: 'translateY(-100%)' } : undefined}
                 aria-label="Main navigation"
                 onMouseLeave={handleMouseLeave}
             >
@@ -277,7 +323,7 @@ const Navbar = () => {
 
                         {/* CTA Button */}
                         <div className="hidden lg:flex items-center h-full" onMouseEnter={() => handleMouseEnter(null)}>
-                            <Link to="/contact" className="group relative items-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-2 transition-all duration-300 active:scale-95 overflow-hidden flex">
+                            <button onClick={() => setIsContactModalOpen(true)} className="group relative items-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-2 transition-all duration-300 active:scale-95 overflow-hidden flex">
                                 {/* Expanding Background */}
                                 <span className="absolute right-0 top-0 h-full w-[45px] rounded-full bg-white transition-all duration-700 ease-out group-hover:w-full group-hover:bg-[#1c1c1c]"></span>
 
@@ -301,7 +347,7 @@ const Navbar = () => {
                                         strokeLinejoin="round"
                                     />
                                 </svg>
-                            </Link>
+                            </button>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -535,7 +581,7 @@ const Navbar = () => {
 
                         {/* CTA Button */}
                         <div className="pt-6">
-                            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="w-full group relative flex items-center justify-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-3 transition-all duration-300 active:scale-95 overflow-hidden">
+                            <button onClick={() => { setIsContactModalOpen(true); setIsMobileMenuOpen(false); }} className="w-full group relative flex items-center justify-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-3 transition-all duration-300 active:scale-95 overflow-hidden">
                                 <span className="absolute right-0 top-0 h-full w-[45px] rounded-full bg-white transition-all duration-700 ease-out group-hover:w-full group-hover:bg-[#1c1c1c]" />
                                 <span className="relative z-10 text-[16px] font-normal tracking-[0.05em] text-white">
                                     Contact
@@ -549,7 +595,7 @@ const Navbar = () => {
                                     <path d="M1 5L11 5" strokeWidth="2" strokeLinecap="round" />
                                     <polyline points="8 1 12 5 8 9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                            </Link>
+                            </button>
                         </div>
 
                     </div>
@@ -572,6 +618,11 @@ const Navbar = () => {
                     aria-hidden="true"
                 />
             )}
+
+            <ContactModal 
+                isOpen={isContactModalOpen} 
+                onClose={() => setIsContactModalOpen(false)} 
+            />
         </>
     );
 };

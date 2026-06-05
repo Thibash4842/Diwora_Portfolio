@@ -5,7 +5,14 @@ import artboardImg from '../assets/contact/Artboard.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─── Removed SERVICE_OPTIONS since form fields changed ─── */
+const SERVICE_OPTIONS = [
+  'Brand Visual',
+  'Motion & Video',
+  'Content & Digital',
+  'Ideation & Scripting',
+  'Web & Interactive',
+  'Brand Strategy',
+];
 
 /* ─── Floating particle ─── */
 const Particle = ({ style }) => (
@@ -28,7 +35,7 @@ const FieldError = ({ msg }) => (
 /* ═══════════════════════════════════════════
    CONTACT SECTION
 ═══════════════════════════════════════════ */
-const Contact = () => {
+const Contact = ({ inModal = false }) => {
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const subRef = useRef(null);
@@ -46,9 +53,9 @@ const Contact = () => {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    phone: '',
-    subject: '',
-    message: '',
+    company: '',
+    service: '',
+    details: '',
   });
   const [errors, setErrors] = useState({});
   const [focusedField, setFocusedField] = useState(null);
@@ -58,9 +65,10 @@ const Contact = () => {
   /* ─── Validate ─── */
   const validate = () => {
     const e = {};
-    if (!form.phone.trim()) e.phone = 'Phone number is required';
-    if (!form.subject.trim()) e.subject = 'Subject is required';
-    if (!form.message.trim()) e.message = 'Message is required';
+    if (!form.name.trim()) e.name = 'Name is required';
+    if (!form.email.trim()) e.email = 'Mail is required';
+    if (!form.service) e.service = 'Service selection is required';
+    if (!form.details.trim()) e.details = 'Project details are required';
     return e;
   };
 
@@ -127,7 +135,7 @@ const Contact = () => {
 
       /* ── Scroll-triggered entrance ── */
       const tl = gsap.timeline({
-        scrollTrigger: {
+        scrollTrigger: inModal ? undefined : {
           trigger: sectionRef.current,
           start: 'top 75%',
           toggleActions: 'play none none reverse',
@@ -174,11 +182,11 @@ const Contact = () => {
 
   /* ─── Input glow helper ─── */
   const inputBase = (field) =>
-    `w-full rounded-xl px-4 py-3.5 text-sm font-medium text-white placeholder-white/35 outline-none transition-all duration-300 bg-white/[0.05] border ${errors[field]
+    `w-full rounded-xl px-4 py-3.5 text-sm font-medium text-white placeholder-white/70 outline-none transition-all duration-300 bg-[#1a1616] border ${errors[field]
       ? 'border-red-500/70 shadow-[0_0_0_3px_rgba(239,68,68,0.15)]'
       : focusedField === field
         ? 'border-red-500/60 shadow-[0_0_0_3px_rgba(180,20,20,0.25),0_0_20px_rgba(180,20,20,0.15)]'
-        : 'border-white/10 hover:border-white/20'
+        : 'border-[#2a2222] hover:border-[#3a2a2a]'
     }`;
 
   /* ─── Particles data ─── */
@@ -217,7 +225,7 @@ const Contact = () => {
         id="contact"
         ref={sectionRef}
         data-theme="dark"
-        className="relative w-full overflow-hidden py-20 lg:py-18"
+        className="relative w-full overflow-hidden py-4 lg:py-18"
         style={{
           background:
             'radial-gradient(ellipse 80% 60% at 10% 0%, #080000 100%)',
@@ -253,28 +261,64 @@ const Contact = () => {
               </div>
 
               {/* Image + overlaid pills */}
-              <div className="relative flex-1 w-full overflow-hidden bg-[linear-gradient(to_bottom,_#000000_10%,_#3a0000_45%,_#6b0000_100%)]">
+              <div className="relative flex-1 w-full flex flex-col justify-end overflow-hidden bg-[linear-gradient(to_bottom,_#000000_10%,_#3a0000_45%,_#6b0000_100%)] min-h-[260px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-0">
 
                 {/* Artboard image — fills the area */}
                 <img
                   src={artboardImg}
                   alt="Diwora contact visual"
                   draggable={false}
-                  className="w-full h-full object-cover object-center select-none block"
+                  className="w-full h-[240px] sm:h-[400px] md:h-[480px] lg:h-full object-contain object-center select-none block lg:absolute lg:inset-0 lg:object-cover"
                 />
+
+                {/* Inquire Now Floating Overlay Button */}
+                <button
+                  onClick={() => {
+                    const formElement = document.getElementById('contact-name');
+                    if (formElement) {
+                      formElement.focus();
+                      formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                  }}
+                  className="absolute z-20 left-[42%] top-[21%] top-[50%] md:left-[40%] md:top-[34%] flex items-center justify-center rounded-full border border-white/10 px-2 py-1 md:px-5 md:py-2 text-white text-[10px] md:text-[14px] shadow-[0_20px_50px_rgba(0,0,0,0.55),0_0_30px_rgba(220,38,38,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 hover:shadow-[0_25px_60px_rgba(0,0,0,0.65),0_0_45px_rgba(220,38,38,0.3)] cursor-pointer"
+                  style={{
+                    background:
+                      'linear-gradient(to bottom, #000000 0%, #120305 20%, rgba(50, 0, 5, 1) 100%)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
+
+                    boxShadow: `
+                      -10px 60px 120px 10px rgba(0,0,0,0.5),
+                      -10px 30px 60px 10px rgba(50,0,5,0.35),
+                      -10px 10px 20px 10px rgba(0,0,0,0.5)
+                    `,
+
+                    border: '1px solid rgba(255,255,255,0.08)',
+
+                    // left: '40%',
+                    // top: '34%',
+
+                    transform:
+                      'translate(-50%, -50%) perspective(200px) rotateX(0deg) rotateY(10deg) rotateZ(-18deg)',
+
+                    transformStyle: 'preserve-3d',
+                  }}
+                >
+                  Inquire Now
+                </button>
 
                 {/* Gradient scrim so pills stay legible over the image */}
                 <div
-                  className="absolute inset-x-0 bottom-0 pointer-events-none"
+                  className="absolute inset-x-0 bottom-0 pointer-events-none hidden lg:block"
                   style={{
-                    height: '45%',
+                    height: '55%',
                     background:
                       'linear-gradient(to top, rgba(8,0,0,0.82) 0%, rgba(8,0,0,0.45) 55%, transparent 100%)',
                   }}
                 />
 
                 {/* Pills — absolutely over the bottom of the image */}
-                <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col sm:flex-row gap-2.5 px-4 pb-4">
+                <div className="relative lg:absolute inset-x-0 bottom-10 z-10 flex flex-col sm:flex-row gap-2.5 px-4 pb-0 pt-2 lg:pt-0 mt-auto">
                   {/* Email pill */}
                   <a
                     ref={(el) => (pillsRef.current[0] = el)}
@@ -388,7 +432,7 @@ const Contact = () => {
                     <p className="text-sm text-white/50">We'll get back to you within 24 hours.</p>
                   </div>
                   <button
-                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', subject: '', message: '' }); }}
+                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', company: '', service: '', details: '' }); }}
                     className="mt-2 text-xs text-white/40 hover:text-white/70 underline underline-offset-4 transition-colors duration-300"
                   >
                     Send another message
@@ -399,7 +443,7 @@ const Contact = () => {
                   <div className="flex flex-col gap-4">
 
                     <div>
-                      <p className="text-white text-sm mb-2 mt-2">We believe great partnerships start with great conversations. Reach out today and let's turn your vision into reality.</p>
+                      <p className="text-white text-sm mb-4 mt-2">We believe great partnerships start with great conversations. Reach out today and let's turn your vision into reality.</p>
                     </div>
 
                     {/* Name */}
@@ -432,59 +476,61 @@ const Contact = () => {
                       />
                     </div>
 
-                    {/* Phone Number */}
+                    {/* Company Name */}
                     <div ref={(el) => (fieldsRef.current[2] = el)}>
                       <input
-                        id="contact-phone"
-                        type="tel"
-                        placeholder="Phone Number"
-                        value={form.phone}
-                        onChange={handleChange('phone')}
-                        onFocus={() => setFocusedField('phone')}
-                        onBlur={() => setFocusedField(null)}
-                        className={inputBase('phone')}
-                        autoComplete="tel"
-                        aria-required="true"
-                        aria-invalid={!!errors.phone}
-                        aria-describedby={errors.phone ? 'phone-error' : undefined}
-                      />
-                      {errors.phone && <FieldError msg={errors.phone} />}
-                    </div>
-
-                    {/* Subject */}
-                    <div ref={(el) => (fieldsRef.current[3] = el)}>
-                      <input
-                        id="contact-subject"
+                        id="contact-company"
                         type="text"
-                        placeholder="Subject"
-                        value={form.subject}
-                        onChange={handleChange('subject')}
-                        onFocus={() => setFocusedField('subject')}
+                        placeholder="Company Name"
+                        value={form.company}
+                        onChange={handleChange('company')}
+                        onFocus={() => setFocusedField('company')}
                         onBlur={() => setFocusedField(null)}
-                        className={inputBase('subject')}
-                        aria-required="true"
-                        aria-invalid={!!errors.subject}
-                        aria-describedby={errors.subject ? 'subject-error' : undefined}
+                        className={inputBase('company')}
+                        autoComplete="organization"
                       />
-                      {errors.subject && <FieldError msg={errors.subject} />}
                     </div>
 
-                    {/* Message */}
+                    {/* Choose a Service */}
+                    <div ref={(el) => (fieldsRef.current[3] = el)} className="flex flex-col gap-2">
+                      <label htmlFor="contact-service" className="text-white text-[15px] font-medium tracking-wide">
+                        Choose a Service *
+                      </label>
+                      <select
+                        id="contact-service"
+                        value={form.service}
+                        onChange={handleChange('service')}
+                        onFocus={() => setFocusedField('service')}
+                        onBlur={() => setFocusedField(null)}
+                        className={`${inputBase('service')} contact-select appearance-none cursor-pointer`}
+                        aria-required="true"
+                        aria-invalid={!!errors.service}
+                        aria-describedby={errors.service ? 'service-error' : undefined}
+                      >
+                        <option value="" disabled>--- Select Choice ---</option>
+                        {SERVICE_OPTIONS.map((opt) => (
+                          <option key={opt} value={opt}>{opt}</option>
+                        ))}
+                      </select>
+                      {errors.service && <FieldError msg={errors.service} />}
+                    </div>
+
+                    {/* Project Details */}
                     <div ref={(el) => (fieldsRef.current[4] = el)}>
                       <textarea
-                        id="contact-message"
-                        placeholder="Message"
-                        value={form.message}
-                        onChange={handleChange('message')}
-                        onFocus={() => setFocusedField('message')}
+                        id="contact-details"
+                        placeholder="Enter Project Details"
+                        value={form.details}
+                        onChange={handleChange('details')}
+                        onFocus={() => setFocusedField('details')}
                         onBlur={() => setFocusedField(null)}
                         rows={4}
-                        className={`${inputBase('message')} resize-none`}
+                        className={`${inputBase('details')} resize-none`}
                         aria-required="true"
-                        aria-invalid={!!errors.message}
-                        aria-describedby={errors.message ? 'message-error' : undefined}
+                        aria-invalid={!!errors.details}
+                        aria-describedby={errors.details ? 'details-error' : undefined}
                       />
-                      {errors.message && <FieldError msg={errors.message} />}
+                      {errors.details && <FieldError msg={errors.details} />}
                     </div>
 
                     {/* Submit button */}

@@ -94,15 +94,12 @@ const CinematicStats = () => {
 
         {/* Constrained Description Area */}
         <motion.div
-          className="max-w-[640px] text-xs sm:text-[14px] md:text-[15px] text-white/70 leading-relaxed font-normal mb-16 sm:mb-20 space-y-2.5"
+          className="max-w-[650px] text-sm text-white/70 leading-relaxed font-normal mb-16 sm:mb-20 space-y-2.5"
           variants={itemVariants}
         >
-          <p>We live in an era of relentless visual noise.</p>
-          <p>Brands that cut through aren't louder they're clearer.</p>
-          <p>They know what they're saying, and they find the exact image, frame, and story to say it.</p>
-          <p>That's what we help with.</p>
-          <p>Not content for content's sake.</p>
-          <p>Work that holds attention because it deserves to.</p>
+          <p className='text-md md:text-lg text-white'>In a world full of visual noise, clarity is what stands out.
+            <br />We create visuals and stories that earn attention, not chase it.
+          </p>
         </motion.div>
 
         {/* Horizontal Stats Row */}

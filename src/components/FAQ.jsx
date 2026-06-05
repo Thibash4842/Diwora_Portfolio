@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import useScrollAnimations from '../hooks/useScrollAnimations';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +33,8 @@ const FAQ = () => {
   const [openId, setOpenId] = useState(null);
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
+
+  useScrollAnimations(containerRef);
 
   const toggleAccordion = (id) => {
     setOpenId(openId === id ? null : id);
@@ -73,7 +76,7 @@ const FAQ = () => {
       <div className="max-w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8">
 
         {/* Left Column */}
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start" data-animate="fade-up">
           <div className="flex items-center gap-2 mb-6">
             <span className="w-2 h-2 rounded-full bg-black"></span>
             <span className="text-sm font-semibold uppercase tracking-wider text-black">FAQs</span>

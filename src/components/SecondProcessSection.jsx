@@ -78,7 +78,7 @@ const AuditImage = () => (
 
 const ExecutionImage = () => (
   <StepImageContainer
-    color="bg-orange-500"
+    color="bg-red-600"
     imageSrc={execution}
     alt="Execution & Launch"
     initialRotation={{ x: -10, y: 15 }}
@@ -205,7 +205,7 @@ const SecondProcessSection = () => {
         <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-2 xl:gap-2 items-center">
 
           {/* Left Column — Step List + Active Description */}
-          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0 relative z-20">
+          <div className="col-span-1 lg:col-span-6 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0 relative z-20">
             {/* Step items */}
             <div className="flex flex-col gap-0">
               {STEPS.map((step, index) => {
@@ -220,7 +220,7 @@ const SecondProcessSection = () => {
                       {/* Step title row */}
                       <div className="flex items-start gap-6 lg:gap-8">
                         <h3
-                          className={`text-lg sm:text-xl lg:text-2xl font-bold tracking-[-0.02em] transition-colors duration-500 whitespace-nowrap ${isActive ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.7)]' : 'text-neutral-400'
+                          className={`text-lg sm:text-xl lg:text-2xl font-bold tracking-[-0.02em] transition-colors duration-500 whitespace-nowrap ${isActive ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.7)] translate-x-[20px]' : 'text-neutral-400'
                             }`}
                         >
                           {step.title}
@@ -270,7 +270,7 @@ const SecondProcessSection = () => {
           </div>
 
           {/* Right Column — Illustration */}
-          <div className="col-span-1 lg:col-span-7 flex justify-center lg:justify-end xl:justify-center items-center w-full order-1 lg:order-2 pointer-events-none z-10">
+          <div className="col-span-1 lg:col-span-6 flex justify-center lg:justify-end xl:justify-center items-center w-full order-1 lg:order-2 pointer-events-none z-10">
             <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[600px] xl:h-[750px] flex items-center justify-center lg:justify-end xl:justify-center">
               <div className="relative w-[340px] h-[340px] scale-[0.85] sm:scale-100 lg:scale-[1.3] xl:scale-[1.6] 2xl:scale-[1.8] origin-center lg:origin-right xl:origin-center">
                 <AnimatePresence mode="wait">

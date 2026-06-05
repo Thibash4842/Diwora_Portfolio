@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import useScrollAnimations from '../hooks/useScrollAnimations';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,6 +36,8 @@ const FeaturedWorks = () => {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
 
+  useScrollAnimations(sectionRef);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(cardsRef.current, {
@@ -54,9 +57,9 @@ const FeaturedWorks = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} data-theme="light" className="w-full bg-white pt-10 pb-10 px-6 md:px-12 lg:px-20">
+    <section ref={sectionRef} data-theme="light" className="relative z-20 w-full bg-white pt-0 pb-10 px-6 md:px-12 lg:px-20">
       <div className="max-w-full mx-auto">
-        <h2 className="text-4xl font-normal text-black mb-14">
+        <h2 className="text-4xl font-normal text-black mb-14" data-animate="fade-up">
           Featured Works
         </h2>
 

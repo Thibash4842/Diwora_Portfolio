@@ -82,7 +82,7 @@ const ResultsSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 bg-white font-['Inter',sans-serif] py-14"
+      className="relative z-10 bg-white font-['Inter',sans-serif] py-4 md:py-14"
     >
       <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
 

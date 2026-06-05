@@ -1,18 +1,89 @@
-import React from 'react';
-// import HeroBackground from './HeroBackground';
+import React, { useRef, useEffect, useImperativeHandle, forwardRef } from 'react';
+import gsap from 'gsap';
 
-const Hero = () => {
+const Hero = forwardRef(({ skipAnimation = false }, ref) => {
+  const sectionRef = useRef(null);
+  const bgImageRef = useRef(null);
+  const titleRef = useRef(null);
+  const buttonsRef = useRef(null);
+  const descriptionRef = useRef(null);
+
+  // When navigating back to "/" after the loader has already finished,
+  // immediately show all hero content (no cinematic reveal needed).
+  useEffect(() => {
+    if (skipAnimation) {
+      [bgImageRef, titleRef, buttonsRef, descriptionRef].forEach((r) => {
+        if (r.current) {
+          gsap.set(r.current, { opacity: 1, y: 0, scale: 1 });
+        }
+      });
+    }
+  }, [skipAnimation]);
+
+  useImperativeHandle(ref, () => ({
+    reveal() {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      // Phase 1: Background image — scale down & fade in
+      tl.to(bgImageRef.current, {
+        opacity: 0.8,
+        scale: 1,
+        duration: 1.6,
+        ease: 'power2.out',
+      });
+
+      // Phase 2: Title text — slide up & fade in
+      tl.to(
+        titleRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.0,
+          ease: 'power3.out',
+        },
+        '-=0.8'
+      );
+
+      // Phase 3: Buttons — slide up & fade in
+      tl.to(
+        buttonsRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+        },
+        '-=0.5'
+      );
+
+      // Phase 4: Description — slide up & fade in
+      tl.to(
+        descriptionRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+        },
+        '-=0.5'
+      );
+    },
+  }));
+
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative min-h-screen w-full overflow-hidden bg-black flex flex-col items-center justify-center pt-28 pb-10 lg:pt-32 lg:pb-0"
       data-theme="light"
     >
-      {/* Final image from Loader to create a seamless transition */}
+      {/* Background image — starts scaled up & invisible */}
       <img
-        src="https://cdn.prod.website-files.com/69da551bc91ee431738ed14d/69da551cc91ee431738ed1af_minimalist-architecture-1.avif"
+        ref={bgImageRef}
+        src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzB8fHdlYnNpdGUlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww"
         alt="Hero Background"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0 opacity-70"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
+        style={{ opacity: 0, transform: 'scale(1.15)' }}
       />
 
       {/* <HeroBackground /> */}
@@ -20,22 +91,30 @@ const Hero = () => {
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col justify-center min-h-[calc(100vh-140px)]">
 
-        {/* Title - Occupies full width, large, bold all-caps */}
-        <div className="w-full mb-10 lg:mb-20">
-          <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-poppins font-bold text-white leading-[1.08] tracking-tight capitalize max-w-5xl">
-            LET’S MAKE <br className="block sm:hidden" /> IDEAS<br /> HAPPEN<br className="block sm:hidden" /> WITH <br className="block sm:hidden" /> <span className="text-red-600">DIWORA</span>
+        {/* Title — starts translated down & invisible */}
+        <div
+          ref={titleRef}
+          className="w-full mb-10 lg:mb-20"
+          style={{ opacity: 0, transform: 'translateY(60px)' }}
+        >
+          <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-poppins font-bold text-black leading-[1.08] tracking-tight max-w-5xl">
+            LET'S MAKE <br className="block sm:hidden" /> IDEAS<br /> HAPPEN<br className="block sm:hidden" /> WITH <br className="block sm:hidden" /> <span className="text-red-600">DIWORA</span>
           </h1>
         </div>
 
         {/* Bottom row: Buttons on left, Description on right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start justify-between w-full">
 
-          {/* Buttons on left */}
-          <div className="lg:col-span-8 flex flex-wrap gap-4 items-center">
+          {/* Buttons — starts translated down & invisible */}
+          <div
+            ref={buttonsRef}
+            className="lg:col-span-8 flex flex-wrap gap-4 items-center"
+            style={{ opacity: 0, transform: 'translateY(40px)' }}
+          >
             {/* <!-- From Uiverse.io by nathAd17 --> */}
             <button
               type="submit"
-              className="flex justify-center gap-1 sm:gap-2 items-center shadow-xl text-sm sm:text-md bg-red-600 hover:bg-black text-white backdrop-blur-md lg:font-normal isolation-auto border border-gray-200 relative z-10 px-3 py-2 sm:px-4 sm:py-2 overflow-hidden rounded-full group transition-all duration-500"
+              className="flex justify-center gap-1 sm:gap-2 items-center text-sm sm:text-md bg-red-600 hover:bg-black text-white backdrop-blur-md lg:font-normal isolation-auto relative z-10 px-3 py-2 sm:px-4 sm:py-2 overflow-hidden rounded-full group transition-all duration-500"
             >
               Inquire Now
 
@@ -51,7 +130,7 @@ const Hero = () => {
               </svg>
             </button>
 
-            <button className="relative flex items-center gap-1 px-5 py-2 sm:px-8 sm:py-3 rounded-full font-normal text-sm sm:text-md text-black bg-white shadow-[0_0_0_2px_black] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white hover:rounded-full hover:shadow-[0_0_0_12px_transparent] active:scale-95 active:shadow-[0_0_0_4px_black] group">
+            <button className="relative flex items-center gap-1 px-5 py-2 sm:px-8 sm:py-3 rounded-full font-normal text-sm sm:text-md text-black bg-white overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white hover:rounded-full hover:shadow-[0_0_0_12px_transparent] active:scale-95 active:shadow-[0_0_0_4px_black] group">
 
               {/* Left Arrow */}
               <svg
@@ -81,12 +160,16 @@ const Hero = () => {
             </button>
           </div>
 
-          {/* Description on right */}
-          <div className="lg:col-span-4 flex flex-col gap-2 max-w-xl lg:ml-auto">
-            <p className="text-[14px] md:text-[15px] text-white font-normal leading-relaxed">
+          {/* Description — starts translated down & invisible */}
+          <div
+            ref={descriptionRef}
+            className="lg:col-span-4 flex flex-col gap-2 max-w-xl lg:ml-auto"
+            style={{ opacity: 0, transform: 'translateY(40px)' }}
+          >
+            <p className="text-[14px] md:text-[15px] text-black font-normal leading-relaxed ">
               We craft ideas that connect, designs that inspire, and campaigns that perform.
             </p>
-            <p className="text-[14px] md:text-[15px] text-white font-normal leading-relaxed">
+            <p className="text-[14px] md:text-[15px] text-black font-normal leading-relaxed ">
               From concept to execution, we bring your brand's story to life with impactful visuals and meaningful communication
             </p>
           </div>
@@ -95,6 +178,8 @@ const Hero = () => {
       </div>
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;

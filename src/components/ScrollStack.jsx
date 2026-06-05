@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import useScrollAnimations from '../hooks/useScrollAnimations';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const cardsData = [
   {
     id: 1,
-    title: 'BRAND VISUAL',
+    title: <>BRAND<br className="block sm:hidden" /> VISUAL</>,
     number: '01',
     label: 'Approach',
     description: (
@@ -18,11 +19,12 @@ const cardsData = [
       </>
     ),
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop',
+    video: 'https://www.pexels.com/download/video/33191775/',
     color: 'bg-white',
   },
   {
     id: 2,
-    title: 'MOTION & VIDEO',
+    title: <>MOTION<br className="block sm:hidden" /> &amp; VIDEO</>,
     number: '02',
     label: 'Approach',
     description: (
@@ -33,11 +35,12 @@ const cardsData = [
       </>
     ),
     image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80',
+    video: 'https://www.pexels.com/download/video/30728857/',
     color: 'bg-gray-50',
   },
   {
     id: 3,
-    title: 'CONTENT & DIGITAL',
+    title: <>CONTENT<br className="block sm:hidden" /> &amp; DIGITAL</>,
     number: '03',
     label: 'Approach',
     description: (
@@ -48,11 +51,12 @@ const cardsData = [
       </>
     ),
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80',
+    video: 'https://www.pexels.com/download/video/37116344/',
     color: 'bg-white',
   },
   {
     id: 4,
-    title: 'IDEATION & SCRIPTING',
+    title: <>IDEATION<br className="block sm:hidden" /> SCRIPTING</>,
     number: '04',
     label: 'Approach',
     description: (
@@ -63,13 +67,89 @@ const cardsData = [
       </>
     ),
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    video: 'https://www.pexels.com/download/video/4872872/',
+    color: 'bg-gray-50',
+  },
+  {
+    id: 5,
+    title: <>WEBSITE<br className="block sm:hidden" /> DEVELOPMENT</>,
+    number: '05',
+    label: 'Approach',
+    description: (
+      <>
+        <p>We build digital experiences that feel intuitive and engaging.</p>
+        <p>From websites to interactive platforms, we focus on user journey, aesthetic consistency, and performance.</p>
+        <p>The goal is to ensure your digital presence is as strong and impactful as your brand itself.</p>
+      </>
+    ),
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
+    video: 'https://www.pexels.com/download/video/11274330/',
+    color: 'bg-white',
+  },
+  {
+    id: 6,
+    title: 'ADVERTISING',
+    number: '06',
+    label: 'Approach',
+    description: (
+      <>
+        <p>A strong brand needs a clear foundation.</p>
+        <p>We help define your core identity, positioning, and voice. Our approach ensures every piece of content aligns with a larger vision.</p>
+        <p>The result is a cohesive brand presence that builds trust and recognition over time.</p>
+      </>
+    ),
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+    video: 'https://www.pexels.com/download/video/5086609/',
     color: 'bg-gray-50',
   }
 ];
 
+const VideoWithFallback = ({ src, poster, alt, className }) => {
+  const [hasError, setHasError] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className={`relative w-full h-full overflow-hidden bg-neutral-900 ${className}`}>
+      {/* Fallback/Placeholder Image */}
+      <img
+        src={poster}
+        alt={alt}
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ 
+          opacity: hasError || !isLoaded ? 1 : 0,
+          transition: 'opacity 0.5s ease-in-out',
+          zIndex: 1 
+        }}
+      />
+
+      {/* Video Element */}
+      {!hasError && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          onError={() => setHasError(true)}
+          onCanPlay={() => setIsLoaded(true)}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ 
+            opacity: isLoaded ? 1 : 0,
+            transition: 'opacity 1s ease-in-out',
+            zIndex: 2 
+          }}
+        >
+          <source src={src} type="video/mp4" />
+        </video>
+      )}
+    </div>
+  );
+};
+
 const ScrollStack = () => {
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
+
+  useScrollAnimations(containerRef);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -103,9 +183,9 @@ const ScrollStack = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="w-full bg-white pt-10 md:pt-20 pb-10 md:pb-16 relative">
+    <section ref={containerRef} className="w-full bg-white pt-10 md:pt-20 pb-10 md:pb-16 relative z-10">
       <div className="w-full max-w-full mx-auto px-6 md:px-12 lg:px-20 mb-16 text-center md:text-left z-10 relative">
-        <h2 className="text-4xl font-normal text-black mb-4">What We Do</h2>
+        <h2 className="text-4xl font-normal text-black mb-4" data-animate="fade-up">What We Do</h2>
       </div>
 
       <div className="w-full flex flex-col gap-[10vh] md:gap-[50vh] relative">
@@ -116,8 +196,8 @@ const ScrollStack = () => {
               key={card.id}
               ref={(el) => (cardsRef.current[index] = el)}
               className={`
-                sticky top-[100px] origin-top
-                w-full flex flex-col pt-12 md:pt-16 pb-8 md:pb-12 shadow-sm border border-gray-100
+                sticky top-[90px] origin-top
+                w-full flex flex-col pt-10 md:pt-12 pb-8 md:pb-12 shadow-sm border border-gray-100
                 min-h-[500px] rounded-lg
                 ${isDark ? 'bg-zinc-900' : 'bg-white'}
               `}
@@ -125,17 +205,17 @@ const ScrollStack = () => {
               data-theme={isDark ? 'dark' : 'light'}
             >
               {/* Top Section */}
-              <div className="flex justify-between items-start w-full px-6 md:px-12 lg:px-20 gap-2 md:gap-4 relative">
-                <h3 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter w-full sm:w-[75%] md:w-2/3 leading-[1.1] md:leading-none z-10 ${isDark ? 'text-white' : 'text-black'}`}>
+              <div className="flex justify-between items-center md:items-start w-full px-6 md:px-12 lg:px-20 gap-2 md:gap-4 relative">
+                <h3 className={`w-1/1 text-[28px] sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[1.1] md:leading-none z-10 ${isDark ? 'text-white' : 'text-black'}`}>
                   {card.title}
                 </h3>
-                <span className={`absolute right-6 md:right-12 top-0 md:relative md:right-auto md:top-auto text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black leading-none mt-0 md:-mt-8 lg:-mt-12 opacity-40 md:opacity-100 pointer-events-none z-0 ${isDark ? 'text-zinc-700 md:text-zinc-800' : 'text-gray-200 md:text-gray-100'}`}>
+                <span className={`text-6xl sm:text-7xl md:text-[7rem] font-black leading-none mt-0 md:-mt-8 lg:-mt-18 opacity-40 md:opacity-100 pointer-events-none z-0 ${isDark ? 'text-zinc-700 md:text-zinc-800' : 'text-gray-200 md:text-gray-100'}`}>
                   {card.number}
                 </span>
               </div>
 
               {/* Divider */}
-              <div className={`w-full h-[1px] my-8 md:my-12 ${isDark ? 'bg-zinc-800' : 'bg-black'}`}></div>
+              <div className={`w-full h-[1px] my-6 ${isDark ? 'bg-zinc-800' : 'bg-black'}`}></div>
 
               {/* Bottom Section */}
               <div className="flex flex-col lg:flex-row gap-8 px-6 md:px-12 lg:px-20 items-start justify-between w-full">
@@ -154,10 +234,15 @@ const ScrollStack = () => {
                   </button>
                 </div>
 
-                {/* Right Image */}
-                <div className="w-full lg:w-2/5 h-64 md:h-[400px]">
-                  <img
-                    src={card.image}
+                {/* Right Image / Video */}
+                <div 
+                  className="w-full lg:w-2/5 h-64 md:h-[400px]"
+                  data-animate="zoom-in"
+                  data-animate-duration="0.9"
+                >
+                  <VideoWithFallback
+                    src={card.video}
+                    poster={card.image}
                     alt={card.title}
                     className="w-full h-full object-cover"
                   />

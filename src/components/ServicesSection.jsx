@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import useScrollAnimations from '../hooks/useScrollAnimations';
 
 // Service tab data matching reference design
 const SERVICES = [
@@ -456,6 +457,8 @@ const ServicesSection = () => {
   const sectionRef = useRef(null);
   const isClickingRef = useRef(false);
 
+  useScrollAnimations(sectionRef);
+
   // Scroll logic to update active tab based on view progress, offsetting 80px for the navbar
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -521,9 +524,9 @@ const ServicesSection = () => {
   };
 
   return (
-    <div ref={sectionRef} className="relative w-full h-[200vh] md:h-[320vh] bg-white font-['Inter',sans-serif] py-14">
+    <div data-theme="light" ref={sectionRef} className="relative w-full h-[200vh] md:h-[320vh] bg-white font-['Inter',sans-serif] py-0 md:py-14">
       {/* Header Area */}
-      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0" data-animate="fade-up">
         <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
           Services
         </p>
@@ -536,10 +539,10 @@ const ServicesSection = () => {
       </div>
 
       <div className="sticky top-[80px] h-[calc(120vh-80px)] md:h-[130vh] lg:h-[calc(100vh-80px)]  w-full flex items-center overflow-hidden">
-        <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-center">
+        <div className="max-w-full mx-auto pl-6 md:pl-12 lg:pl-20 pr-6 md:pr-12 lg:pr-0 w-full lg:h-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-center lg:items-stretch">
 
           {/* Left Column: Headers & Card Navigation */}
-          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0">
+          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0 py-6 lg:py-12">
             {/* Vertically Stacked Card Menu (Matches mockup exactly) */}
             <div className="flex flex-col gap-2 sm:gap-3">
               {SERVICES.map((service, index) => {
@@ -579,24 +582,6 @@ const ServicesSection = () => {
                               {service.description}
                             </p>
 
-                            {/* CTA Button */}
-                            <button
-                              type="submit"
-                              className="flex justify-center gap-1 sm:gap-2 items-center text-sm sm:text-md bg-red-600 hover:bg-black text-white backdrop-blur-md lg:font-normal isolation-auto border border-gray-200 relative z-10 px-3 py-2 sm:px-3 sm:py-1.5 overflow-hidden rounded-full group transition-all duration-500"
-                            >
-                              {service.cta}
-
-                              <svg
-                                className="w-6 h-6 justify-end rounded-full bg-black text-white group-hover:bg-white group-hover:text-black ease-linear duration-300 p-1.5 rotate-45 group-hover:rotate-90"
-                                viewBox="0 0 16 19"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
-                                  fill="currentColor"
-                                />
-                              </svg>
-                            </button>
                           </div>
                         </motion.div>
                       )}
@@ -608,8 +593,8 @@ const ServicesSection = () => {
           </div>
 
           {/* Right Column: Visual Mockup Showcase Container */}
-          <div className="col-span-1 lg:col-span-7 flex justify-center items-center w-full order-1 lg:order-2">
-            <div className="relative w-full h-[260px] sm:h-[360px] lg:h-auto lg:aspect-[4/3] max-w-[720px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-sm flex items-center justify-center bg-white">
+          <div className="col-span-1 lg:col-span-7 flex justify-center items-stretch w-full order-1 lg:order-2 lg:h-full">
+            <div className="relative w-full h-[260px] sm:h-[360px] lg:h-full rounded-2xl lg:rounded-l-3xl lg:rounded-r-none overflow-hidden shadow-sm flex items-center justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -623,15 +608,15 @@ const ServicesSection = () => {
                   }}
                   animate={{
                     opacity: [0, 1, 1, 1],
-                    y: [100, 40, 40, 0],
-                    x: [100, 100, 0, 0],
+                    y: [100, 80, 40, 0],
+                    x: [100, 80, 40, 0],
                     scale: [0.85, 0.9, 0.95, 1],
                     filter: ["blur(10px)", "blur(4px)", "blur(0px)", "blur(0px)"]
                   }}
                   exit={{
-                    opacity: [1, 1, 0.5, 0],
-                    y: [0, -40, -40, -100],
-                    x: [0, 0, 100, 100],
+                    opacity: [1, 1, 1, 0],
+                    y: [0, -40, -80, -100],
+                    x: [0, 40, 80, 100],
                     scale: [1, 0.95, 0.9, 0.85],
                     filter: ["blur(0px)", "blur(0px)", "blur(4px)", "blur(10px)"],
                     transition: {
