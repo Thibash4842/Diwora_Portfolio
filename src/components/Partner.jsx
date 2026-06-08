@@ -20,7 +20,7 @@ const LogoMarquee = () => {
   ];
 
   // duplicate multiple times for seamless loop on ultra-wide (4K) screens
-  const extendedLogos = [...logos, ...logos];
+  const extendedLogos = [...logos, ...logos, ...logos];
 
   useEffect(() => {
     const ctx = gsap.context(() => {

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import ContactModal from './ContactModal';
 import { motion, useInView } from 'framer-motion';
 import Navbar from './Navbar';
 import HeroBackground from './HeroBackground';
@@ -14,6 +15,9 @@ import SecondProcessSection from './SecondProcessSection';
 import MarketplaceSection from './MarketplaceSection';
 import datadriven from '../assets/advertising/datadriven.png';
 import expertise from '../assets/advertising/expertise.png';
+
+// dashboard images
+import dashboardimage from '../assets/advertising/Dash.png';
 
 /* ──────────────────────────────────────────────
    Animated counter hook for stats
@@ -135,6 +139,7 @@ const DashboardStat = ({ prefix = '', value, suffix = '', label, inView, dark = 
    Main Advertising Landing Page
    ────────────────────────────────────────────── */
 const Advertising = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const pageRef = useRef(null);
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, { once: true, margin: '-50px' });
@@ -179,7 +184,8 @@ const Advertising = () => {
 
               {/* <!-- From Uiverse.io by nathAd17 --> */}
               <button
-                type="submit"
+                type="button"
+                onClick={() => setIsModalOpen(true)}
                 className="flex justify-center gap-1 sm:gap-2 items-center shadow-xl text-sm sm:text-md bg-red-600 hover:bg-black text-white backdrop-blur-md lg:font-normal isolation-auto border border-gray-200 relative z-10 px-3 py-2 sm:px-4 sm:py-2 overflow-hidden rounded-full group transition-all duration-500"
               >
                 Inquire Now
@@ -352,8 +358,14 @@ const Advertising = () => {
             animate={dashboardInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Left – Large placeholder card */}
-            <div className="rounded-2xl sm:rounded-3xl bg-neutral-100 min-h-[320px] sm:min-h-[380px] lg:min-h-[420px]" />
+            {/* Left – Dashboard image */}
+            <div className="rounded-2xl overflow-hidden w-full">
+              <img
+                src={dashboardimage}
+                alt="Dashboard Image"
+                className="w-full h-auto object-contain block"
+              />
+            </div>
 
             {/* Right – Stat cards stack */}
             <div className="flex flex-col gap-4 sm:gap-5 lg:w-[260px]">
@@ -393,6 +405,12 @@ const Advertising = () => {
 
       {/* ─── Footer Section ─── */}
       <Footer />
+
+      {/* ─── Contact Modal ─── */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
 
     </div>
   );

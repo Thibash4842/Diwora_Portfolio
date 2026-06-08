@@ -1,7 +1,9 @@
-import React, { useRef, useEffect, useImperativeHandle, forwardRef } from 'react';
+import React, { useRef, useEffect, useImperativeHandle, forwardRef, useState } from 'react';
+import ContactModal from './ContactModal';
 import gsap from 'gsap';
 
 const Hero = forwardRef(({ skipAnimation = false }, ref) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRef = useRef(null);
   const bgImageRef = useRef(null);
   const titleRef = useRef(null);
@@ -71,6 +73,7 @@ const Hero = forwardRef(({ skipAnimation = false }, ref) => {
   }));
 
   return (
+    <>
     <section
       ref={sectionRef}
       id="hero"
@@ -113,7 +116,8 @@ const Hero = forwardRef(({ skipAnimation = false }, ref) => {
           >
             {/* <!-- From Uiverse.io by nathAd17 --> */}
             <button
-              type="submit"
+              type="button"
+              onClick={() => setIsModalOpen(true)}
               className="flex justify-center gap-1 sm:gap-2 items-center text-sm sm:text-md bg-red-600 hover:bg-black text-white backdrop-blur-md lg:font-normal isolation-auto relative z-10 px-3 py-2 sm:px-4 sm:py-2 overflow-hidden rounded-full group transition-all duration-500"
             >
               Inquire Now
@@ -177,6 +181,12 @@ const Hero = forwardRef(({ skipAnimation = false }, ref) => {
         </div>
       </div>
     </section>
+
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 });
 

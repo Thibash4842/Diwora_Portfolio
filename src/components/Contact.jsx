@@ -268,7 +268,7 @@ const Contact = ({ inModal = false }) => {
                   src={artboardImg}
                   alt="Diwora contact visual"
                   draggable={false}
-                  className="w-full h-[240px] sm:h-[400px] md:h-[480px] lg:h-full object-contain object-center select-none block lg:absolute lg:inset-0 lg:object-cover"
+                  className="w-full h-[240px] sm:h-[400px] md:h-[480px] lg:h-full object-contain object-center select-none block lg:absolute lg:inset-0 lg:object-contain"
                 />
 
                 {/* Inquire Now Floating Overlay Button */}
@@ -318,7 +318,7 @@ const Contact = ({ inModal = false }) => {
                 />
 
                 {/* Pills — absolutely over the bottom of the image */}
-                <div className="relative lg:absolute inset-x-0 bottom-10 z-10 flex flex-col sm:flex-row gap-2.5 px-4 pb-0 pt-2 lg:pt-0 mt-auto">
+                <div className="relative lg:absolute inset-x-0 bottom-10 z-10 flex flex-col sm:flex-row lg:flex-wrap gap-2.5 px-4 pb-0 pt-2 lg:pt-0 mt-auto">
                   {/* Email pill */}
                   <a
                     ref={(el) => (pillsRef.current[0] = el)}

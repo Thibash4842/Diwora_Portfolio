@@ -1,22 +1,36 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import logo from '../assets/Dlogo-white-footer.png';
 import useScrollAnimations from '../hooks/useScrollAnimations';
 
 /* ─── Flip-link animation ─── */
-const FlipLink = ({ children, href, className = '' }) => (
-  <a
-    href={href}
-    className={`relative group overflow-hidden inline-flex pb-0.5 ${className}`}
-  >
-    <span className="flex items-center gap-2 transition-transform duration-500 ease-in-out group-hover:-translate-y-full">
-      {children}
-    </span>
-    <span className="absolute top-full left-0 flex items-center gap-2 transition-transform duration-500 ease-in-out group-hover:-translate-y-full">
-      {children}
-    </span>
-  </a>
-);
+const FlipLink = ({ children, href, to, className = '' }) => {
+  const inner = (
+    <>
+      <span className="flex items-center gap-2 transition-transform duration-500 ease-in-out group-hover:-translate-y-full">
+        {children}
+      </span>
+      <span className="absolute top-full left-0 flex items-center gap-2 transition-transform duration-500 ease-in-out group-hover:-translate-y-full">
+        {children}
+      </span>
+    </>
+  );
+
+  if (to) {
+    return (
+      <Link to={to} className={`relative group overflow-hidden inline-flex pb-0.5 ${className}`}>
+        {inner}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={href} className={`relative group overflow-hidden inline-flex pb-0.5 ${className}`}>
+      {inner}
+    </a>
+  );
+};
 
 /* ─── Shared column heading ─── */
 const ColHeading = ({ children }) => (
@@ -38,12 +52,12 @@ const Footer = () => {
   ];
 
   const services = [
-    "Advertising",
-    "Brand Visual",
-    "Motion Video",
-    "Digital Marketing",
-    "Ideation & Scripting",
-    "Website Development"
+    { label: 'Advertising',          to: '/advertising' },
+    { label: 'Brand Visual',          href: '#' },
+    { label: 'Motion Video',          href: '#' },
+    { label: 'Digital Marketing',     href: '#' },
+    { label: 'Ideation & Scripting',  href: '#' },
+    { label: 'Website Development',   href: '#' },
   ];
 
   const legalLinks = [
@@ -135,12 +149,13 @@ const Footer = () => {
             <ColHeading><b className="text-white">Services</b></ColHeading>
             <ul className="flex flex-col gap-3">
               {services.map((s) => (
-                <li key={s}>
+                <li key={s.label}>
                   <FlipLink
-                    href="#"
+                    to={s.to}
+                    href={s.href}
                     className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-300"
                   >
-                    {s}
+                    {s.label}
                   </FlipLink>
                 </li>
               ))}
