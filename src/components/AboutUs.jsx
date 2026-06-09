@@ -34,7 +34,7 @@ const AboutUs = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-[80px] text-center md:text-left font-poppins font-bold text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
+            <h1 className="text-[clamp(2.5rem,5.5vw,8rem)] text-center md:text-left font-poppins font-bold text-black leading-[1.08] tracking-tight uppercase max-w-5xl">
               WE MAKE<br />
               BRANDS FEEL<br />
               LIKE <span className="text-[#e10022]">SOMETHING</span>
@@ -50,7 +50,7 @@ const AboutUs = () => {
           >
             <div className="lg:col-span-8" />
             <div className="lg:col-span-4 flex flex-col gap-2 max-w-xl lg:ml-auto">
-              <p className="text-[14px] md:text-[15px] text-neutral-500 font-normal leading-relaxed">
+              <p className="text-[clamp(14px,1.1vw,20px)] text-neutral-500 font-normal leading-relaxed">
                 A creative and digital agency working at the intersection of image, motion, and meaning building visual worlds for brands that want to be genuinely remembered.
               </p>
             </div>
@@ -62,7 +62,7 @@ const AboutUs = () => {
       {/* Founder Story Section */}
       <section
         data-theme="light"
-        className="relative w-full bg-[#ffffff] py-14 md:py-12 px-6 md:px-12 lg:px-20 overflow-hidden"
+        className="relative w-full bg-[#ffffff] py-14 md:py-12 2xl:py-10 px-6 md:px-12 lg:px-20 overflow-hidden"
       >
         <div className="max-w-full mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
@@ -92,20 +92,20 @@ const AboutUs = () => {
             <div className="lg:col-span-7 flex flex-col justify-center">
               {/* Bold Heading */}
               <motion.h2
-                className="text-3xl sm:text-4xl md:text-[44px] font-medium text-black leading-[1.1] tracking-[-0.03em] mb-10 text-left"
+                className="text-1xl sm:text-4xl md:text-[44px] font-medium text-black leading-[1.1] tracking-[-0.03em] mb-10 text-left"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
-                Built on the belief<br />
-                that clarity is the rarest form<br />
+                Built on the belief
+                that clarity is the rarest form
                 of creativity
               </motion.h2>
 
               {/* Story Content Paragraphs */}
               <motion.div
-                className="space-y-6 text-sm sm:text-[15px] text-neutral-600 leading-relaxed font-normal text-left"
+                className="space-y-6 text-sm sm:text-[15px] 2xl:text-[22px] text-neutral-600 leading-relaxed font-normal text-left"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}

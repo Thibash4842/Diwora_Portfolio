@@ -116,10 +116,10 @@ const MarketplaceSection = () => {
 
       {/* Header Area */}
       <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col gap-3 mb-8 md:mb-12 pt-4 md:pt-0 relative z-10" data-animate="fade-up">
-        <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-medium text-black tracking-[-0.03em] leading-tight max-w-xl">
+        <h2 className="text-[clamp(1.875rem,3vw,3.75rem)] font-medium text-black tracking-[-0.03em] leading-tight">
           Marketplace Management
         </h2>
-        <p className="text-[15px] text-black/80 max-w-md leading-relaxed">
+        <p className="text-sm sm:text-base 2xl:text-lg text-black/80 leading-relaxed">
           An optimizing operations on digital platforms where multiple sellers offer products or services to multiple buyers.
         </p>
       </div>
@@ -242,7 +242,7 @@ const MarketplaceSection = () => {
             {/* Left Column: Featured Content Card */}
             <div className="flex justify-center items-center w-full h-full relative">
               <motion.div
-                className="w-full max-w-[420px] aspect-[4/5] bg-[#111111] rounded-[24px] p-4 flex flex-col shadow-2xl relative overflow-hidden group"
+                className="w-full max-w-[450px] 2xl:max-w-[520px] aspect-[4/5] bg-[#111111] rounded-[24px] p-4 flex flex-col shadow-2xl relative overflow-hidden group"
                 animate={{ y: [0, -12, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               >
@@ -267,10 +267,10 @@ const MarketplaceSection = () => {
 
                     {/* Text Content */}
                     <div className="px-2 pb-4 flex flex-col gap-3">
-                      <h3 className="text-xl sm:text-2xl font-medium text-white tracking-tight">
+                      <h3 className="text-xl sm:text-2xl 2xl:text-3xl font-medium text-white tracking-tight">
                         {MARKETPLACE_ITEMS[activeIndex].title}
                       </h3>
-                      <p className="text-sm text-neutral-400 leading-relaxed max-w-[90%]">
+                      <p className="text-[clamp(14px,0.8vw+10px,18px)] text-neutral-400 leading-relaxed max-w-[90%]">
                         {MARKETPLACE_ITEMS[activeIndex].description}
                       </p>
                     </div>
@@ -291,7 +291,7 @@ const MarketplaceSection = () => {
                       className="cursor-pointer group flex items-center relative"
                     >
                       <h3
-                        className={`text-2xl sm:text-3xl lg:text-[32px] transition-all duration-500 ease-out whitespace-nowrap ${isActive
+                        className={`text-2xl sm:text-3xl lg:text-[32px] 2xl:text-4xl transition-all duration-500 ease-out whitespace-nowrap ${isActive
                           ? 'text-neutral-900 font-normal translate-x-2 lg:translate-x-4'
                           : 'text-neutral-400 font-light hover:text-neutral-500'
                           }`}

@@ -115,10 +115,10 @@ const VideoWithFallback = ({ src, poster, alt, className }) => {
         src={poster}
         alt={alt}
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ 
+        style={{
           opacity: hasError || !isLoaded ? 1 : 0,
           transition: 'opacity 0.5s ease-in-out',
-          zIndex: 1 
+          zIndex: 1
         }}
       />
 
@@ -132,10 +132,10 @@ const VideoWithFallback = ({ src, poster, alt, className }) => {
           onError={() => setHasError(true)}
           onCanPlay={() => setIsLoaded(true)}
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ 
+          style={{
             opacity: isLoaded ? 1 : 0,
             transition: 'opacity 1s ease-in-out',
-            zIndex: 2 
+            zIndex: 2
           }}
         >
           <source src={src} type="video/mp4" />
@@ -184,8 +184,8 @@ const ScrollStack = () => {
 
   return (
     <section ref={containerRef} className="w-full bg-white pt-10 md:pt-20 pb-10 md:pb-16 relative z-10">
-      <div className="w-full max-w-full mx-auto px-6 md:px-12 lg:px-20 mb-16 text-center md:text-left z-10 relative">
-        <h2 className="text-4xl font-normal text-black mb-4" data-animate="fade-up">What We Do</h2>
+      <div className="w-full max-w-full mx-auto px-6 md:px-12 lg:px-20 mb-10 z-10 relative">
+        <h2 className="text-3xl md:text-4xl font-normal text-black mb-4" data-animate="fade-up">What We Do</h2>
       </div>
 
       <div className="w-full flex flex-col gap-[10vh] md:gap-[50vh] relative">
@@ -198,7 +198,7 @@ const ScrollStack = () => {
               className={`
                 sticky top-[90px] origin-top
                 w-full flex flex-col pt-10 md:pt-12 pb-8 md:pb-12 shadow-sm border border-gray-100
-                min-h-[500px] rounded-lg
+                min-h-[calc(100vh-90px)] rounded-lg
                 ${isDark ? 'bg-zinc-900' : 'bg-white'}
               `}
               style={{ zIndex: index + 1 }}
@@ -206,10 +206,10 @@ const ScrollStack = () => {
             >
               {/* Top Section */}
               <div className="flex justify-between items-center md:items-start w-full px-6 md:px-12 lg:px-20 gap-2 md:gap-4 relative">
-                <h3 className={`w-1/1 text-[28px] sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[1.1] md:leading-none z-10 ${isDark ? 'text-white' : 'text-black'}`}>
+                <h3 className={`w-1/1 text-[clamp(28px,5.5vw,120px)] font-black uppercase tracking-tighter leading-[1.1] md:leading-none z-10 ${isDark ? 'text-white' : 'text-black'}`}>
                   {card.title}
                 </h3>
-                <span className={`text-6xl sm:text-7xl md:text-[7rem] font-black leading-none mt-0 md:-mt-8 lg:-mt-18 opacity-40 md:opacity-100 pointer-events-none z-0 ${isDark ? 'text-zinc-700 md:text-zinc-800' : 'text-gray-200 md:text-gray-100'}`}>
+                <span className={`text-6xl sm:text-7xl md:text-[7rem] 2xl:text-[9rem] font-black leading-none mt-0 md:-mt-8 lg:-mt-18 opacity-40 md:opacity-100 pointer-events-none z-0 ${isDark ? 'text-zinc-700 md:text-zinc-800' : 'text-gray-200 md:text-gray-100'}`}>
                   {card.number}
                 </span>
               </div>
@@ -221,11 +221,11 @@ const ScrollStack = () => {
               <div className="flex flex-col lg:flex-row gap-8 px-6 md:px-12 lg:px-20 items-start justify-between w-full">
                 {/* Approach label */}
                 <div className="w-full lg:w-1/5">
-                  <span className={`text-lg md:text-xl font-medium ${isDark ? 'text-white' : 'text-black'}`}>{card.label}</span>
+                  <span className={`text-[clamp(18px,2vw,30px)] font-medium ${isDark ? 'text-white' : 'text-black'}`}>{card.label}</span>
                 </div>
 
                 {/* Description text */}
-                <div className={`w-full lg:w-2/5 flex flex-col gap-6 text-sm md:text-base font-light leading-relaxed pr-0 md:pr-8 ${isDark ? 'text-gray-300' : 'text-black'}`}>
+                <div className={`w-full lg:w-2/5 flex flex-col gap-6 text-sm md:text-base 2xl:text-xl font-light leading-relaxed pr-0 md:pr-8 ${isDark ? 'text-gray-300' : 'text-black'}`}>
                   <div className="flex flex-col gap-4">
                     {card.description}
                   </div>
@@ -235,8 +235,8 @@ const ScrollStack = () => {
                 </div>
 
                 {/* Right Image / Video */}
-                <div 
-                  className="w-full lg:w-2/5 h-64 md:h-[400px]"
+                <div
+                  className="w-full lg:w-2/5 h-64 md:h-[400px] 2xl:h-[500px]"
                   data-animate="zoom-in"
                   data-animate-duration="0.9"
                 >

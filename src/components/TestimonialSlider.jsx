@@ -59,7 +59,7 @@ const StarRating = ({ rating }) => {
       {[...Array(rating)].map((_, i) => (
         <svg
           key={i}
-          className="w-[20px] h-[20px] text-[#facc15] fill-current"
+          className="w-[18px] h-[18px] 2xl:w-[26px] 2xl:h-[26px] text-[#facc15] fill-current"
           viewBox="0 0 24 24"
         >
           <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
@@ -109,14 +109,14 @@ const TestimonialSlider = () => {
       <div className="absolute left-[-2%] top-[55%] -translate-y-1/2 w-[150px] h-[150px] bg-black/15 blur-[60px] rounded-full pointer-events-none z-0"></div>
       <div className="absolute right-[-2%] top-[55%] -translate-y-1/2 w-[150px] h-[150px] bg-black/15 blur-[60px] rounded-full pointer-events-none z-0"></div>
 
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 relative z-10">
 
         {/* Header Container */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-10">
-          <h2 className="text-[36px] md:text-5xl lg:text-[44px] xl:text-[52px] font-normal tracking-tight text-black leading-none max-w-2xl">
+          <h2 className="text-[36px] md:text-5xl lg:text-[44px] xl:text-[58px] font-normal tracking-tight text-black leading-none max-w-2xl">
             What it’s like working with us
           </h2>
-          <p className="text-[14px] md:text-[15px] text-[#1a1a1a] font-normal md:mt-2 md:text-right">
+          <p className="text-[14px] md:text-[15px] 2xl:text-[20px] text-[#1a1a1a] font-normal md:mt-2 md:text-right">
             How clients describe the work and the process.
           </p>
         </div>
@@ -176,7 +176,7 @@ const TestimonialSlider = () => {
                     <StarRating rating={testimonial.rating} />
 
                     {/* Testimonial Text */}
-                    <p className="text-[#0a0a0a] text-[15px] md:text-[16px] font-normal leading-[1.65] tracking-tight mb-12">
+                    <p className="text-[#0a0a0a] text-[15px] md:text-[16px] 2xl:text-[22px] font-normal leading-[1.65] tracking-tight mb-12">
                       {testimonial.text}
                     </p>
                   </div>
@@ -186,13 +186,13 @@ const TestimonialSlider = () => {
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-[48px] h-[48px] rounded-full object-cover"
+                      className="w-[48px] h-[48px] 2xl:w-[55px] 2xl:h-[55px] rounded-full object-cover"
                     />
                     <div className="flex flex-col justify-center gap-0.5">
-                      <h4 className="text-[16px] font-medium text-black leading-none">
+                      <h4 className="text-[16px] 2xl:text-[24px] font-medium text-black leading-none">
                         {testimonial.name}
                       </h4>
-                      <p className="text-[14px] text-[#333333] font-normal leading-none">
+                      <p className="text-[14px] 2xl:text-[20px] text-[#333333] font-normal leading-none">
                         {testimonial.role}
                       </p>
                     </div>

@@ -72,10 +72,10 @@ const WhatSetsUsApart = () => {
 
           {/* Top Left Content */}
           <div className="lg:col-span-8 flex flex-col items-start text-left">
-            <span className="text-sm uppercase tracking-[0.25em] text-neutral-500 font-semibold mb-4 block">
+            <span className="text-sm 2xl:text-[22px] uppercase tracking-[0.25em] text-neutral-500 font-semibold mb-4 block">
               What Sets us Apart
             </span>
-            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-medium text-black leading-[1.1] tracking-[-0.03em] max-w-2xl select-none">
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] 2xl:text-[68px] font-medium text-black leading-[1.1] tracking-[-0.03em] max-w-2xl select-none">
               Not everything<br />
               about us is <span className="text-neutral-400">different.</span><br />
               But this is.
@@ -84,7 +84,7 @@ const WhatSetsUsApart = () => {
 
           {/* Top Right Content */}
           <div className="lg:col-span-4 flex lg:justify-end text-left lg:text-left mt-2 lg:mt-9">
-            <p className="max-w-[360px] text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+            <p className="max-w-[400px] text-xs sm:text-sm 2xl:text-[22px] text-neutral-600 leading-relaxed font-normal">
               Most agencies separate strategy from production. We think that's where the problems start. When the people writing the brief are the same people holding the camera, something different happens
             </p>
           </div>
@@ -113,12 +113,12 @@ const WhatSetsUsApart = () => {
               </span>
 
               {/* Bold Card Title */}
-              <h3 className="text-lg sm:text-xl font-bold text-black group-hover:text-white mb-4 select-none transition-colors duration-300">
+              <h3 className="text-lg sm:text-xl 2xl:text-2xl font-bold text-black group-hover:text-white mb-4 select-none transition-colors duration-300">
                 {card.title}
               </h3>
 
               {/* Small Descriptive Paragraph */}
-              <p className="text-xs sm:text-sm text-neutral-600 group-hover:text-neutral-300 leading-relaxed font-normal transition-colors duration-300">
+              <p className="text-xs sm:text-sm 2xl:text-xl text-neutral-600 group-hover:text-neutral-300 leading-relaxed font-normal transition-colors duration-300">
                 {card.description}
               </p>
             </motion.div>

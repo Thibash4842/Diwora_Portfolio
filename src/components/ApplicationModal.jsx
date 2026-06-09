@@ -135,7 +135,7 @@ const ApplicationModal = ({ isOpen, onClose, jobTitle = '' }) => {
                         animate="visible"
                         exit="exit"
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute inset-0 bg-black/60 backdrop-blur-md"
+                        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
                         onClick={onClose}
                         aria-hidden="true"
                     />
@@ -398,10 +398,10 @@ const ApplicationModal = ({ isOpen, onClose, jobTitle = '' }) => {
                                                 onDragOver={handleDragOver}
                                                 onDragLeave={handleDragLeave}
                                                 className={`relative group cursor-pointer rounded-xl border-2 border-dashed transition-all duration-300 ${isDragging
-                                                        ? 'border-red-500 bg-red-50/50'
-                                                        : resumeFile
-                                                            ? 'border-green-400 bg-green-50/30'
-                                                            : 'border-neutral-200 bg-neutral-50 hover:border-neutral-300 hover:bg-neutral-100/50'
+                                                    ? 'border-red-500 bg-red-50/50'
+                                                    : resumeFile
+                                                        ? 'border-green-400 bg-green-50/30'
+                                                        : 'border-neutral-200 bg-neutral-50 hover:border-neutral-300 hover:bg-neutral-100/50'
                                                     }`}
                                             >
                                                 <input

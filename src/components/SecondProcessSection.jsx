@@ -172,7 +172,7 @@ const SecondProcessSection = () => {
     <div
       ref={sectionRef}
       data-theme="dark"
-      className="relative w-full h-[200vh] md:h-[320vh] bg-[#0a0a0a] font-['Inter',sans-serif] py-14"
+      className="relative w-full h-[200vh] md:h-[320vh] bg-[#0a0a0a] py-14"
     >
       {/* Subtle radial accent glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -188,14 +188,14 @@ const SecondProcessSection = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col gap-2"
         >
-          <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
+          <p className="text-xs 2xl:text-[20px] 2xl:tracking-[0.15em] uppercase tracking-[0.35em] text-red-600 font-semibold">
             Process
           </p>
-          <h2 className="text-3xl sm:text-4xl font-medium text-white tracking-[-0.04em] leading-[1.1] mb-2">
+          <h2 className="text-[clamp(1.875rem,3vw,3.75rem)] font-medium text-white tracking-[-0.04em] leading-[1.1] mb-2">
             Four steps to sustainable growth
           </h2>
-          <p className="text-sm text-neutral-500 max-w-xl">
-            We follow a proven methodology that turns data into strategy and strategy into revenue.
+          <p className="text-sm sm:text-base 2xl:text-lg text-neutral-500">
+            We follow a proven methodology that turns data into strategy and strategy into revenue.<br />
             Each phase builds on the last, creating momentum that compounds over time.
           </p>
         </motion.div>
@@ -205,9 +205,9 @@ const SecondProcessSection = () => {
         <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-2 xl:gap-2 items-center">
 
           {/* Left Column — Step List + Active Description */}
-          <div className="col-span-1 lg:col-span-6 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0 relative z-20">
+          <div className="col-span-1 lg:col-span-7 flex flex-col justify-center w-full order-2 lg:order-1 mt-2 lg:mt-0 relative z-20">
             {/* Step items */}
-            <div className="flex flex-col gap-0">
+            <div className="h-full flex flex-col justify-center gap-10">
               {STEPS.map((step, index) => {
                 const isActive = activeIndex === index;
                 return (
@@ -220,7 +220,7 @@ const SecondProcessSection = () => {
                       {/* Step title row */}
                       <div className="flex items-start gap-6 lg:gap-8">
                         <h3
-                          className={`text-lg sm:text-xl lg:text-2xl font-bold tracking-[-0.02em] transition-colors duration-500 whitespace-nowrap ${isActive ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.7)] translate-x-[20px]' : 'text-neutral-400'
+                          className={`text-[clamp(1.25rem,2vw+0.5rem,3rem)] font-medium tracking-[-0.02em] transition-colors duration-500 whitespace-nowrap ${isActive ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.7)] lg:translate-x-[20px]' : 'text-neutral-400'
                             }`}
                         >
                           {step.title}
@@ -237,7 +237,7 @@ const SecondProcessSection = () => {
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                             >
-                              <p className="text-sm text-neutral-400 leading-relaxed max-w-full pt-1">
+                              <p className="text-sm 2xl:text-lg text-neutral-400 leading-relaxed max-w-full pt-1">
                                 {step.description}
                               </p>
                             </motion.div>
@@ -270,9 +270,9 @@ const SecondProcessSection = () => {
           </div>
 
           {/* Right Column — Illustration */}
-          <div className="col-span-1 lg:col-span-6 flex justify-center lg:justify-end xl:justify-center items-center w-full order-1 lg:order-2 pointer-events-none z-10">
+          <div className="col-span-1 lg:col-span-5 flex justify-center lg:justify-end xl:justify-center items-center w-full order-1 lg:order-2 pointer-events-none z-10">
             <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[600px] xl:h-[750px] flex items-center justify-center lg:justify-end xl:justify-center">
-              <div className="relative w-[340px] h-[340px] scale-[0.85] sm:scale-100 lg:scale-[1.3] xl:scale-[1.6] 2xl:scale-[1.8] origin-center lg:origin-right xl:origin-center">
+              <div className="relative w-[340px] h-[340px] 2xl:w-[450px] 2xl:h-[450px] scale-[0.85] sm:scale-100 lg:scale-[1.3] xl:scale-[1.6] 2xl:scale-[1.8] origin-center lg:origin-right xl:origin-center">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}

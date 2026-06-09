@@ -71,7 +71,7 @@ const CinematicStats = () => {
 
   return (
     <motion.section
-      className="relative w-full bg-black py-24 md:py-14 px-6 overflow-hidden flex flex-col items-center justify-center font-['Inter',sans-serif]"
+      className="relative w-full bg-black py-14 md:py-14 2xl:py-28 px-6 overflow-hidden flex flex-col items-center justify-center font-['Inter',sans-serif]"
       initial="hidden"
       whileInView="visible"
       data-theme="dark"
@@ -82,7 +82,7 @@ const CinematicStats = () => {
 
         {/* Large Bold Uppercase Headline with Mixed Opacity */}
         <motion.h2
-          className="text-4xl sm:text-6xl lg:text-[68px] font-normal leading-[1.08] tracking-tight uppercase mb-12 sm:mb-16 select-none"
+          className="text-[clamp(1.5rem,5vw,6.25rem)] font-normal leading-[1.08] tracking-tight uppercase mb-12 sm:mb-16 select-none"
           variants={itemVariants}
         >
           <span className="text-white">ATTENTION</span>{' '}
@@ -94,7 +94,7 @@ const CinematicStats = () => {
 
         {/* Constrained Description Area */}
         <motion.div
-          className="max-w-[650px] text-sm text-white/70 leading-relaxed font-normal mb-16 sm:mb-20 space-y-2.5"
+          className="max-w-[650px] text-sm 2xl:text-[22px] text-white/70 leading-relaxed font-normal mb-16 sm:mb-20 space-y-2.5"
           variants={itemVariants}
         >
           <p className='text-md md:text-lg text-white'>In a world full of visual noise, clarity is what stands out.
@@ -112,7 +112,7 @@ const CinematicStats = () => {
             <span className="text-4xl sm:text-5xl md:text-6xl font-medium text-white tracking-tight leading-none mb-2.5">
               <CountUp end={50} />+
             </span>
-            <span className="text-xs sm:text-sm text-neutral-400 font-medium tracking-wide">
+            <span className="text-xs sm:text-sm 2xl:text-[22px] text-neutral-400 font-medium tracking-wide">
               Projects Completed
             </span>
           </div>
@@ -125,7 +125,7 @@ const CinematicStats = () => {
             <span className="text-4xl sm:text-5xl md:text-6xl font-medium text-white tracking-tight leading-none mb-2.5">
               <CountUp end={25} />+
             </span>
-            <span className="text-xs sm:text-sm text-neutral-400 font-medium tracking-wide">
+            <span className="text-xs sm:text-sm 2xl:text-[22px] text-neutral-400 font-medium tracking-wide">
               Happy Clients
             </span>
           </div>

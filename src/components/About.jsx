@@ -15,45 +15,49 @@ const studioImages = [
 ];
 
 const CountUp = ({ end, duration = 2000 }) => {
-    const [count, setCount] = useState(0);
     const ref = useRef(null);
+    const valueRef = useRef(0);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
-                if (entries[0].isIntersecting) {
-                    let startTime = null;
-                    const step = (timestamp) => {
-                        if (!startTime) startTime = timestamp;
-                        const progress = timestamp - startTime;
+                if (!entries[0].isIntersecting) return;
 
-                        // Ease out cubic: 1 - Math.pow(1 - t, 3)
-                        let t = Math.min(progress / duration, 1);
-                        let easeOutProgress = 1 - Math.pow(1 - t, 3);
+                let startTime = null;
 
-                        setCount(Math.floor(easeOutProgress * end));
+                const step = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
 
-                        if (progress < duration) {
-                            window.requestAnimationFrame(step);
-                        } else {
-                            setCount(end);
-                        }
-                    };
-                    window.requestAnimationFrame(step);
-                    observer.disconnect();
-                }
+                    const progress = timestamp - startTime;
+                    let t = Math.min(progress / duration, 1);
+                    let easeOut = 1 - Math.pow(1 - t, 3);
+
+                    const value = Math.floor(easeOut * end);
+                    valueRef.current = value;
+
+                    if (ref.current) {
+                        ref.current.textContent = value;
+                    }
+
+                    if (progress < duration) {
+                        requestAnimationFrame(step);
+                    } else {
+                        if (ref.current) ref.current.textContent = end;
+                    }
+                };
+
+                requestAnimationFrame(step);
+                observer.disconnect();
             },
             { threshold: 0.1 }
         );
 
-        if (ref.current) {
-            observer.observe(ref.current);
-        }
+        if (ref.current) observer.observe(ref.current);
 
         return () => observer.disconnect();
     }, [end, duration]);
 
-    return <span ref={ref}>{count}</span>;
+    return <span ref={ref}>0</span>;
 };
 
 const About = () => {
@@ -61,14 +65,14 @@ const About = () => {
     useScrollAnimations(sectionRef);
 
     return (
-        <section id="about" ref={sectionRef} data-theme="light" className="w-full bg-white py-14 border-t border-neutral-100/60">
+        <section id="about" ref={sectionRef} data-theme="light" className="w-full bg-white py-6 md:py-14 border-t border-neutral-100/60 overflow-hidden md:overflow-visible">
             <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
                 <div className="grid grid-cols-1 lg:grid-cols-10 gap-12 lg:gap-16 items-start">
 
                     {/* Left Column - About Label and Vision Card */}
                     <div className="lg:col-span-3 flex flex-col gap-4 w-full lg:sticky lg:top-20" data-animate="fade-left" data-animate-duration="1">
 
-                        <span className="text-2xl font-normal text-black tracking-wide">
+                        <span className="text-[clamp(24px,2vw,38px)] font-normal text-black tracking-wide">
                             About Diwora
                         </span>
 
@@ -88,24 +92,24 @@ const About = () => {
 
                             {/* Vision Info */}
                             <div className="flex flex-col mb-6">
-                                <h3 className="text-xl font-medium text-black mb-2">Our Vision</h3>
-                                <p className="text-sm text-neutral-600 leading-relaxed font-normal">
+                                <h3 className="text-xl 2xl:text-3xl font-medium text-black mb-2">Our Vision</h3>
+                                <p className="text-sm 2xl:text-lg text-neutral-600 leading-relaxed font-normal">
                                     To shape how brands exist visually in a world full of noise.
                                 </p>
                             </div>
 
                             {/* About Us Button */}
-                            <a href="/about" className="px-6 py-2.5 bg-neutral-900 hover:bg-black text-white font-normal rounded-lg text-sm transition-colors w-fit shadow-sm">
+                            <a href="/about" className="px-6 py-2.5 bg-neutral-900 hover:bg-black text-white font-normal rounded-lg text-sm 2xl:text-lg transition-colors w-fit shadow-sm">
                                 About Us
                             </a>
                         </div>
                     </div>
 
                     {/* Right Column - Headings, Stats, and Studio Photo */}
-                    <div className="lg:col-span-7 flex flex-col gap-10 w-full">
+                    <div className="lg:col-span-7 flex flex-col gap-10 w-full mt-2">
 
                         {/* Main Large Heading */}
-                        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-normal text-black leading-[1.2] tracking-tight" data-animate="fade-right" data-animate-duration="1" data-animate-delay="0.1">
+                        <h2 className="text-xl sm:text-3xl lg:text-[40px] font-normal text-black leading-[1.2] tracking-tight" data-animate="fade-right" data-animate-duration="1" data-animate-delay="0.1">
                             We approach every project with clarity combining creative thinking and strategy to build work that truly matters.
                         </h2>
 
@@ -127,15 +131,15 @@ const About = () => {
                                                 key={i}
                                                 src={img}
                                                 alt={`Reviewer ${i + 1}`}
-                                                className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                                                className="w-10 h-10 2xl:w-14 2xl:h-14 rounded-full border-2 border-white object-cover"
                                             />
                                         ))}
                                     </div>
-                                    <span className="text-[15px] font-semibold text-black">k+ Reviews</span>
+                                    <span className="text-[15px] 2xl:text-xl font-semibold text-black">k+ Reviews</span>
                                 </div>
 
                                 {/* Purpose Statement */}
-                                <p className="text-sm text-neutral-800 font-normal leading-relaxed max-w-sm">
+                                <p className="text-sm 2xl:text-lg text-neutral-800 font-normal leading-relaxed max-w-sm">
                                     At Diwora, creativity is always guided by purpose. Every idea is shaped with intention built to communicate clearly and connect with the right audience.
                                 </p>
                             </div>
@@ -143,27 +147,27 @@ const About = () => {
                             {/* Column 2: Scope of Work and Counter Stats */}
                             <div className="flex flex-col gap-6">
                                 {/* Scope of Work */}
-                                <p className="text-[14px] md:text-[15px] text-neutral-500 font-normal leading-relaxed max-w-sm">
+                                <p className="text-sm 2xl:text-lg text-neutral-800 font-normal leading-relaxed max-w-sm">
                                     From photography and video to motion and campaigns, we create visual content that doesn't just look good it drives growth and keeps brands relevant
                                 </p>
 
                                 {/* Counter Stats */}
                                 <div className="flex items-center gap-6 mt-2">
                                     <div>
-                                        <p className="text-xl md:text-4xl font-black text-black">
+                                        <p className="text-[clamp(20px,1rem+2.5vw,48px)] font-black text-black">
                                             <CountUp end={50} />+
                                         </p>
-                                        <p className="text-xs text-neutral-500 mt-1 font-medium">Projects Completed</p>
+                                        <p className="text-[clamp(12px,1vw,18px)] text-neutral-500 mt-1 font-medium">Projects Completed</p>
                                     </div>
 
                                     {/* Vertical Divider */}
                                     <div className="w-px h-8 bg-neutral-300"></div>
 
                                     <div>
-                                        <p className="text-xl md:text-4xl font-black text-black">
+                                        <p className="text-[clamp(20px,1rem+2.5vw,48px)] font-black text-black">
                                             <CountUp end={25} />+
                                         </p>
-                                        <p className="text-xs text-neutral-500 mt-1 font-medium">Happy Clients</p>
+                                        <p className="text-[clamp(12px,1vw,18px)] text-neutral-500 mt-1 font-medium">Happy Clients</p>
                                     </div>
                                 </div>
                             </div>
@@ -171,17 +175,18 @@ const About = () => {
                         </div>
 
                         {/* Large Studio Photo Carousel */}
-                        <div className="w-full h-64 sm:h-80 lg:h-[450px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-neutral-100 mt-4 group" data-animate="zoom-in" data-animate-duration="1.1" data-animate-delay="0.15">
+                        <div className="w-full h-64 sm:h-80 lg:h-[450px] 2xl:h-[600px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-neutral-100 mt-4 group" data-animate="zoom-in" data-animate-duration="1.1" data-animate-delay="0.15">
                             <Swiper
                                 modules={[Autoplay]}
                                 effect="slide"
                                 speed={1800}
+                                loop={true}
                                 autoplay={{
                                     delay: 3500,
                                     disableOnInteraction: false,
                                     pauseOnMouseEnter: true,
                                 }}
-                                loop={true}
+                                watchSlidesProgress={true}
                                 className="w-full h-full"
                             >
                                 {studioImages.map((src, idx) => (

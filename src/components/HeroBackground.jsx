@@ -46,14 +46,6 @@ const HeroBackground = () => {
           />
           <motion.path
             d="M 120 0 L 120 60 L 180 60 L 180 120 L 300 120"
-            stroke="#fff" strokeWidth="3" fill="none" className="opacity-40 blur-[2px]"
-            vectorEffect="non-scaling-stroke"
-            strokeDasharray="40 160"
-            animate={{ strokeDashoffset: [0, -200] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.path
-            d="M 120 0 L 120 60 L 180 60 L 180 120 L 300 120"
             stroke="#ef4444" strokeWidth="1.5" fill="none" className="opacity-80"
             vectorEffect="non-scaling-stroke"
             strokeDasharray="40 160"
@@ -66,14 +58,6 @@ const HeroBackground = () => {
             d="M 240 660 L 180 660 L 180 960"
             stroke="#ffffff" strokeWidth="1" fill="none" className="opacity-15"
             vectorEffect="non-scaling-stroke"
-          />
-          <motion.path
-            d="M 240 660 L 180 660 L 180 960"
-            stroke="#fff" strokeWidth="3" fill="none" className="opacity-40 blur-[2px]"
-            vectorEffect="non-scaling-stroke"
-            strokeDasharray="40 160"
-            animate={{ strokeDashoffset: [0, -200] }}
-            transition={{ duration: 4, delay: 1, repeat: Infinity, ease: "linear" }}
           />
           <motion.path
             d="M 240 660 L 180 660 L 180 960"
@@ -92,14 +76,6 @@ const HeroBackground = () => {
           />
           <motion.path
             d="M 660 60 L 660 300 L 600 300 L 600 540"
-            stroke="#fff" strokeWidth="3" fill="none" className="opacity-40 blur-[2px]"
-            vectorEffect="non-scaling-stroke"
-            strokeDasharray="45 180"
-            animate={{ strokeDashoffset: [0, -225] }}
-            transition={{ duration: 5, delay: 0.5, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.path
-            d="M 660 60 L 660 300 L 600 300 L 600 540"
             stroke="#ef4444" strokeWidth="1.5" fill="none" className="opacity-80"
             vectorEffect="non-scaling-stroke"
             strokeDasharray="45 180"
@@ -115,14 +91,6 @@ const HeroBackground = () => {
           />
           <motion.path
             d="M 900 240 L 960 240 L 960 120 L 1080 120"
-            stroke="#fff" strokeWidth="3" fill="none" className="opacity-40 blur-[2px]"
-            vectorEffect="non-scaling-stroke"
-            strokeDasharray="35 140"
-            animate={{ strokeDashoffset: [0, -175] }}
-            transition={{ duration: 3.5, delay: 1.5, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.path
-            d="M 900 240 L 960 240 L 960 120 L 1080 120"
             stroke="#ef4444" strokeWidth="1.5" fill="none" className="opacity-80"
             vectorEffect="non-scaling-stroke"
             strokeDasharray="35 140"
@@ -135,14 +103,6 @@ const HeroBackground = () => {
             d="M 1320 180 L 1320 300 L 1440 300 L 1440 480"
             stroke="#ffffff" strokeWidth="1" fill="none" className="opacity-15"
             vectorEffect="non-scaling-stroke"
-          />
-          <motion.path
-            d="M 1320 180 L 1320 300 L 1440 300 L 1440 480"
-            stroke="#fff" strokeWidth="3" fill="none" className="opacity-40 blur-[2px]"
-            vectorEffect="non-scaling-stroke"
-            strokeDasharray="45 180"
-            animate={{ strokeDashoffset: [0, -225] }}
-            transition={{ duration: 4.5, delay: 2, repeat: Infinity, ease: "linear" }}
           />
           <motion.path
             d="M 1320 180 L 1320 300 L 1440 300 L 1440 480"

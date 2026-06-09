@@ -527,13 +527,13 @@ const ServicesSection = () => {
     <div data-theme="light" ref={sectionRef} className="relative w-full h-[200vh] md:h-[320vh] bg-white font-['Inter',sans-serif] py-0 md:py-14">
       {/* Header Area */}
       <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col gap-2 mb-6 md:mb-8 pt-4 md:pt-0" data-animate="fade-up">
-        <p className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold">
+        <p className="text-xs 2xl:text-[20px] 2xl:tracking-[0.15em] uppercase tracking-[0.35em] text-red-600 font-semibold">
           Services
         </p>
-        <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-medium text-black tracking-[-0.04em] leading-[1.1] mb-2">
+        <h2 className="text-[clamp(1.875rem,3vw,3.75rem)] font-medium text-black tracking-[-0.04em] leading-[1.1] mb-2">
           How we drive growth
         </h2>
-        <p className="text-sm text-neutral-500 max-w-sm">
+        <p className="text-sm sm:text-base 2xl:text-lg text-neutral-500">
           Tailored solutions for every stage of your business.
         </p>
       </div>
@@ -558,7 +558,7 @@ const ServicesSection = () => {
                   >
                     {/* Tab Header */}
                     <div className="flex justify-between items-center">
-                      <span className={`text-sm sm:text-base lg:text-[21px] font-bold tracking-tight transition-colors duration-300 ${isActive ? 'text-black' : 'text-neutral-700'
+                      <span className={`text-sm md:text-3xl 2xl:text-4xl font-medium tracking-tight transition-colors duration-300 ${isActive ? 'text-black' : 'text-neutral-700'
                         }`}>
                         {service.title}
                       </span>
@@ -575,10 +575,10 @@ const ServicesSection = () => {
                           className="overflow-hidden"
                         >
                           <div className="pt-3 lg:pt-4 flex flex-col items-start gap-3 lg:gap-4">
-                            <h4 className="text-sm sm:text-base lg:text-lg font-bold text-neutral-900 leading-tight">
+                            <h4 className="text-sm md:text-2xl font-medium text-red-600 leading-tight">
                               {service.activeTitle}
                             </h4>
-                            <p className="text-[11px] sm:text-xs text-neutral-500 leading-relaxed max-w-sm font-medium">
+                            <p className="text-sm md:text-md 2xl:text-lg text-neutral-500 leading-relaxed max-w-sm font-medium">
                               {service.description}
                             </p>
 

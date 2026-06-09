@@ -59,7 +59,7 @@ const FeaturedWorks = () => {
   return (
     <section ref={sectionRef} data-theme="light" className="relative z-20 w-full bg-white pt-0 pb-10 px-6 md:px-12 lg:px-20">
       <div className="max-w-full mx-auto">
-        <h2 className="text-4xl font-normal text-black mb-14" data-animate="fade-up">
+        <h2 className="text-4xl 2xl:text-5xl font-normal text-black mb-14" data-animate="fade-up">
           Featured Works
         </h2>
 
@@ -84,7 +84,7 @@ const FeaturedWorks = () => {
 
                 {/* Optional Overlay Text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                  <span className="bg-white/90 text-black px-6 py-3 rounded-full font-medium text-sm shadow-lg backdrop-blur-sm transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
+                  <span className="bg-white/90 text-black px-6 py-3 rounded-full font-medium text-sm 2xl:text-xl shadow-lg backdrop-blur-sm transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
                     View Project
                   </span>
                 </div>
@@ -92,10 +92,10 @@ const FeaturedWorks = () => {
 
               {/* Text Content */}
               <div className="flex flex-col gap-1 px-1">
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+                <h3 className="text-2xl md:text-3xl 2xl:text-4xl font-bold text-gray-900">
                   {project.title}
                 </h3>
-                <p className="text-gray-500 text-sm md:text-base font-medium">
+                <p className="text-gray-500 text-sm md:text-base 2xl:text-xl font-medium">
                   {project.service}
                 </p>
               </div>

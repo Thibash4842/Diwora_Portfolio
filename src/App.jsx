@@ -20,6 +20,8 @@ import AboutUs from './components/AboutUs'
 import ContactPage from './components/ContactPage'
 import Loader from './components/Loader'
 import CustomCursor from './components/CustomCursor'
+
+import FullVideo from './assets/about/video.mp4'
 import './index.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -34,6 +36,7 @@ function ScrollToTop() {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
+      // console.log("ScrollTrigger count:", ScrollTrigger.getAll().length);
     }, 10);
 
     return () => clearTimeout(timer);
@@ -65,9 +68,10 @@ function Home({ heroRef, navRevealed, loading }) {
           muted
           loop
           playsInline
+          preload="metadata"
           className="w-full h-full object-cover rounded-xl"
         >
-          <source src="https://www.pexels.com/download/video/31259707/" type="video/mp4" />
+          <source src={FullVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </section>

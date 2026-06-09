@@ -45,7 +45,7 @@ const AccordionItem = ({ job, isOpen, onClick, onApply }) => {
                 onClick={onClick}
                 className="w-full py-5 flex items-center justify-between text-left focus:outline-none"
             >
-                <h3 className="text-[16px] md:text-[17px] font-bold text-[#2d3748]">
+                <h3 className="text-[16px] md:text-[17px] 2xl:text-[26px] font-bold text-[#2d3748]">
                     {job.title}
                 </h3>
                 <div className="relative w-4 h-4 flex items-center justify-center text-[#2d3748]">
@@ -62,15 +62,15 @@ const AccordionItem = ({ job, isOpen, onClick, onApply }) => {
                 <div
                     className={`pb-6 transition-all duration-500 ease-in-out transform ${isOpen ? 'opacity-100' : 'opacity-0'}`}
                 >
-                    <p className="text-[14px] md:text-[15px] text-[#556981] font-normal mb-5 tracking-wide">
+                    <p className="text-[14px] md:text-[15px] 2xl:text-[22px] text-[#556981] font-normal mb-5 tracking-wide">
                         {job.subtitle}
                     </p>
-                    <p className="text-[14px] md:text-[15px] text-neutral-600 leading-relaxed max-w-3xl mb-6 font-normal">
+                    <p className="text-[14px] md:text-[15px] 2xl:text-[20px] text-neutral-600 leading-relaxed max-w-3xl mb-6 font-normal">
                         {job.description}
                     </p>
                     <button
                         onClick={(e) => { e.stopPropagation(); onApply(job.title); }}
-                        className="px-6 py-2 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-black transition-colors duration-300 hover:shadow-md"
+                        className="px-6 py-2 2xl:px-10 2xl:py-4 bg-neutral-900 text-white text-sm 2xl:text-xl font-medium rounded-lg hover:bg-black transition-colors duration-300 hover:shadow-md"
                     >
                         Apply Now
                     </button>
@@ -98,12 +98,12 @@ const Careers = () => {
             <Navbar />
             <section ref={sectionRef} id="careers" className="w-full bg-white pt-32 pb-20 md:pt-40 md:pb-32">
                 <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20">
-                    <div className="max-w-5xl">
-                        <h2 className="text-[56px] md:text-7xl lg:text-[80px] font-bold text-black tracking-tight mb-10 md:mb-14" data-animate="fade-up">
+                    <div className="max-w-5xl 2xl:max-w-[1440px]">
+                        <h2 className="text-[56px] md:text-[72px] 2xl:text-[80px] font-bold text-black tracking-tight mb-4 md:mb-14" data-animate="fade-up">
                             Careers
                         </h2>
 
-                        <p className="text-[22px] md:text-[28px] lg:text-[32px] text-black font-normal leading-[1.3] md:leading-[1.3] mb-16 md:mb-20 tracking-tight" data-animate="fade-up" data-animate-delay="0.1">
+                        <p className="text-[18px] md:text-[24px] 2xl:text-[32px] text-black font-normal leading-[1.3] md:leading-[1.3] mb-6 md:mb-20 tracking-tight" data-animate="fade-up" data-animate-delay="0.1">
                             Join the clan of diwora and be a part of our family, where your ideas are valued, your creativity is celebrated, we'll continue to craft extraordinary stories that captivate the world.
                         </p>
                     </div>

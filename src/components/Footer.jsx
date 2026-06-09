@@ -34,7 +34,7 @@ const FlipLink = ({ children, href, to, className = '' }) => {
 
 /* ─── Shared column heading ─── */
 const ColHeading = ({ children }) => (
-  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/40 mb-5">
+  <p className="text-xs 2xl:text-lg font-semibold uppercase tracking-[0.25em] text-white/40 mb-5">
     {children}
   </p>
 );
@@ -52,12 +52,12 @@ const Footer = () => {
   ];
 
   const services = [
-    { label: 'Advertising',          to: '/advertising' },
-    { label: 'Brand Visual',          href: '#' },
-    { label: 'Motion Video',          href: '#' },
-    { label: 'Digital Marketing',     href: '#' },
-    { label: 'Ideation & Scripting',  href: '#' },
-    { label: 'Website Development',   href: '#' },
+    { label: 'Advertising', to: '/advertising' },
+    { label: 'Brand Visual', href: '#' },
+    { label: 'Motion Video', href: '#' },
+    { label: 'Digital Marketing', href: '#' },
+    { label: 'Ideation & Scripting', href: '#' },
+    { label: 'Website Development', href: '#' },
   ];
 
   const legalLinks = [
@@ -93,8 +93,8 @@ const Footer = () => {
 
             {/* Address */}
             <div className="flex items-start gap-3">
-              <FaMapMarkerAlt className="flex-shrink-0 mt-0.5 text-white/40 text-sm" />
-              <p className="text-sm text-white/60 leading-relaxed">
+              <FaMapMarkerAlt className="flex-shrink-0 mt-0.5 text-white/40 text-sm 2xl:text-lg" />
+              <p className="text-sm 2xl:text-lg text-white/60 leading-relaxed">
                 Door No, Primus Building,<br className="block sm:hidden" />
                 SP–7A, South Phase,<br />
                 Guindy Industrial Estate,<br className="block sm:hidden" />
@@ -106,10 +106,10 @@ const Footer = () => {
 
             {/* Phone */}
             <div className="flex items-center gap-3">
-              <FaPhoneAlt className="flex-shrink-0 text-white/40 text-sm" />
+              <FaPhoneAlt className="flex-shrink-0 text-white/40 text-sm 2xl:text-lg" />
               <a
                 href="tel:+919514111996"
-                className="text-sm text-white/60 hover:text-white transition-colors duration-300"
+                className="text-sm 2xl:text-lg text-white/60 hover:text-white transition-colors duration-300"
               >
                 +91 95141 11996
               </a>
@@ -117,10 +117,10 @@ const Footer = () => {
 
             {/* Email */}
             <div className="flex items-center gap-3">
-              <FaEnvelope className="flex-shrink-0 text-white/40 text-sm" />
+              <FaEnvelope className="flex-shrink-0 text-white/40 text-sm 2xl:text-lg" />
               <a
                 href="mailto:connect@diwora.com"
-                className="text-sm text-white/60 hover:text-white transition-colors duration-300"
+                className="text-sm 2xl:text-lg text-white/60 hover:text-white transition-colors duration-300"
               >
                 connect@diwora.com
               </a>
@@ -135,7 +135,7 @@ const Footer = () => {
                 <li key={label}>
                   <FlipLink
                     href={href}
-                    className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-300"
+                    className="text-sm 2xl:text-lg font-medium text-white/60 hover:text-white transition-colors duration-300"
                   >
                     {label}
                   </FlipLink>
@@ -153,7 +153,7 @@ const Footer = () => {
                   <FlipLink
                     to={s.to}
                     href={s.href}
-                    className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-300"
+                    className="text-sm 2xl:text-lg font-medium text-white/60 hover:text-white transition-colors duration-300"
                   >
                     {s.label}
                   </FlipLink>
@@ -170,7 +170,7 @@ const Footer = () => {
                 <li key={label}>
                   <FlipLink
                     href={href}
-                    className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-300"
+                    className="text-sm 2xl:text-lg font-medium text-white/60 hover:text-white transition-colors duration-300"
                   >
                     {label}
                   </FlipLink>
@@ -182,7 +182,7 @@ const Footer = () => {
 
         {/* ── Copyright + Social bar ── */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-10 pb-8 border-t border-white/10 pt-6" data-animate="fade-up" data-animate-delay="0.3">
-          <span className="text-xs text-white tracking-wide">
+          <span className="text-xs 2xl:text-lg text-white tracking-wide">
             Copyright © 2026 Diwora. All rights reserved
           </span>
 
@@ -191,7 +191,7 @@ const Footer = () => {
               <FlipLink
                 key={label}
                 href={href}
-                className="text-xs font-medium text-white hover:text-white transition-colors duration-300 tracking-wide"
+                className="text-xs 2xl:text-lg font-medium text-white hover:text-white transition-colors duration-300 tracking-wide"
               >
                 {label}
               </FlipLink>
@@ -206,7 +206,7 @@ const Footer = () => {
       </div>
 
       {/* ── Footer Logo ── */}
-      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 pb-4" data-animate="zoom-in" data-animate-delay="0.4">
+      <div className="max-w-full mx-auto px-6 md:px-12 lg:px-20 pb-4">
         <img
           src={logo}
           alt="Diwora"

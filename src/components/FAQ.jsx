@@ -79,9 +79,9 @@ const FAQ = () => {
         <div className="flex flex-col items-start" data-animate="fade-up">
           <div className="flex items-center gap-2 mb-6">
             <span className="w-2 h-2 rounded-full bg-black"></span>
-            <span className="text-sm font-semibold uppercase tracking-wider text-black">FAQs</span>
+            <span className="text-sm 2xl:text-[20px] font-semibold uppercase tracking-wider text-black">FAQs</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-4xl font-bold text-black leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-4xl 2xl:text-5xl font-bold text-black leading-tight">
             Frequently Asked Questions
           </h2>
         </div>
@@ -96,7 +96,7 @@ const FAQ = () => {
               onClick={() => toggleAccordion(faq.id)}
             >
               <div className="flex justify-between items-center p-6">
-                <h3 className="text-lg font-medium text-black group-hover:text-gray-700 transition-colors duration-300">
+                <h3 className="text-lg 2xl:text-2xl font-medium text-black group-hover:text-gray-700 transition-colors duration-300">
                   {faq.question}
                 </h3>
                 <div className={`transform transition-transform duration-300 text-black group-hover:text-gray-700 ${openId === faq.id ? 'rotate-180' : ''}`}>

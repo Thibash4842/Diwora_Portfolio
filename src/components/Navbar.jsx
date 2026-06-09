@@ -57,7 +57,7 @@ const Navbar = ({ revealed = true }) => {
 
                 // Filter out any parent elements that contain other intersecting elements
                 const elements = Array.from(activeIntersecting);
-                const leaves = elements.filter((el) => 
+                const leaves = elements.filter((el) =>
                     !elements.some((other) => other !== el && el.contains(other))
                 );
 
@@ -274,7 +274,7 @@ const Navbar = ({ revealed = true }) => {
                                             onMouseEnter={() => handleMouseEnter(link.label)}
                                         >
                                             <button
-                                                className={`relative group overflow-hidden inline-flex items-center gap-1 pb-1 transition-all duration-300 text-sm font-medium ${navTextColor} hover:text-red-600`}
+                                                className={`relative group overflow-hidden inline-flex items-center gap-1 pb-1 transition-all duration-300 text-sm 2xl:text-[22px] font-medium ${navTextColor} hover:text-red-600`}
                                                 aria-expanded={activeDropdown === link.label}
                                                 aria-haspopup="true"
                                             >
@@ -290,7 +290,7 @@ const Navbar = ({ revealed = true }) => {
                                         /* ─── Regular Nav Link (React Router) ─── */
                                         <Link
                                             to={link.to}
-                                            className={`relative group overflow-hidden inline-flex pb-1 px-2 transition-all duration-300 text-sm font-medium ${navTextColor} hover:text-red-600`}
+                                            className={`relative group overflow-hidden inline-flex pb-1 px-2 transition-all duration-300 text-sm 2xl:text-[22px] font-medium ${navTextColor} hover:text-red-600`}
                                             aria-label={link.label}
                                             onMouseEnter={() => handleMouseEnter(null)}
                                         >
@@ -305,7 +305,7 @@ const Navbar = ({ revealed = true }) => {
                                         /* ─── Regular Nav Link (Anchor) ─── */
                                         <a
                                             href={link.href}
-                                            className={`relative group overflow-hidden inline-flex pb-1 px-2 transition-all duration-300 text-sm font-medium ${navTextColor} hover:text-red-600`}
+                                            className={`relative group overflow-hidden inline-flex pb-1 px-2 transition-all duration-300 text-sm 2xl:text-[22px] font-medium ${navTextColor} hover:text-red-600`}
                                             aria-label={link.label}
                                             onMouseEnter={() => handleMouseEnter(null)}
                                         >
@@ -323,19 +323,19 @@ const Navbar = ({ revealed = true }) => {
 
                         {/* CTA Button */}
                         <div className="hidden lg:flex items-center h-full" onMouseEnter={() => handleMouseEnter(null)}>
-                            <button onClick={() => setIsContactModalOpen(true)} className="group relative items-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-2 transition-all duration-300 active:scale-95 overflow-hidden flex">
+                            <button onClick={() => setIsContactModalOpen(true)} className="group relative items-center rounded-full border-2 border-red-600 bg-red-600 px-5 py-2 2xl:px-6 2xl:py-3 transition-all duration-300 active:scale-95 overflow-hidden flex">
                                 {/* Expanding Background */}
-                                <span className="absolute right-0 top-0 h-full w-[45px] rounded-full bg-white transition-all duration-700 ease-out group-hover:w-full group-hover:bg-[#1c1c1c]"></span>
+                                <span className="absolute right-0 top-0 h-full w-[45px] 2xl:w-[60px] rounded-full bg-white transition-all duration-700 ease-out group-hover:w-full group-hover:bg-[#1c1c1c]"></span>
 
                                 {/* Text */}
-                                <span className="relative z-10 text-[16px] sm:text-[18px] font-normal tracking-[0.05em] text-white">
+                                <span className="relative z-10 text-[16px] sm:text-[18px] 2xl:text-[22px] font-normal tracking-[0.05em] text-white">
                                     Contact
                                 </span>
 
                                 {/* Arrow */}
                                 <svg
                                     viewBox="0 0 13 10"
-                                    className="relative z-10 ml-3 h-[10px] w-[15px] -translate-x-1 stroke-white transition-all duration-500 ease-out group-hover:translate-x-0"
+                                    className="relative z-10 ml-3 h-[10px] w-[15px] 2xl:h-5 2xl:w-5 -translate-x-1 stroke-white transition-all duration-500 ease-out group-hover:translate-x-0"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
@@ -423,7 +423,7 @@ const Navbar = ({ revealed = true }) => {
                                     </div>
 
                                     {/* Right Column: Vertical Links */}
-                                    <div className="w-full lg:w-1/3 flex flex-col gap-4">
+                                    <div className="w-full lg:w-1/3 flex flex-col justify-between gap-4">
                                         {activeLink.subLinks.map((sub, idx) => (
                                             <Link
                                                 key={idx}
@@ -542,7 +542,7 @@ const Navbar = ({ revealed = true }) => {
                                                                     />
                                                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                                                                     <div className="absolute inset-0 p-4 flex flex-col justify-end">
-                                                                        <h4 className="text-sm font-medium text-white leading-tight">
+                                                                        <h4 className="text-sm 2xl:text-[22px] font-medium text-white leading-tight">
                                                                             {card.title}
                                                                         </h4>
                                                                     </div>
@@ -619,9 +619,9 @@ const Navbar = ({ revealed = true }) => {
                 />
             )}
 
-            <ContactModal 
-                isOpen={isContactModalOpen} 
-                onClose={() => setIsContactModalOpen(false)} 
+            <ContactModal
+                isOpen={isContactModalOpen}
+                onClose={() => setIsContactModalOpen(false)}
             />
         </>
     );

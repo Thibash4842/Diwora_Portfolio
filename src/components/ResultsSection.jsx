@@ -62,10 +62,10 @@ const ProjectCard = ({ project, index, inView }) => (
 
     {/* Text */}
     <div className="flex flex-col gap-1 px-0.5">
-      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-black tracking-tight leading-tight">
+      <h3 className="text-sm md:text-2xl 2xl:text-4xl font-bold text-black tracking-tight leading-tight">
         {project.name}
       </h3>
-      <p className="text-sm text-neutral-500 font-medium">
+      <p className="text-sm 2xl:text-xl text-neutral-500 font-medium">
         {project.service}
       </p>
     </div>
@@ -89,7 +89,7 @@ const ResultsSection = () => {
         {/* ─── Section Header ─── */}
         <div className="flex flex-col items-start gap-2 sm:gap-3 mb-10 sm:mb-12 lg:mb-16">
           <motion.p
-            className="text-xs uppercase tracking-[0.35em] text-red-600 font-semibold"
+            className="text-xs 2xl:text-[20px] 2xl:tracking-[0.15em] uppercase tracking-[0.35em] text-red-600 font-semibold"
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -98,7 +98,7 @@ const ResultsSection = () => {
           </motion.p>
 
           <motion.h2
-            className="text-3xl sm:text-4xl font-medium text-black tracking-[-0.04em] leading-tight max-w-3xl"
+            className="text-[clamp(1.875rem,3vw,3.75rem)] font-medium text-black tracking-[-0.04em] leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
@@ -107,7 +107,7 @@ const ResultsSection = () => {
           </motion.h2>
 
           <motion.p
-            className="text-sm sm:text-base text-neutral-500 leading-7 max-w-2xl"
+            className="text-sm sm:text-base 2xl:text-lg text-neutral-500 leading-7"
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}

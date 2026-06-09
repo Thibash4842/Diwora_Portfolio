@@ -100,24 +100,28 @@ const Contact = ({ inModal = false }) => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       /* ── Blob ambient parallax ── */
-      gsap.to(blob1Ref.current, {
-        y: -60,
-        x: 30,
-        duration: 7,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
-      gsap.to(blob2Ref.current, {
-        y: 50,
-        x: -40,
-        duration: 9,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: 1.5,
-      });
+      if (blob1Ref.current) {
+        gsap.to(blob1Ref.current, {
+          y: -60,
+          x: 30,
+          duration: 7,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+        });
+      }
 
+      if (blob2Ref.current) {
+        gsap.to(blob2Ref.current, {
+          y: 50,
+          x: -40,
+          duration: 9,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: 1.5,
+        });
+      }
       /* ── Floating particles ── */
       particlesRef.current.forEach((p, i) => {
         if (!p) return;
@@ -225,7 +229,7 @@ const Contact = ({ inModal = false }) => {
         id="contact"
         ref={sectionRef}
         data-theme="dark"
-        className="relative w-full overflow-hidden py-4 lg:py-18"
+        className="relative w-full overflow-hidden py-4 md:py-14"
         style={{
           background:
             'radial-gradient(ellipse 80% 60% at 10% 0%, #080000 100%)',
@@ -244,16 +248,16 @@ const Contact = ({ inModal = false }) => {
               className="relative flex flex-col overflow-hidden rounded-2xl"
             >
               {/* Heading — top-left inside card */}
-              <div className="px-7 pt-8 pb-0">
+              <div className="px-3 pt-8 pb-0">
                 <h2
                   ref={headingRef}
-                  className="text-4xl sm:text-5xl font-normal text-white leading-[1.1] tracking-tight"
+                  className="text-2xl sm:text-5xl font-normal text-white leading-[1.1] tracking-tight"
                 >
                   Get in Touch
                 </h2>
                 <p
                   ref={subRef}
-                  className="mt-3 mb-3 text-sm text-white/55 leading-relaxed"
+                  className="mt-3 mb-3 text-sm 2xl:text-lg text-white/55 leading-relaxed"
                 >
                   Let's build something exceptional together<br />
                   Reach out to discuss your next digital project.
@@ -268,7 +272,7 @@ const Contact = ({ inModal = false }) => {
                   src={artboardImg}
                   alt="Diwora contact visual"
                   draggable={false}
-                  className="w-full h-[240px] sm:h-[400px] md:h-[480px] lg:h-full object-contain object-center select-none block lg:absolute lg:inset-0 lg:object-contain"
+                  className="w-full h-[240px] sm:h-[400px] md:h-[480px] lg:h-fit object-contain object-center select-none block lg:absolute lg:inset-0 lg:object-cover"
                 />
 
                 {/* Inquire Now Floating Overlay Button */}
@@ -280,7 +284,7 @@ const Contact = ({ inModal = false }) => {
                       formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
                   }}
-                  className="absolute z-20 left-[42%] top-[21%] top-[50%] md:left-[40%] md:top-[34%] flex items-center justify-center rounded-full border border-white/10 px-2 py-1 md:px-5 md:py-2 text-white text-[10px] md:text-[14px] shadow-[0_20px_50px_rgba(0,0,0,0.55),0_0_30px_rgba(220,38,38,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 hover:shadow-[0_25px_60px_rgba(0,0,0,0.65),0_0_45px_rgba(220,38,38,0.3)] cursor-pointer"
+                  className="absolute z-20 left-[42%] top-[20%] md:left-[40%] md:top-[38%] flex items-center justify-center rounded-full border border-white/10 px-2 py-1 md:px-5 md:py-2 text-white text-[10px] md:text-[14px] shadow-[0_20px_50px_rgba(0,0,0,0.55),0_0_30px_rgba(220,38,38,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 hover:shadow-[0_25px_60px_rgba(0,0,0,0.65),0_0_45px_rgba(220,38,38,0.3)] cursor-pointer"
                   style={{
                     background:
                       'linear-gradient(to bottom, #000000 0%, #120305 20%, rgba(50, 0, 5, 1) 100%)',
@@ -349,8 +353,8 @@ const Contact = ({ inModal = false }) => {
                       </svg>
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[10px] text-white/45 font-medium mb-0.5 uppercase tracking-wider">Email us</p>
-                      <p className="text-xs text-white/80 font-semibold truncate">connect@diwora.com</p>
+                      <p className="text-[10px] 2xl:text-[14px] text-white/45 font-medium mb-0.5 uppercase tracking-wider">Email us</p>
+                      <p className="text-xs 2xl:text-[20px] text-white/80 font-semibold truncate">connect@diwora.com</p>
                     </div>
                     <div className="ml-auto flex-shrink-0">
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="text-white/35 group-hover:text-white/65 transition-colors duration-300">
@@ -388,8 +392,8 @@ const Contact = ({ inModal = false }) => {
                       </svg>
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[10px] text-white/45 font-medium mb-0.5 uppercase tracking-wider">Call us</p>
-                      <p className="text-xs text-white/80 font-semibold truncate">+91 95141 11996</p>
+                      <p className="text-[10px] 2xl:text-[14px] text-white/45 font-medium mb-0.5 uppercase tracking-wider">Call us</p>
+                      <p className="text-xs 2xl:text-[20px] text-white/80 font-semibold truncate">+91 95141 11996</p>
                     </div>
                     <div className="ml-auto flex-shrink-0">
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="text-white/35 group-hover:text-white/65 transition-colors duration-300">
@@ -406,7 +410,7 @@ const Contact = ({ inModal = false }) => {
             ════════════════════ */}
             <div
               ref={formCardRef}
-              className="rounded-2xl p-7 sm:p-9"
+              className="rounded-2xl p-4 sm:p-9"
               style={{
                 background: 'rgba(255,255,255,0.03)',
                 border: '1px solid rgba(255,255,255,0.07)',
@@ -429,7 +433,7 @@ const Contact = ({ inModal = false }) => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
-                    <p className="text-sm text-white/50">We'll get back to you within 24 hours.</p>
+                    <p className="text-sm 2xl:text-lg text-white/50">We'll get back to you within 24 hours.</p>
                   </div>
                   <button
                     onClick={() => { setSubmitted(false); setForm({ name: '', email: '', company: '', service: '', details: '' }); }}
@@ -440,10 +444,10 @@ const Contact = ({ inModal = false }) => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-4 2xl:text-lg">
 
                     <div>
-                      <p className="text-white text-sm mb-4 mt-2">We believe great partnerships start with great conversations. Reach out today and let's turn your vision into reality.</p>
+                      <p className="text-white text-sm 2xl:text-lg mb-4 mt-2">We believe great partnerships start with great conversations. Reach out today and let's turn your vision into reality.</p>
                     </div>
 
                     {/* Name */}

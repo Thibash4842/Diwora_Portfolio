@@ -90,7 +90,7 @@ const WhatWeDo = () => {
 
           {/* Top Right: Description */}
           <div className="lg:col-span-4 flex lg:justify-end text-left lg:text-left mt-2 lg:mt-5">
-            <p className="max-w-[340px] text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+            <p className="max-w-[340px] 2xl:max-w-[500px] text-xs sm:text-sm 2xl:text-[22px] text-neutral-600 leading-relaxed font-normal">
               We work across the full arc of visual storytelling from the first idea to the finished frame and everything that gets it seen
             </p>
           </div>
@@ -124,13 +124,13 @@ const WhatWeDo = () => {
                 {/* Left Side: Number + Name */}
                 <div className="flex items-center gap-6 sm:gap-12 md:gap-16 z-10">
                   {/* Large Number */}
-                  <span className={`text-3xl sm:text-4xl lg:text-[40px] font-normal w-12 sm:w-16 select-none leading-none transition-colors duration-300 ${isHovered ? 'text-white/40' : 'text-black/35'
+                  <span className={`text-3xl sm:text-4xl lg:text-[40px] 2xl:text-[60px] font-normal w-12 sm:w-16 select-none leading-none transition-colors duration-300 ${isHovered ? 'text-white/40' : 'text-black/35'
                     }`}>
                     {service.number}
                   </span>
 
                   {/* Service Name */}
-                  <span className="text-lg sm:text-xl lg:text-[32px] font-normal leading-none tracking-tight group-hover:translate-x-2 transition-transform duration-300 ease-out select-none">
+                  <span className="text-lg sm:text-xl lg:text-[32px] 2xl:text-[48px] font-normal leading-none tracking-tight group-hover:translate-x-2 transition-transform duration-300 ease-out select-none">
                     {service.name}
                   </span>
                 </div>
@@ -158,7 +158,7 @@ const WhatWeDo = () => {
                 <AnimatePresence>
                   {isHovered && (
                     <motion.div
-                      className="pointer-events-none absolute z-20 w-48 h-32 md:w-60 md:h-40 rounded-xl overflow-hidden shadow-2xl bg-neutral-900 border border-white/10 hidden lg:block"
+                      className="pointer-events-none absolute z-20 w-48 h-32 md:w-60 md:h-40 2xl:w-96 2xl:h-60 rounded-xl overflow-hidden shadow-2xl bg-neutral-900 border border-white/10 hidden lg:block"
                       style={{
                         left: mousePos.x + 30,
                         top: mousePos.y - 80,
