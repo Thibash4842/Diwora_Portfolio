@@ -45,9 +45,9 @@ const Footer = () => {
   useScrollAnimations(footerRef);
 
   const quickLinks = [
-    { label: 'About', href: '/about' },
-    { label: 'Works', href: '/works' },
-    { label: 'Careers', href: '/careers' },
+    { label: 'About', to: '/about' },
+    { label: 'Works', to: '/works' },
+    { label: 'Careers', to: '/careers' },
     { label: 'Contact us', href: '#contact' },
   ];
 
@@ -131,10 +131,11 @@ const Footer = () => {
           <div className='lg:col-span-1'>
             <ColHeading><b className="text-white">Navigation</b></ColHeading>
             <ul className="flex flex-col gap-3">
-              {quickLinks.map(({ label, href }) => (
+              {quickLinks.map(({ label, href, to }) => (
                 <li key={label}>
                   <FlipLink
                     href={href}
+                    to={to}
                     className="text-sm 2xl:text-lg font-medium text-white/60 hover:text-white transition-colors duration-300"
                   >
                     {label}

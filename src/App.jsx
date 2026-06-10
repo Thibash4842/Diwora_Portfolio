@@ -18,6 +18,7 @@ import Careers from './components/Careers'
 import Advertising from './components/Advertising'
 import AboutUs from './components/AboutUs'
 import ContactPage from './components/ContactPage'
+import WorksPage from './components/WorksPage'
 import Loader from './components/Loader'
 import CustomCursor from './components/CustomCursor'
 
@@ -176,6 +177,7 @@ function App() {
         <Route path="/" element={<Home heroRef={heroRef} navRevealed={navRevealed} loading={loading} />} />
         <Route path="/advertising" element={<Advertising />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/works" element={<WorksPage />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>

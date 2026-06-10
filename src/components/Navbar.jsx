@@ -188,7 +188,7 @@ const Navbar = ({ revealed = true }) => {
 
     const navLinks = [
         { label: 'About Us', to: '/about' },
-        { label: 'Works', href: '#works' },
+        { label: 'Works', to: '/works' },
         {
             label: 'Service', // Premium mega-menu
             href: '#service',

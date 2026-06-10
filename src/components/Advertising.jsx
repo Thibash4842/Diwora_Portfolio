@@ -363,7 +363,7 @@ const Advertising = () => {
               <img
                 src={dashboardimage}
                 alt="Dashboard Image"
-                className=" w-full md:h-[500px] 2xl:h-fit object-fill block"
+                className=" w-full md:h-[550px] 2xl:h-[80vh] object-fill block"
               />
             </div>
 
