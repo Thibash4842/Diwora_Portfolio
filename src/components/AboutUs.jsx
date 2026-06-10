@@ -62,14 +62,14 @@ const AboutUs = () => {
       {/* Founder Story Section */}
       <section
         data-theme="light"
-        className="relative w-full bg-[#ffffff] py-14 md:py-12 2xl:py-10 px-6 md:px-12 lg:px-20 overflow-hidden"
+        className="relative w-full bg-[#ffffff] py-0 md:pt-14 px-6 md:px-12 lg:px-20 overflow-hidden"
       >
         <div className="max-w-full mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
 
             {/* Left Side: Graphic Composition */}
-            <div className="lg:col-span-5 flex justify-center items-center relative">
-              <div className="relative w-full max-w-[380px] sm:max-w-[420px] aspect-[4/5] flex items-center justify-center">
+            <div className="lg:col-span-5 flex justify-center items-center relative pt-10 md:pt-0">
+              <div className="relative w-full max-w-[clamp(380px,24vw,700px)] aspect-[4/5] h-full flex items-center justify-center">
                 {/* Grayscale Founder Image Cutout with Multiply Blend & Soft Shadow */}
                 <motion.div
                   className="absolute bottom-0 w-full h-full z-10 flex items-end justify-center overflow-hidden"
@@ -89,10 +89,10 @@ const AboutUs = () => {
             </div>
 
             {/* Right Side: Typography & Story Content */}
-            <div className="lg:col-span-7 flex flex-col justify-center">
+            <div className="lg:col-span-7 flex flex-col justify-center pb-10">
               {/* Bold Heading */}
               <motion.h2
-                className="text-1xl sm:text-4xl md:text-[44px] font-medium text-black leading-[1.1] tracking-[-0.03em] mb-10 text-left"
+                className="text-[clamp(1.25rem,2.9vw,2.75rem)] font-medium text-black leading-[1.1] tracking-[-0.03em] mb-10 text-left"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}

@@ -82,7 +82,7 @@ const CinematicStats = () => {
 
         {/* Large Bold Uppercase Headline with Mixed Opacity */}
         <motion.h2
-          className="text-[clamp(1.5rem,5vw,6.25rem)] font-normal leading-[1.08] tracking-tight uppercase mb-12 sm:mb-16 select-none"
+          className="text-[clamp(1.5rem,5vw,6.25rem)] font-medium leading-[1.08] tracking-tight uppercase mb-12 sm:mb-16 select-none"
           variants={itemVariants}
         >
           <span className="text-white">ATTENTION</span>{' '}
@@ -94,7 +94,7 @@ const CinematicStats = () => {
 
         {/* Constrained Description Area */}
         <motion.div
-          className="max-w-[650px] text-sm 2xl:text-[22px] text-white/70 leading-relaxed font-normal mb-16 sm:mb-20 space-y-2.5"
+          className="max-w-full text-sm 2xl:text-[22px] text-white/70 leading-relaxed font-normal mb-16 sm:mb-20 space-y-2.5"
           variants={itemVariants}
         >
           <p className='text-md md:text-lg text-white'>In a world full of visual noise, clarity is what stands out.
@@ -104,29 +104,55 @@ const CinematicStats = () => {
 
         {/* Horizontal Stats Row */}
         <motion.div
-          className="flex items-center justify-center gap-8 sm:gap-12 md:gap-16 w-full"
+          className="flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-16 w-full"
           variants={itemVariants}
         >
-          {/* Stat 1: Projects Completed */}
+          {/* Stat 1: Years of Experience */}
           <div className="flex flex-col items-center text-center">
             <span className="text-4xl sm:text-5xl md:text-6xl font-medium text-white tracking-tight leading-none mb-2.5">
-              <CountUp end={50} />+
+              <CountUp end={2} />+
             </span>
             <span className="text-xs sm:text-sm 2xl:text-[22px] text-neutral-400 font-medium tracking-wide">
-              Projects Completed
+              Years of Experience
             </span>
           </div>
 
           {/* Thin Vertical Divider */}
           <div className="w-[1px] h-14 sm:h-20 bg-white/20 self-center" />
 
-          {/* Stat 2: Happy Clients */}
+          {/* Stat 2: Projects Completed */}
+          <div className="flex flex-col items-center text-center">
+            <span className="text-4xl sm:text-5xl md:text-6xl font-medium text-white tracking-tight leading-none mb-2.5">
+              <CountUp end={50} />+
+            </span>
+            <span className="text-xs sm:text-sm 2xl:text-[22px] text-neutral-400 font-medium tracking-wide">
+              Projects Delivered
+            </span>
+          </div>
+
+          {/* Thin Vertical Divider */}
+          <div className="w-[1px] h-14 sm:h-20 bg-white/20 self-center" />
+
+          {/* Stat 2: Trusted Clients */}
           <div className="flex flex-col items-center text-center">
             <span className="text-4xl sm:text-5xl md:text-6xl font-medium text-white tracking-tight leading-none mb-2.5">
               <CountUp end={25} />+
             </span>
             <span className="text-xs sm:text-sm 2xl:text-[22px] text-neutral-400 font-medium tracking-wide">
-              Happy Clients
+              Trusted Clients
+            </span>
+          </div>
+
+          {/* Thin Vertical Divider */}
+          <div className="w-[1px] h-14 sm:h-20 bg-white/20 self-center" />
+
+          {/* Stat 4: Commitment to Quality */}
+          <div className="flex flex-col items-center text-center">
+            <span className="text-4xl sm:text-5xl md:text-6xl font-medium text-white tracking-tight leading-none mb-2.5">
+              <CountUp end={100} />%
+            </span>
+            <span className="text-xs sm:text-sm 2xl:text-[22px] text-neutral-400 font-medium tracking-wide">
+              Commitment to Quality
             </span>
           </div>
         </motion.div>

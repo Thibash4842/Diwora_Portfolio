@@ -244,7 +244,7 @@ const Navbar = ({ revealed = true }) => {
                         {/* Logo */}
                         <div className="flex-shrink-0">
                             <Link to="/" aria-label="Diwora home" onClick={() => setActiveDropdown(null)} className="block">
-                                <div className="relative h-9 sm:h-10 md:h-11 w-[120px] sm:w-[130px] md:w-[240px] flex items-center transition-opacity duration-300 hover:opacity-80">
+                                <div className="relative h-9 sm:h-10 md:h-11 lg:h-14 2xl:h-16 w-[120px] sm:w-[130px] md:w-[240px] lg:w-[260px] 2xl:w-[310px] flex items-center transition-opacity duration-300 hover:opacity-80">
                                     {/* Light Logo — hidden when bg is dark (mega menu, mobile menu, or dark section) */}
                                     <img
                                         src={logoLight}
@@ -423,14 +423,14 @@ const Navbar = ({ revealed = true }) => {
                                     </div>
 
                                     {/* Right Column: Vertical Links */}
-                                    <div className="w-full lg:w-1/3 flex flex-col justify-between gap-4">
+                                    <div className="w-full lg:w-1/3 flex flex-col justify-between py-4 gap-4">
                                         {activeLink.subLinks.map((sub, idx) => (
                                             <Link
                                                 key={idx}
                                                 to={sub.to}
                                                 onClick={() => setActiveDropdown(null)}
                                                 onMouseEnter={() => setHoveredService(sub.label)}
-                                                className={`group inline-flex items-center text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-light transition-all duration-300 w-fit ${hoveredService === sub.label
+                                                className={`group inline-flex items-center text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-semibold transition-all duration-300 w-fit ${hoveredService === sub.label
                                                     ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.7)]'
                                                     : 'text-gray-500 hover:text-red-600'
                                                     }`}

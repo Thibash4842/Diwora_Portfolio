@@ -10,47 +10,47 @@ import 'swiper/css/autoplay';
 const testimonials = [
   {
     id: 1,
-    name: "Name",
-    role: "Designation",
+    name: "Vignesh Srinivasan",
+    role: "Creative Director",
     rating: 5,
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    text: "Our collaboration with Diwora was more than just a shoot - it was a creative journey It started with brainstorming sessions that turned raw ideas into a well-crafted storyboard. Each concept Diwora proposed had its own visual identity and narrative depth , On set, every frame was executed with precision, and the team brought an creative energy that made the process exciting. the final output captured our brand exactly the way we imagined.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face&q=80"
   },
   {
     id: 2,
-    name: "Name",
-    role: "Designation",
+    name: "Pavithra k",
+    role: "Marketing Manager",
     rating: 5,
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    text: "I had the pleasure of working with Diwora for a motion graphics project, and the experience was seamless from start to finish. The team understood our vision perfectly and turned it into a stunning visual story. Their creativity, attention to detail, and commitment to quality made a real difference. The final video felt professional, engaging, and truly aligned with our brand.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&q=80"
   },
   {
     id: 3,
-    name: "Name",
-    role: "Designation",
+    name: "Farhan Ahmed",
+    role: "Senior Manager, Asain Paints",
     rating: 5,
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    text: "The Diwora team is one of the most Professional digital media company in chennai. Their creative ideas and the way of excecution i really admire their efforts for the outcome. All the best team.",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face&q=80"
   },
-  {
-    id: 4,
-    name: "Name",
-    role: "Designation",
-    rating: 5,
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face&q=80"
-  }
+  // {
+  //   id: 4,
+  //   name: "Name",
+  //   role: "Designation",
+  //   rating: 5,
+  //   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  //   image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face&q=80"
+  // }
 ];
 
 const backgroundAvatars = [
   { id: 1, img: testimonials[0].image, top: "10%", left: "5%", size: 64, x: [0, 30, 0], y: [0, -40, 0], duration: 15, delay: 0 },
   { id: 2, img: testimonials[1].image, top: "65%", left: "8%", size: 80, x: [0, -30, 0], y: [0, 40, 0], duration: 18, delay: 2 },
   { id: 3, img: testimonials[2].image, top: "15%", right: "8%", size: 72, x: [0, -40, 0], y: [0, 30, 0], duration: 20, delay: 1 },
-  { id: 4, img: testimonials[3].image, top: "70%", right: "5%", size: 56, x: [0, 30, 0], y: [0, -40, 0], duration: 16, delay: 3 },
+  // { id: 4, img: testimonials[3].image, top: "70%", right: "5%", size: 56, x: [0, 30, 0], y: [0, -40, 0], duration: 16, delay: 3 },
   { id: 5, img: testimonials[0].image, top: "35%", left: "20%", size: 48, x: [0, 25, 0], y: [0, 35, 0], duration: 14, delay: 4 },
   { id: 6, img: testimonials[2].image, top: "80%", right: "20%", size: 60, x: [0, -20, 0], y: [0, -30, 0], duration: 17, delay: 5 },
   { id: 7, img: testimonials[1].image, top: "50%", right: "12%", size: 50, x: [0, 35, 0], y: [0, 20, 0], duration: 19, delay: 1.5 },
-  { id: 8, img: testimonials[3].image, top: "45%", left: "12%", size: 55, x: [0, -25, 0], y: [0, -25, 0], duration: 15, delay: 2.5 },
+  // { id: 8, img: testimonials[3].image, top: "45%", left: "12%", size: 55, x: [0, -25, 0], y: [0, -25, 0], duration: 15, delay: 2.5 },
 ];
 
 const StarRating = ({ rating }) => {
@@ -113,7 +113,7 @@ const TestimonialSlider = () => {
 
         {/* Header Container */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-10">
-          <h2 className="text-[36px] md:text-5xl lg:text-[44px] xl:text-[58px] font-normal tracking-tight text-black leading-none max-w-2xl">
+          <h2 className="text-[36px] md:text-5xl lg:text-[44px] 2xl:text-[58px] font-normal tracking-tight text-black leading-none max-w-2xl">
             What it’s like working with us
           </h2>
           <p className="text-[14px] md:text-[15px] 2xl:text-[20px] text-[#1a1a1a] font-normal md:mt-2 md:text-right">
@@ -154,7 +154,7 @@ const TestimonialSlider = () => {
             spaceBetween={18}
             breakpoints={{
               768: {
-                slidesPerView: 2,
+                slidesPerView: 1,
                 spaceBetween: 22,
               },
               1024: {
